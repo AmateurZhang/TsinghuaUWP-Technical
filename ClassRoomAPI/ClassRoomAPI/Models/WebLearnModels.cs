@@ -147,6 +147,21 @@ namespace ClassRoomAPI.Models
     {
         public Course CourseInfo;
         public List<Deadline> Deadlines;
+        public int LengthOfDeadLines
+        {
+            get
+            {
+                return Deadlines.Count;
+            }
+        }
+        public string StringLenOfDeadlines
+        {
+            get
+            {
+                string _Result = "共有" + LengthOfDeadLines.ToString() + "条数据";
+                return _Result;
+            }
+        }
     }
 
     public class WebLearnInfo

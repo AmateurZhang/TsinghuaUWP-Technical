@@ -78,10 +78,18 @@
         </DataTemplate >
         <DataTemplate x:Key="PivotBuildingType" x:DataType="model:ListCourseInfoData">
             <PivotItem >
-                <ListView Name="ListViewClassRoomData"                    
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition> 
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="Count" Text="{x:Bind StringLenOfDeadlines}" Grid.Row="0"></TextBlock>
+                    <ListView Name="ListViewClassRoomData"                    
                       ItemTemplate="{StaticResource DataTemplate}" 
                       ItemsSource="{x:Bind Deadlines}"
+                              Grid.Row="1"
                       />
+                </Grid>
             </PivotItem>
         </DataTemplate>
     </Page.Resources>
