@@ -245,7 +245,9 @@ namespace ClassRoomAPI.Services
 
         private static async Task<List<Deadline>> getRemoteHomeworkListNew(Course CourseInfo)
         {
-            return await parseHomeworkListPageNew(await getHomeworkListPageNew(CourseInfo.id));
+            //await LogintoWebLearnMode();
+            var _Page = await getHomeworkListPageNew(CourseInfo.id);
+            return await parseHomeworkListPageNew(_Page);
         }
 
         //Semester
@@ -268,8 +270,7 @@ namespace ClassRoomAPI.Services
         // remote object URLs and wrappers
 
         private static string courseListUrl = "http://learn.tsinghua.edu.cn/MultiLanguage/lesson/student/MyCourse.jsp?language=cn";
-        private static string hostedCalendarUrl = "http://static.nullspace.cn/thuCalendar.json";
-        public static string helpUrl = "http://static.nullspace.cn/thuUwpHelp.html";
+
         private static async Task<string> getHomeworkListPage(string courseId)
         {
             return await PostGetHelper.GET($"http://learn.tsinghua.edu.cn/MultiLanguage/lesson/student/hom_wk_brw.jsp?course_id={courseId}");

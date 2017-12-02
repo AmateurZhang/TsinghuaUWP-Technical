@@ -36,7 +36,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE80F",
-                    Label = "TOPIC1",
+                    Label = "教室信息",
                     Selected = Visibility.Visible,
                     DestPage = typeof(ClassRoomInfo)
                 },
@@ -45,7 +45,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE772",
-                    Label = "TOPIC3",
+                    Label = "作业信息",
                     Selected = Visibility.Visible,
                     DestPage = typeof(WebLearn)
                 },
@@ -54,7 +54,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE771",
-                    Label = "TOPIC2",
+                    Label = "时间枢轴",
                     Selected = Visibility.Visible,
                     DestPage = typeof(WebLearnTimeTable)
                 },

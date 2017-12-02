@@ -67,10 +67,11 @@
                                    Opacity=".6" 
                                    MaxLines="1"/>
                     <TextBlock x:Name="Body" 
-                                   Text="{x:Bind detail}" 
+                                   Text="{x:Bind paindetail}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    TextWrapping="Wrap" 
                                    Margin="0,12,0,0"/>
+                
                 </StackPanel>
 
             </Grid>

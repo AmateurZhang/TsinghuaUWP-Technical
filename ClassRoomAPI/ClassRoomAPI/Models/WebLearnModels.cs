@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -126,6 +127,18 @@ namespace ClassRoomAPI.Models
 
 
             return timeLeft;
+        }
+
+        public string paindetail
+        {
+            get
+            {
+                var doc = new HtmlDocument();
+                doc.LoadHtml(detail);
+
+                return doc.DocumentNode.InnerText;
+            }
+           
         }
 
     }

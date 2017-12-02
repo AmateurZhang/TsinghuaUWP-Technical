@@ -1,4 +1,5 @@
-﻿using ClassRoomAPI.Helpers;
+﻿using ClassRoomAPI.Controls;
+using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.Services;
 using ClassRoomAPI.ViewModels;
@@ -37,7 +38,8 @@ namespace ClassRoomAPI.Views
         {
             if (WebLearnAPIService.CredentialAbsent())
             {
-                //--
+                var notifyPopup = new NotifyPopup("未登录！");
+                notifyPopup.Show();
             }
             else
             {
@@ -45,10 +47,13 @@ namespace ClassRoomAPI.Views
                 {
                     var _Data = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
                     MainListView.ItemsSource = _Data.ListAppointment;
+
+                    var notifyPopup = new NotifyPopup("正在使用本地数据。");
+                    notifyPopup.Show();
+
                     if ((DateTime.Now - _Data.Date).Minutes > 5)
                         throw new Exception("The Data are out-of-date.");
-                    else
-                        MainListView.ItemsSource = _Data.ListAppointment;
+                   
                 }
                 catch
                 {
@@ -56,10 +61,13 @@ namespace ClassRoomAPI.Views
                     {
                         var _DataRemote = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
                         MainListView.ItemsSource = _DataRemote.ListAppointment;
+                        var notifyPopup = new NotifyPopup("数据已刷新！");
+                        notifyPopup.Show();
                     }
                     catch
                     {
-                        //异常处理，前端
+                        var notifyPopup = new NotifyPopup("网络错误，请检查网络。");
+                        notifyPopup.Show();
                     }
 
                 }

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ClassRoomAPI.ViewModels;
+using ClassRoomAPI.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -38,6 +39,8 @@ namespace ClassRoomAPI.Views
                     throw new Exception("The Data are out-of-date.");
                 else
                     MainPivot.ItemsSource = _Data.ListClassRoomStatue;
+                var notifyPopup = new NotifyPopup("正在使用本地数据。");
+                notifyPopup.Show();
             }
             catch
             {
@@ -45,10 +48,13 @@ namespace ClassRoomAPI.Views
                 {
                     var _DataRemote = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Remote);
                     MainPivot.ItemsSource = _DataRemote.ListClassRoomStatue;
+                    var notifyPopup = new NotifyPopup("教室信息已更新！");
+                    notifyPopup.Show();
                 }
                 catch
                 {
-                    //异常处理，前端
+                    var notifyPopup = new NotifyPopup("网络异常，刷新失败。");
+                    notifyPopup.Show();
                 }
                 
             }

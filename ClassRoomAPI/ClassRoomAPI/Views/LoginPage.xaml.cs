@@ -17,6 +17,7 @@ using ClassRoomAPI.Services;
 using Windows.Storage;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.Helpers;
+using ClassRoomAPI.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -49,6 +50,8 @@ namespace ClassRoomAPI.Views
             }
             catch(MessageException err)
             {
+                var notifyPopup = new NotifyPopup("登陆失败！");
+                notifyPopup.Show();
                 var _Mess=err.Message;
                 Info.Text = _Mess;
             }
@@ -66,6 +69,8 @@ namespace ClassRoomAPI.Views
 
                 LoginStackPanel.Visibility = Visibility.Collapsed;
                 UserInfo.Visibility = Visibility.Visible;
+                var notifyPopup = new NotifyPopup("登陆成功！");
+                notifyPopup.Show();
             }
         }
 
