@@ -11,7 +11,7 @@ using Windows.Web.Http;
 
 namespace ClassRoomAPI
 {
-    class ClassLibrary
+    public class ClassLibrary
     {
 
        

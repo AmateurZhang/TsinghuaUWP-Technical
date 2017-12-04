@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.10586": {
-      "HtmlAgilityPack/1.6.2": {
+      "HtmlAgilityPack/1.6.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -43,6 +43,17 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.0.304142221-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -255,7 +266,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore": "5.0.2",
@@ -303,7 +314,7 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.Toolkit/2.0.0": {
+      "Microsoft.Toolkit/2.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -315,12 +326,13 @@
           "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp/2.0.0": {
+      "Microsoft.Toolkit.Uwp/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit": "2.0.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Microsoft.Identity.Client": "1.0.304142221-alpha",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.1",
+          "Microsoft.Toolkit": "2.1.0",
+          "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
@@ -329,11 +341,10 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0"
+          "Microsoft.Toolkit.Uwp": "2.1.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
@@ -342,14 +353,12 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
+          "Microsoft.Toolkit.Uwp.UI": "2.1.0",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
@@ -358,14 +367,11 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI.Animations": "2.0.0",
-          "Robmikh.CompositionSurfaceFactory": "0.7.1"
+          "Microsoft.Toolkit.Uwp.UI.Animations": "2.1.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
@@ -489,10 +495,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Robmikh.CompositionSurfaceFactory/0.7.1": {
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
         "type": "package",
         "dependencies": {
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
@@ -505,6 +511,10 @@
             "assetType": "native",
             "rid": "win10-arm"
           },
+          "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pdb": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
           "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pri": {
             "assetType": "native",
             "rid": "win10-arm"
@@ -513,11 +523,19 @@
             "assetType": "native",
             "rid": "win10-x64"
           },
+          "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pdb": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
           "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pri": {
             "assetType": "native",
             "rid": "win10-x64"
           },
           "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.pdb": {
             "assetType": "native",
             "rid": "win10-x86"
           },
@@ -2650,7 +2668,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Win2D.uwp/1.19.0": {
+      "Win2D.uwp/1.21.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
@@ -2675,7 +2693,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-arm": {
-      "HtmlAgilityPack/1.6.2": {
+      "HtmlAgilityPack/1.6.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -2716,6 +2734,17 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.0.304142221-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -2875,7 +2904,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore": "5.0.2",
@@ -2915,7 +2944,7 @@
           "System.Threading.Overlapped": "4.0.1",
           "System.Xml.XmlDocument": "4.0.1",
           "System.Xml.XmlSerializer": "4.0.11",
-          "runtime.win10-arm.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.1"
+          "runtime.win10-arm.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2"
         },
         "compile": {
           "ref/netcore50/_._": {}
@@ -2924,7 +2953,7 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.Toolkit/2.0.0": {
+      "Microsoft.Toolkit/2.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -2936,12 +2965,13 @@
           "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp/2.0.0": {
+      "Microsoft.Toolkit.Uwp/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit": "2.0.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Microsoft.Identity.Client": "1.0.304142221-alpha",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.1",
+          "Microsoft.Toolkit": "2.1.0",
+          "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
@@ -2950,11 +2980,10 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0"
+          "Microsoft.Toolkit.Uwp": "2.1.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
@@ -2963,14 +2992,12 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
+          "Microsoft.Toolkit.Uwp.UI": "2.1.0",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
@@ -2979,14 +3006,11 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI.Animations": "2.0.0",
-          "Robmikh.CompositionSurfaceFactory": "0.7.1"
+          "Microsoft.Toolkit.Uwp.UI.Animations": "2.1.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
@@ -3111,10 +3135,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Robmikh.CompositionSurfaceFactory/0.7.1": {
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
         "type": "package",
         "dependencies": {
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
@@ -3124,6 +3148,7 @@
         },
         "native": {
           "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.dll": {},
+          "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pdb": {},
           "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pri": {}
         }
       },
@@ -3480,7 +3505,7 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win10-arm.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "runtime.win10-arm.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -5338,7 +5363,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Win2D.uwp/1.19.0": {
+      "Win2D.uwp/1.21.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
@@ -5352,7 +5377,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-arm-aot": {
-      "HtmlAgilityPack/1.6.2": {
+      "HtmlAgilityPack/1.6.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -5393,6 +5418,17 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.0.304142221-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -5553,7 +5589,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore": "5.0.2",
@@ -5593,7 +5629,7 @@
           "System.Threading.Overlapped": "4.0.1",
           "System.Xml.XmlDocument": "4.0.1",
           "System.Xml.XmlSerializer": "4.0.11",
-          "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.1"
+          "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2"
         },
         "compile": {
           "ref/netcore50/_._": {}
@@ -5602,7 +5638,7 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.Toolkit/2.0.0": {
+      "Microsoft.Toolkit/2.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -5614,12 +5650,13 @@
           "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp/2.0.0": {
+      "Microsoft.Toolkit.Uwp/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit": "2.0.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Microsoft.Identity.Client": "1.0.304142221-alpha",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.1",
+          "Microsoft.Toolkit": "2.1.0",
+          "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
@@ -5628,11 +5665,10 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0"
+          "Microsoft.Toolkit.Uwp": "2.1.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
@@ -5641,14 +5677,12 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
+          "Microsoft.Toolkit.Uwp.UI": "2.1.0",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
@@ -5657,14 +5691,11 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI.Animations": "2.0.0",
-          "Robmikh.CompositionSurfaceFactory": "0.7.1"
+          "Microsoft.Toolkit.Uwp.UI.Animations": "2.1.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
@@ -5789,10 +5820,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Robmikh.CompositionSurfaceFactory/0.7.1": {
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
         "type": "package",
         "dependencies": {
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
@@ -5802,6 +5833,7 @@
         },
         "native": {
           "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.dll": {},
+          "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pdb": {},
           "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pri": {}
         }
       },
@@ -6203,7 +6235,7 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -8051,7 +8083,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Win2D.uwp/1.19.0": {
+      "Win2D.uwp/1.21.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
@@ -8065,7 +8097,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x64": {
-      "HtmlAgilityPack/1.6.2": {
+      "HtmlAgilityPack/1.6.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -8106,6 +8138,17 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.0.304142221-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -8268,7 +8311,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore": "5.0.2",
@@ -8308,7 +8351,7 @@
           "System.Threading.Overlapped": "4.0.1",
           "System.Xml.XmlDocument": "4.0.1",
           "System.Xml.XmlSerializer": "4.0.11",
-          "runtime.win10-x64.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.1"
+          "runtime.win10-x64.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2"
         },
         "compile": {
           "ref/netcore50/_._": {}
@@ -8317,7 +8360,7 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.Toolkit/2.0.0": {
+      "Microsoft.Toolkit/2.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -8329,12 +8372,13 @@
           "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp/2.0.0": {
+      "Microsoft.Toolkit.Uwp/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit": "2.0.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Microsoft.Identity.Client": "1.0.304142221-alpha",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.1",
+          "Microsoft.Toolkit": "2.1.0",
+          "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
@@ -8343,11 +8387,10 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0"
+          "Microsoft.Toolkit.Uwp": "2.1.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
@@ -8356,14 +8399,12 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
+          "Microsoft.Toolkit.Uwp.UI": "2.1.0",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
@@ -8372,14 +8413,11 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI.Animations": "2.0.0",
-          "Robmikh.CompositionSurfaceFactory": "0.7.1"
+          "Microsoft.Toolkit.Uwp.UI.Animations": "2.1.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
@@ -8504,10 +8542,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Robmikh.CompositionSurfaceFactory/0.7.1": {
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
         "type": "package",
         "dependencies": {
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
@@ -8517,6 +8555,7 @@
         },
         "native": {
           "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.dll": {},
+          "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pdb": {},
           "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pri": {}
         }
       },
@@ -8873,7 +8912,7 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win10-x64.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "runtime.win10-x64.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -10737,7 +10776,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Win2D.uwp/1.19.0": {
+      "Win2D.uwp/1.21.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
@@ -10751,7 +10790,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x64-aot": {
-      "HtmlAgilityPack/1.6.2": {
+      "HtmlAgilityPack/1.6.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -10792,6 +10831,17 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.0.304142221-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -10955,7 +11005,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore": "5.0.2",
@@ -10995,7 +11045,7 @@
           "System.Threading.Overlapped": "4.0.1",
           "System.Xml.XmlDocument": "4.0.1",
           "System.Xml.XmlSerializer": "4.0.11",
-          "runtime.win10-x64-aot.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.1"
+          "runtime.win10-x64-aot.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2"
         },
         "compile": {
           "ref/netcore50/_._": {}
@@ -11004,7 +11054,7 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.Toolkit/2.0.0": {
+      "Microsoft.Toolkit/2.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -11016,12 +11066,13 @@
           "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp/2.0.0": {
+      "Microsoft.Toolkit.Uwp/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit": "2.0.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Microsoft.Identity.Client": "1.0.304142221-alpha",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.1",
+          "Microsoft.Toolkit": "2.1.0",
+          "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
@@ -11030,11 +11081,10 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0"
+          "Microsoft.Toolkit.Uwp": "2.1.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
@@ -11043,14 +11093,12 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
+          "Microsoft.Toolkit.Uwp.UI": "2.1.0",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
@@ -11059,14 +11107,11 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI.Animations": "2.0.0",
-          "Robmikh.CompositionSurfaceFactory": "0.7.1"
+          "Microsoft.Toolkit.Uwp.UI.Animations": "2.1.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
@@ -11191,10 +11236,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Robmikh.CompositionSurfaceFactory/0.7.1": {
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
         "type": "package",
         "dependencies": {
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
@@ -11204,6 +11249,7 @@
         },
         "native": {
           "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.dll": {},
+          "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pdb": {},
           "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pri": {}
         }
       },
@@ -11605,7 +11651,7 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win10-x64-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "runtime.win10-x64-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -13459,7 +13505,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Win2D.uwp/1.19.0": {
+      "Win2D.uwp/1.21.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
@@ -13473,7 +13519,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x86": {
-      "HtmlAgilityPack/1.6.2": {
+      "HtmlAgilityPack/1.6.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -13514,6 +13560,17 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.0.304142221-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -13676,7 +13733,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore": "5.0.2",
@@ -13716,7 +13773,7 @@
           "System.Threading.Overlapped": "4.0.1",
           "System.Xml.XmlDocument": "4.0.1",
           "System.Xml.XmlSerializer": "4.0.11",
-          "runtime.win10-x86.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.1"
+          "runtime.win10-x86.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2"
         },
         "compile": {
           "ref/netcore50/_._": {}
@@ -13725,7 +13782,7 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.Toolkit/2.0.0": {
+      "Microsoft.Toolkit/2.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -13737,12 +13794,13 @@
           "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp/2.0.0": {
+      "Microsoft.Toolkit.Uwp/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit": "2.0.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Microsoft.Identity.Client": "1.0.304142221-alpha",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.1",
+          "Microsoft.Toolkit": "2.1.0",
+          "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
@@ -13751,11 +13809,10 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0"
+          "Microsoft.Toolkit.Uwp": "2.1.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
@@ -13764,14 +13821,12 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
+          "Microsoft.Toolkit.Uwp.UI": "2.1.0",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
@@ -13780,14 +13835,11 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI.Animations": "2.0.0",
-          "Robmikh.CompositionSurfaceFactory": "0.7.1"
+          "Microsoft.Toolkit.Uwp.UI.Animations": "2.1.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
@@ -13912,10 +13964,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Robmikh.CompositionSurfaceFactory/0.7.1": {
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
         "type": "package",
         "dependencies": {
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
@@ -13925,6 +13977,7 @@
         },
         "native": {
           "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.dll": {},
+          "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.pdb": {},
           "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.pri": {}
         }
       },
@@ -14281,7 +14334,7 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win10-x86.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "runtime.win10-x86.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -16145,7 +16198,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Win2D.uwp/1.19.0": {
+      "Win2D.uwp/1.21.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
@@ -16159,7 +16212,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x86-aot": {
-      "HtmlAgilityPack/1.6.2": {
+      "HtmlAgilityPack/1.6.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -16200,6 +16253,17 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.0.304142221-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.Identity.Client.Platform.dll": {},
+          "lib/netcore45/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -16363,7 +16427,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore": "5.0.2",
@@ -16403,7 +16467,7 @@
           "System.Threading.Overlapped": "4.0.1",
           "System.Xml.XmlDocument": "4.0.1",
           "System.Xml.XmlSerializer": "4.0.11",
-          "runtime.win10-x86-aot.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.1"
+          "runtime.win10-x86-aot.Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2"
         },
         "compile": {
           "ref/netcore50/_._": {}
@@ -16412,7 +16476,7 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.Toolkit/2.0.0": {
+      "Microsoft.Toolkit/2.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -16424,12 +16488,13 @@
           "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp/2.0.0": {
+      "Microsoft.Toolkit.Uwp/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit": "2.0.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Microsoft.Identity.Client": "1.0.304142221-alpha",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.1",
+          "Microsoft.Toolkit": "2.1.0",
+          "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
@@ -16438,11 +16503,10 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0"
+          "Microsoft.Toolkit.Uwp": "2.1.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
@@ -16451,14 +16515,12 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
+          "Microsoft.Toolkit.Uwp.UI": "2.1.0",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
@@ -16467,14 +16529,11 @@
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
+      "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-          "Microsoft.Toolkit.Uwp": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI": "2.0.0",
-          "Microsoft.Toolkit.Uwp.UI.Animations": "2.0.0",
-          "Robmikh.CompositionSurfaceFactory": "0.7.1"
+          "Microsoft.Toolkit.Uwp.UI.Animations": "2.1.0",
+          "Robmikh.CompositionSurfaceFactory": "0.7.3"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll": {}
@@ -16599,10 +16658,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Robmikh.CompositionSurfaceFactory/0.7.1": {
+      "Robmikh.CompositionSurfaceFactory/0.7.3": {
         "type": "package",
         "dependencies": {
-          "Win2D.uwp": "1.19.0"
+          "Win2D.uwp": "1.21.0"
         },
         "compile": {
           "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd": {}
@@ -16612,6 +16671,7 @@
         },
         "native": {
           "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.dll": {},
+          "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.pdb": {},
           "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.pri": {}
         }
       },
@@ -17013,7 +17073,7 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win10-x86-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
+      "runtime.win10-x86-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -18867,7 +18927,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Win2D.uwp/1.19.0": {
+      "Win2D.uwp/1.21.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
@@ -18882,12 +18942,12 @@
     }
   },
   "libraries": {
-    "HtmlAgilityPack/1.6.2": {
-      "sha512": "d1aRn9leFG3ISpfy0GMnFVHegKB3X6rIdkF/E+20+DOCssZuz4FDshEocV6P8K86dOQzILnISprKH8l6QM3bfQ==",
+    "HtmlAgilityPack/1.6.5": {
+      "sha512": "uBXgK1zsIin+X2BYCy8KPDwafRet+Ja9yUJWdnc5ATlQBHrK4goe6DTAOaEE41IceaAH1OYTHgSpyvXqhX66rQ==",
       "type": "package",
-      "path": "htmlagilitypack/1.6.2",
+      "path": "htmlagilitypack/1.6.5",
       "files": [
-        "htmlagilitypack.1.6.2.nupkg.sha512",
+        "htmlagilitypack.1.6.5.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net20/HtmlAgilityPack.dll",
         "lib/Net20/HtmlAgilityPack.pdb",
@@ -18980,6 +19040,37 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "Microsoft.Identity.Client/1.0.304142221-alpha": {
+      "sha512": "T4kd4b5IFxWDOaGdYi5ipnj6kSAV3Ym4dj6lxVmWQ6lMoAdOBgiMT4K+LAG/G+14GFK2pbO75XgwJbgT3ol6eg==",
+      "type": "package",
+      "path": "microsoft.identity.client/1.0.304142221-alpha",
+      "files": [
+        "lib/MonoAndroid10/Microsoft.Identity.Client.Platform.dll",
+        "lib/MonoAndroid10/Microsoft.Identity.Client.Platform.xml",
+        "lib/MonoAndroid10/Microsoft.Identity.Client.dll",
+        "lib/MonoAndroid10/Microsoft.Identity.Client.xml",
+        "lib/Xamarin.iOS10/Microsoft.Identity.Client.Platform.dll",
+        "lib/Xamarin.iOS10/Microsoft.Identity.Client.Platform.xml",
+        "lib/Xamarin.iOS10/Microsoft.Identity.Client.dll",
+        "lib/Xamarin.iOS10/Microsoft.Identity.Client.xml",
+        "lib/dnxcore50/Microsoft.Identity.Client.Platform.dll",
+        "lib/dnxcore50/Microsoft.Identity.Client.Platform.xml",
+        "lib/dnxcore50/Microsoft.Identity.Client.dll",
+        "lib/dnxcore50/Microsoft.Identity.Client.xml",
+        "lib/net45/Microsoft.Identity.Client.Platform.dll",
+        "lib/net45/Microsoft.Identity.Client.Platform.xml",
+        "lib/net45/Microsoft.Identity.Client.dll",
+        "lib/net45/Microsoft.Identity.Client.xml",
+        "lib/netcore45/Microsoft.Identity.Client.Platform.dll",
+        "lib/netcore45/Microsoft.Identity.Client.Platform.xml",
+        "lib/netcore45/Microsoft.Identity.Client.dll",
+        "lib/netcore45/Microsoft.Identity.Client.xml",
+        "lib/portable-net45+win/Microsoft.Identity.Client.dll",
+        "lib/portable-net45+win/Microsoft.Identity.Client.xml",
+        "microsoft.identity.client.1.0.304142221-alpha.nupkg.sha512",
+        "microsoft.identity.client.nuspec"
       ]
     },
     "Microsoft.Net.Native.Compiler/1.7.1": {
@@ -21217,14 +21308,19 @@
         "runtime.json"
       ]
     },
+<<<<<<< HEAD
     "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
       "sha512": "2RI4q8FfR0S50V4YdZIZtzfyA2Bo4+jJHQXG+TDN7D4mPrFiIswIq8HVeDWS9xZsDwz23z7d/T2qi4rZa60Sig==",
+=======
+    "Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
+      "sha512": "1x37WPEc/7G4BedFtmSKCK9E1wVWm0BTgTBe7lv/LuN/5a48H8KpGLO5I0fmX51y5r/BXJNaLjpfDkH1i1j0rQ==",
+>>>>>>> 4c0e893c1b23db8edbdc492fb216f91411767eef
       "type": "package",
-      "path": "microsoft.netcore.universalwindowsplatform/6.0.1",
+      "path": "microsoft.netcore.universalwindowsplatform/6.0.2",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "microsoft.netcore.universalwindowsplatform.6.0.1.nupkg.sha512",
+        "microsoft.netcore.universalwindowsplatform.6.0.2.nupkg.sha512",
         "microsoft.netcore.universalwindowsplatform.nuspec",
         "ref/netcore50/_._",
         "ref/uap10.0.15138/Microsoft.CSharp.dll",
@@ -21516,63 +21612,60 @@
         "runtime.json"
       ]
     },
-    "Microsoft.Toolkit/2.0.0": {
-      "sha512": "CoGwuewfUnP3vvV9LF6+GOmHRiYQrNFqnjPwzro7WjASXhLm6BQVXVS8kz9NXLIti0lfDOLVojdVRTqg76VcEQ==",
+    "Microsoft.Toolkit/2.1.0": {
+      "sha512": "ryFC+Gvh1U1JsPpjyHMDctq0ER77YGrp6LDRuvD1XFNgYp1FQGx2LSNjYt8lUf6AY7KEnMm+ZeDhfMmB6XSgOQ==",
       "type": "package",
-      "path": "microsoft.toolkit/2.0.0",
+      "path": "microsoft.toolkit/2.1.0",
       "files": [
         "lib/netstandard1.4/Microsoft.Toolkit.dll",
-        "lib/netstandard1.4/Microsoft.Toolkit.pdb",
-        "microsoft.toolkit.2.0.0.nupkg.sha512",
+        "lib/netstandard1.4/Microsoft.Toolkit.xml",
+        "microsoft.toolkit.2.1.0.nupkg.sha512",
         "microsoft.toolkit.nuspec"
       ]
     },
-    "Microsoft.Toolkit.Uwp/2.0.0": {
-      "sha512": "ktyMt6lgMYu5+AlIq3uOyQr5k0UGBYJmx+W+Xy5iV8g8Zg3sfVfmiASXEkYS5A79iQQlZWtPUUb2Ou2SQvVtCg==",
+    "Microsoft.Toolkit.Uwp/2.1.0": {
+      "sha512": "hLSnTiHVFxGC45M3vgapP5RDLgWLLoL57XoWMitM/LOdwmQPpM1IAl17+0gKtSLHjIg6dur1ZkifdoNueRzxiA==",
       "type": "package",
-      "path": "microsoft.toolkit.uwp/2.0.0",
+      "path": "microsoft.toolkit.uwp/2.1.0",
       "files": [
         "lib/uap10.0/Microsoft.Toolkit.Uwp.dll",
-        "lib/uap10.0/Microsoft.Toolkit.Uwp.pdb",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.pri",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.xml",
-        "microsoft.toolkit.uwp.2.0.0.nupkg.sha512",
+        "microsoft.toolkit.uwp.2.1.0.nupkg.sha512",
         "microsoft.toolkit.uwp.nuspec"
       ]
     },
-    "Microsoft.Toolkit.Uwp.UI/2.0.0": {
-      "sha512": "M6uQ7+pBA/66FW5EM2AHrHep0TxWBttPkK7OH3IN+eZbAcm5xzkFBwQFi7ksceKIVZFRbewL4JfXpMPF+6Qm7w==",
+    "Microsoft.Toolkit.Uwp.UI/2.1.0": {
+      "sha512": "MY6sCYVrFw3NTkGJps5WAgG/fa8tSIBR4AVyvDUeEUlfkT1jXDcqOROSAjO+/gezd7v4n10Uc4SbxMLidzNNtg==",
       "type": "package",
-      "path": "microsoft.toolkit.uwp.ui/2.0.0",
+      "path": "microsoft.toolkit.uwp.ui/2.1.0",
       "files": [
-        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.XML",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll",
-        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.pdb",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.pri",
-        "microsoft.toolkit.uwp.ui.2.0.0.nupkg.sha512",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.xml",
+        "microsoft.toolkit.uwp.ui.2.1.0.nupkg.sha512",
         "microsoft.toolkit.uwp.ui.nuspec"
       ]
     },
-    "Microsoft.Toolkit.Uwp.UI.Animations/2.0.0": {
-      "sha512": "K65EdO2OABN2l/VZE1NwWUxHN3CUHlVBx4kYiwgd01r3nMHDIU4xCuDIAT9t57rskfylZAgo5N4kk8Kj5P+wjQ==",
+    "Microsoft.Toolkit.Uwp.UI.Animations/2.1.0": {
+      "sha512": "7U9EMoxWI759l7n/p5uvA26Vb3V3kyiKyztbh8UYIzB9ZfyCl1pfhTD0hZZBGlmhANdJxCf1DeSffmB9sWKYCw==",
       "type": "package",
-      "path": "microsoft.toolkit.uwp.ui.animations/2.0.0",
+      "path": "microsoft.toolkit.uwp.ui.animations/2.1.0",
       "files": [
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.dll",
-        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.pdb",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.pri",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Animations.xml",
-        "microsoft.toolkit.uwp.ui.animations.2.0.0.nupkg.sha512",
+        "microsoft.toolkit.uwp.ui.animations.2.1.0.nupkg.sha512",
         "microsoft.toolkit.uwp.ui.animations.nuspec"
       ]
     },
-    "Microsoft.Toolkit.Uwp.UI.Controls/2.0.0": {
-      "sha512": "aNO6B9P1pxj7pSlvSwnYUUFNqaVr2oLwS/S5A8LgnD5sNVeXTThP29Kd14Q1iJo+4FHgyV/PJq5EM7DT8sxiJQ==",
+    "Microsoft.Toolkit.Uwp.UI.Controls/2.1.0": {
+      "sha512": "S5BA5i9gutjNsOLvS8XvLRJ73zv7kr+2AC7LVw7HS30SPJ1j6uq90eeTqJk8HQD3UPQ9b4yt/0uyr1PUvKBdmw==",
       "type": "package",
-      "path": "microsoft.toolkit.uwp.ui.controls/2.0.0",
+      "path": "microsoft.toolkit.uwp.ui.controls/2.1.0",
       "files": [
+        "lib/uap10.0/Design/Microsoft.Toolkit.Uwp.UI.Controls.Design.dll",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.dll",
-        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.pdb",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.pri",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls.xml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/BladeView/BladeView.xaml",
@@ -21581,10 +21674,16 @@
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/Expander/Expander.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/GridSplitter/GridSplitter.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/HamburgerMenu/HamburgerMenu.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/HamburgerMenu/HamburgerMenuNavViewTemplate.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/HamburgerMenu/HamburgerMenuTemplate.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedContentControl/HeaderedContentControl.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedItemsControl/HeaderedItemsControl.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedTextBlock/HeaderedTextBlock.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/ImageEx/ImageEx.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/ImageEx/RoundImageEx.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/InAppNotification.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/Styles/MSEdgeNotificationStyle.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/Styles/VSCodeNotificationStyle.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/LayoutTransformControl/LayoutTransformControl.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/Loading/Loading.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/MarkdownTextBlock/MarkdownTextBlock.xaml",
@@ -21599,14 +21698,16 @@
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/RotatorTile/RotatorTile.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/ScrollHeader/ScrollHeader.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/SlidableListItem/SlidableListItem.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/SlidableListItem/SlidableListItemSwipeControlTemplate.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/Symbols/Symbols.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/TextToolbar.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/ToolbarItems/ToolbarButton.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/ToolbarItems/ToolbarSeparator.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/Themes/Generic.xaml",
         "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.Controls/TileControl/TileControl.xaml",
-        "microsoft.toolkit.uwp.ui.controls.2.0.0.nupkg.sha512",
-        "microsoft.toolkit.uwp.ui.controls.nuspec"
+        "microsoft.toolkit.uwp.ui.controls.2.1.0.nupkg.sha512",
+        "microsoft.toolkit.uwp.ui.controls.nuspec",
+        "tools/VisualStudioToolsManifest.xml"
       ]
     },
     "Microsoft.VisualBasic/10.0.1": {
@@ -21743,22 +21844,25 @@
         "tools/install.ps1"
       ]
     },
-    "Robmikh.CompositionSurfaceFactory/0.7.1": {
-      "sha512": "wbTtNg4/svj+foIP3sRZszbL/SwA2bioLTQzd58HKdcfFE2CIQyhwQeL829ioWseo0zU0fIqZyiw5CUDqKWS3g==",
+    "Robmikh.CompositionSurfaceFactory/0.7.3": {
+      "sha512": "Q4wxUsGn6WScIrm2mdefOgKY26HOeCVashhHP17+V4y9vP/rPaAnM4P+ybbXvCfJ0EeLj1QU0FQO/aMLfxY9JA==",
       "type": "package",
-      "path": "robmikh.compositionsurfacefactory/0.7.1",
+      "path": "robmikh.compositionsurfacefactory/0.7.3",
       "files": [
         "build/native/Robmikh.CompositionSurfaceFactory.props",
         "build/native/Robmikh.CompositionSurfaceFactory.targets",
         "lib/uap10.0/Robmikh.CompositionSurfaceFactory.winmd",
         "lib/uap10.0/Robmikh.CompositionSurfaceFactory.xml",
-        "robmikh.compositionsurfacefactory.0.7.1.nupkg.sha512",
+        "robmikh.compositionsurfacefactory.0.7.3.nupkg.sha512",
         "robmikh.compositionsurfacefactory.nuspec",
         "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.dll",
+        "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pdb",
         "runtimes/win10-arm/native/Robmikh.CompositionSurfaceFactory.pri",
         "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.dll",
+        "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pdb",
         "runtimes/win10-x64/native/Robmikh.CompositionSurfaceFactory.pri",
         "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.dll",
+        "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.pdb",
         "runtimes/win10-x86/native/Robmikh.CompositionSurfaceFactory.pri"
       ]
     },
@@ -22665,15 +22769,15 @@
         "runtimes/win/lib/netstandard1.5/System.Runtime.Extensions.dll"
       ]
     },
-    "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
-      "sha512": "ZGShwJB9yNwHyM+w7g8int9gmurykzvy+SWv74+lCul0ddTmtI9WhXrAg3Dyub9urV7/lUtUjCjH+cSC5/5t7A==",
+    "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
+      "sha512": "zz8GaaUGJIFUsJPY0g0ToBrCv3kXbdwDXbd2Tr+HXvJXFD9HrHQHEue4ZVcZpc82mUfdXyRzO4+t6hY64Q4dTQ==",
       "type": "package",
-      "path": "runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform/6.0.1",
+      "path": "runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform/6.0.2",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "ref/netstandard/_._",
-        "runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform.6.0.1.nupkg.sha512",
+        "runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform.6.0.2.nupkg.sha512",
         "runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform.nuspec",
         "runtimes/win10-arm-aot/lib/uap10.0.15138/Microsoft.CSharp.dll",
         "runtimes/win10-arm-aot/lib/uap10.0.15138/Microsoft.VisualBasic.dll",
@@ -22854,15 +22958,15 @@
         "runtimes/win10-arm-aot/lib/netcore50/clrcompression.dll"
       ]
     },
-    "runtime.win10-arm.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
-      "sha512": "GaE6GmyEmK2NX2PMfBJGGzLQSUWYO18LDbbCVaNJecnaa0XdBLFOouBoI8X19CcJVww62ugzwM75JjfHw60Wnw==",
+    "runtime.win10-arm.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
+      "sha512": "TDXnAPztcmMBpQomeGbo0gk/6WCrQUc5DL1HJcxcefNCRUlqAbUdsUz8sEGaJQ9NUbSshnEeY4wrVgyOonAf+Q==",
       "type": "package",
-      "path": "runtime.win10-arm.microsoft.netcore.universalwindowsplatform/6.0.1",
+      "path": "runtime.win10-arm.microsoft.netcore.universalwindowsplatform/6.0.2",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "ref/netstandard/_._",
-        "runtime.win10-arm.microsoft.netcore.universalwindowsplatform.6.0.1.nupkg.sha512",
+        "runtime.win10-arm.microsoft.netcore.universalwindowsplatform.6.0.2.nupkg.sha512",
         "runtime.win10-arm.microsoft.netcore.universalwindowsplatform.nuspec",
         "runtimes/win10-arm/lib/uap10.0.15138/Microsoft.CSharp.dll",
         "runtimes/win10-arm/lib/uap10.0.15138/Microsoft.VisualBasic.dll",
@@ -23030,15 +23134,15 @@
         "runtimes/win10-arm/nativeassets/uap10.0.15138/clrcompression.dll"
       ]
     },
-    "runtime.win10-x64-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
-      "sha512": "ouTXA9SGNNtKOorZBMYOCNVN8TxC4RlvaxzAU+ZRAxI00GMfoEBKjfd5FHJMtyi6+lng4yjpdUuz9h1ePgYV9Q==",
+    "runtime.win10-x64-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
+      "sha512": "zRfgkMb/yA8Ldgql4gzY5SRcXoj6KgCoKrfPVdOC7iv5PzxGNfQnHdS0WQ5sDaLB+O8BVYpyMYQ4eQ1gbRq+GA==",
       "type": "package",
-      "path": "runtime.win10-x64-aot.microsoft.netcore.universalwindowsplatform/6.0.1",
+      "path": "runtime.win10-x64-aot.microsoft.netcore.universalwindowsplatform/6.0.2",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "ref/netstandard/_._",
-        "runtime.win10-x64-aot.microsoft.netcore.universalwindowsplatform.6.0.1.nupkg.sha512",
+        "runtime.win10-x64-aot.microsoft.netcore.universalwindowsplatform.6.0.2.nupkg.sha512",
         "runtime.win10-x64-aot.microsoft.netcore.universalwindowsplatform.nuspec",
         "runtimes/win10-x64-aot/lib/uap10.0.15138/Microsoft.CSharp.dll",
         "runtimes/win10-x64-aot/lib/uap10.0.15138/Microsoft.VisualBasic.dll",
@@ -23219,15 +23323,15 @@
         "runtimes/win10-x64-aot/lib/netcore50/clrcompression.dll"
       ]
     },
-    "runtime.win10-x64.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
-      "sha512": "iq7w9LmLzJla647TOEXrghCK14zw4ImIlnyZAO+h/XoRoq3l1OSng+hRBHzusgKwhvubdKHNlZWA9j4aj2fIng==",
+    "runtime.win10-x64.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
+      "sha512": "sNKsP3Fo/XKs4lzEfXzQ6p5+H+gsMVKDtLfNApeCtpsimTt+Nn9lzYggaqvv+gMRJ90j5MnnMZaUf6RwV56nfQ==",
       "type": "package",
-      "path": "runtime.win10-x64.microsoft.netcore.universalwindowsplatform/6.0.1",
+      "path": "runtime.win10-x64.microsoft.netcore.universalwindowsplatform/6.0.2",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "ref/netstandard/_._",
-        "runtime.win10-x64.microsoft.netcore.universalwindowsplatform.6.0.1.nupkg.sha512",
+        "runtime.win10-x64.microsoft.netcore.universalwindowsplatform.6.0.2.nupkg.sha512",
         "runtime.win10-x64.microsoft.netcore.universalwindowsplatform.nuspec",
         "runtimes/win10-x64/lib/uap10.0.15138/Microsoft.CSharp.dll",
         "runtimes/win10-x64/lib/uap10.0.15138/Microsoft.VisualBasic.dll",
@@ -23395,15 +23499,15 @@
         "runtimes/win10-x64/nativeassets/uap10.0.15138/clrcompression.dll"
       ]
     },
-    "runtime.win10-x86-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
-      "sha512": "p4GOowv8/INpx65r/TU0OUNoBC3Qk3kbRKPAkqQ05Tf/rTg8NOLR+qxvNRlH49rsUvGb14RarUqscgwcekBOXA==",
+    "runtime.win10-x86-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
+      "sha512": "y+OndyqwIIT0EN5x5oyGaW1hRAiej6n2SCk+JZGtMSgjF9i3QQn9dmxYtxazuk+O5MtQdApHYtgK7uKW3yL2ag==",
       "type": "package",
-      "path": "runtime.win10-x86-aot.microsoft.netcore.universalwindowsplatform/6.0.1",
+      "path": "runtime.win10-x86-aot.microsoft.netcore.universalwindowsplatform/6.0.2",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "ref/netstandard/_._",
-        "runtime.win10-x86-aot.microsoft.netcore.universalwindowsplatform.6.0.1.nupkg.sha512",
+        "runtime.win10-x86-aot.microsoft.netcore.universalwindowsplatform.6.0.2.nupkg.sha512",
         "runtime.win10-x86-aot.microsoft.netcore.universalwindowsplatform.nuspec",
         "runtimes/win10-x86-aot/lib/uap10.0.15138/Microsoft.CSharp.dll",
         "runtimes/win10-x86-aot/lib/uap10.0.15138/Microsoft.VisualBasic.dll",
@@ -23584,15 +23688,15 @@
         "runtimes/win10-x86-aot/lib/netcore50/clrcompression.dll"
       ]
     },
-    "runtime.win10-x86.Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
-      "sha512": "nT3j6rR+hZwec3IGcFE8Vsq0bURezJzpCVg9UwQ9dzDXOrZrOfJm0RzWSuC5imRphSCFzz57I73TplpXyC1PUA==",
+    "runtime.win10-x86.Microsoft.NETCore.UniversalWindowsPlatform/6.0.2": {
+      "sha512": "0cl6qKSo+w3v5Y6KrlzDm9GcsoS07OIZO/fEwDykvaJjhzsDeY8UFvLN7s3YiB7bUSAt0uWJcJi3eRBdUsiSBA==",
       "type": "package",
-      "path": "runtime.win10-x86.microsoft.netcore.universalwindowsplatform/6.0.1",
+      "path": "runtime.win10-x86.microsoft.netcore.universalwindowsplatform/6.0.2",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "ref/netstandard/_._",
-        "runtime.win10-x86.microsoft.netcore.universalwindowsplatform.6.0.1.nupkg.sha512",
+        "runtime.win10-x86.microsoft.netcore.universalwindowsplatform.6.0.2.nupkg.sha512",
         "runtime.win10-x86.microsoft.netcore.universalwindowsplatform.nuspec",
         "runtimes/win10-x86/lib/uap10.0.15138/Microsoft.CSharp.dll",
         "runtimes/win10-x86/lib/uap10.0.15138/Microsoft.VisualBasic.dll",
@@ -29174,10 +29278,10 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "Win2D.uwp/1.19.0": {
-      "sha512": "pLL/gLb3uY75IlswAKzOvQnwwiGrMxZyBl2DbJOjuzG6SOWMp0sg+tkj+HZU8uyQ8jIdAbOE0Iu5+z9zyT5E6Q==",
+    "Win2D.uwp/1.21.0": {
+      "sha512": "4Ds/p7HgysgV67pBo/+w7Lidj08Hfa4GD9Zg9HdN3/zLfzRPttHrIn2TUiOUZCgH4eLVJwzOk114ntv4bveS1Q==",
       "type": "package",
-      "path": "win2d.uwp/1.19.0",
+      "path": "win2d.uwp/1.21.0",
       "files": [
         "Win2d.githash.txt",
         "build/native/Win2D.uwp.targets",
@@ -29188,19 +29292,19 @@
         "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll",
         "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll",
         "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll",
-        "win2d.uwp.1.19.0.nupkg.sha512",
+        "win2d.uwp.1.21.0.nupkg.sha512",
         "win2d.uwp.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.10586": [
-      "HtmlAgilityPack >= 1.6.2",
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 6.0.1",
-      "Microsoft.Toolkit >= 2.0.0",
-      "Microsoft.Toolkit.Uwp >= 2.0.0",
-      "Microsoft.Toolkit.Uwp.UI >= 2.0.0",
-      "Microsoft.Toolkit.Uwp.UI.Controls >= 2.0.0",
+      "HtmlAgilityPack >= 1.6.5",
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 6.0.2",
+      "Microsoft.Toolkit >= 2.1.0",
+      "Microsoft.Toolkit.Uwp >= 2.1.0",
+      "Microsoft.Toolkit.Uwp.UI >= 2.1.0",
+      "Microsoft.Toolkit.Uwp.UI.Controls >= 2.1.0",
       "Newtonsoft.Json >= 10.0.3"
     ]
   },
@@ -29237,27 +29341,27 @@
     "dependencies": {
       "HtmlAgilityPack": {
         "target": "Package",
-        "version": "1.6.2"
+        "version": "1.6.5"
       },
       "Microsoft.NETCore.UniversalWindowsPlatform": {
         "target": "Package",
-        "version": "6.0.1"
+        "version": "6.0.2"
       },
       "Microsoft.Toolkit": {
         "target": "Package",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "Microsoft.Toolkit.Uwp": {
         "target": "Package",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "Microsoft.Toolkit.Uwp.UI": {
         "target": "Package",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "Microsoft.Toolkit.Uwp.UI.Controls": {
         "target": "Package",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "Newtonsoft.Json": {
         "target": "Package",
@@ -29269,27 +29373,27 @@
         "dependencies": {
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "1.6.2"
+            "version": "1.6.5"
           },
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
-            "version": "6.0.1"
+            "version": "6.0.2"
           },
           "Microsoft.Toolkit": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "2.1.0"
           },
           "Microsoft.Toolkit.Uwp": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "2.1.0"
           },
           "Microsoft.Toolkit.Uwp.UI": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "2.1.0"
           },
           "Microsoft.Toolkit.Uwp.UI.Controls": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "2.1.0"
           },
           "Newtonsoft.Json": {
             "target": "Package",

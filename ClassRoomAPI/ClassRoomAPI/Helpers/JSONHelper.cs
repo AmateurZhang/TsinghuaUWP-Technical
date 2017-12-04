@@ -14,6 +14,7 @@ namespace ClassRoomAPI.Helpers
     {
         public static T Parse<T>(string jsonString)
         {
+
             try
             {
                 return JsonConvert.DeserializeObject<T>(jsonString);
@@ -21,8 +22,22 @@ namespace ClassRoomAPI.Helpers
             }
             catch (Exception)
             {
-                Debug.WriteLine("JSON" + typeof(T).ToString());
-                throw new Exception("JSON" + typeof(T).ToString());
+                try
+                {
+                    using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+
+                    {
+
+                        return (T)new DataContractJsonSerializer(typeof(T)).ReadObject(ms);
+
+                    }
+                }
+                catch
+                {
+                    Debug.WriteLine("JSON" + typeof(T).ToString());
+                    throw new Exception("JSON" + typeof(T).ToString());
+                }
+          
             }
 
         }

@@ -36,7 +36,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE80F",
-                    Label = "TOPIC1",
+                    Label = "教室信息",
                     Selected = Visibility.Visible,
                     DestPage = typeof(ClassRoomInfo)
                 },
@@ -44,11 +44,21 @@ namespace ClassRoomAPI
                 new NavMenuItem()
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
-                    Icon = "\xE771",
-                    Label = "TOPIC2",
+                    Icon = "\xE772",
+                    Label = "作业信息",
                     Selected = Visibility.Visible,
-                    DestPage = typeof(News)
+                    DestPage = typeof(WebLearn)
                 },
+
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE771",
+                    Label = "时间枢轴",
+                    Selected = Visibility.Visible,
+                    DestPage = typeof(WebLearnTimeTable)
+                },
+                
 
             });
 
@@ -61,7 +71,7 @@ namespace ClassRoomAPI
                     Icon = "\xE13D",
                     Label = "登录",
                     Selected = Visibility.Collapsed,
-                    DestPage = typeof(BlankPage)
+                    DestPage = typeof(LoginPage)
                 }
             });
 
