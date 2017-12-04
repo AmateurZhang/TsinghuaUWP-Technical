@@ -21218,7 +21218,7 @@
       ]
     },
     "Microsoft.NETCore.UniversalWindowsPlatform/6.0.1": {
-      "sha512": "svqEclOg2g3pmsVen1/sCCsozefwISlHQcB/Y5yxqovG6tx+LIxN0XtGH4XSieLbf5PbzVIXmHoPPrWb0QhuaA==",
+      "sha512": "2RI4q8FfR0S50V4YdZIZtzfyA2Bo4+jJHQXG+TDN7D4mPrFiIswIq8HVeDWS9xZsDwz23z7d/T2qi4rZa60Sig==",
       "type": "package",
       "path": "microsoft.netcore.universalwindowsplatform/6.0.1",
       "files": [
@@ -21717,7 +21717,7 @@
       ]
     },
     "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
       "path": "newtonsoft.json/10.0.3",
       "files": [
@@ -29205,20 +29205,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thuzhang\\.nuget\\packages\\": {}
+    "C:\\Users\\pc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\Documents\\GitHub\\TsinghuaUWP-Technical\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
       "projectName": "ClassRoomAPI",
-      "projectPath": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
-      "packagesPath": "C:\\Users\\thuzhang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\obj\\",
+      "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\TsinghuaUWP-Technical\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
+      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pc\\Documents\\GitHub\\TsinghuaUWP-Technical\\ClassRoomAPI\\ClassRoomAPI\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\thuzhang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
