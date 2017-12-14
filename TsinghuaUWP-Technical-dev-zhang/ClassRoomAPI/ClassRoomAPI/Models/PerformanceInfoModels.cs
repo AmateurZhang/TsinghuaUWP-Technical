@@ -23,15 +23,17 @@ namespace ClassRoomAPI.Models
     public class PerformanceType//类比于BuildingTypeNamesData
     {
         public string Type;
-        
+        public bool isEmpty;
     }
+   
     public class ShowInfo //最上层数据结构，包含演出类别，获取数据的时间，以及每个演出的数据结构
     {
         
         public string PerformanceType;
+        public static bool IsItemsEmpty;
         public List<PerformanceData> ListPerformanceInfo;
     }
-    public class ShowInfoData
+    public class ShowInfoData  //特意用于写在本底的数据结构，在信息呈现的时候不调用这个
     {
         public DateTime Date;
         public List<ShowInfo> ListShowInfo;

@@ -91,7 +91,7 @@ namespace ClassRoomAPI.Services
                 var doc = new HtmlDocument();
                 doc.LoadHtml(InnerTest);
                 var ListNodes = doc.DocumentNode.SelectNodes("/div");
-
+                
                 var Data = new List<PerformanceData>();
 
                 for (int i = 1; i < ListNodes.Count; i++)
@@ -117,6 +117,7 @@ namespace ClassRoomAPI.Services
                     PerState = PerState.Replace(" ", "");
                     if ((PerState != "结束")&& (PerState != "售罄") && (PerState != "已售罄") )
                     {
+                        type.isEmpty = false;
                         Data.Add(new PerformanceData
                         {
                             PerformanceTime = PerTime,
@@ -127,8 +128,9 @@ namespace ClassRoomAPI.Services
                         );
                     }
                 }
+                
                 var StringfiedData = JSONHelper.Stringify(Data);
-                await CacheHelper.WriteCache($"JSONAllHallInfoData_{type.Type}", StringfiedData);
+                await CacheHelper.WriteCache($"JSONAllHallInfoData_{type.Type+type.isEmpty}", StringfiedData);
                 return Data;
             }
             //获取所有类型的演出信息，在不同的枢轴显示出来

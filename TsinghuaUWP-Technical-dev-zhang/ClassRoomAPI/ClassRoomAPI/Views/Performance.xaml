@@ -10,6 +10,7 @@
     Loaded="Page_Loaded">
 
     <Page.Resources>
+        
         <DataTemplate x:Key="PivotHeaderShowType" x:DataType="models:ShowInfo">
             <TextBlock Text="{x:Bind PerformanceType}"></TextBlock>
         </DataTemplate>
@@ -24,6 +25,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="{x:Bind PerformanceTime}"  
+                           FontFamily="黑体"
                            FontSize="18"
                            Foreground="Black"
                            TextWrapping="Wrap"
@@ -32,7 +34,8 @@
                              />
 
 
-                <TextBlock Text="{x:Bind PerformanceName}"  
+                <TextBlock Text="{x:Bind PerformanceName}"
+                           FontFamily="黑体"
                            FontSize="18"
                            Foreground="Black"
                            TextWrapping="Wrap"
@@ -40,14 +43,16 @@
                            Margin="24,0,20,0"
                              />
 
-                <TextBlock Text="{x:Bind PerformanceState}"  
+                <TextBlock Text="{x:Bind PerformanceState}"
+                           FontFamily="黑体"
                            FontSize="18"
                            Foreground="Black"
                            TextWrapping="Wrap"
                            Grid.Column="2"
                            Margin="24,0,20,0"
                              />
-                <TextBlock Text="{x:Bind PerformanceAddress}"  
+                <TextBlock Text="{x:Bind PerformanceAddress}"
+                           FontFamily="黑体"
                            FontSize="18"
                            Foreground="Black"
                            TextWrapping="Wrap"
@@ -68,13 +73,10 @@
     </Page.Resources>
 
     <Grid >
-        <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="Assets/新清华学堂.jpg"/>
-        </Grid.Background>
-        <Pivot HeaderTemplate="{StaticResource PivotHeaderShowType}" 
-               ItemTemplate="{StaticResource PivotShowInfo}" 
-               Name="MainPivot"             
-               >
-        </Pivot>
+        <Pivot Name="MainPivot"   
+               HeaderTemplate="{StaticResource PivotHeaderShowType}" 
+               ItemTemplate="{StaticResource PivotShowInfo}" SelectionChanged="MainPivot_SelectionChanged"     
+               />
+        <Image x:Name="imageHidden"/>
     </Grid>
 </Page>
