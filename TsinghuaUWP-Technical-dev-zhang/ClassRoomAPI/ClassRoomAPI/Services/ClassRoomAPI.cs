@@ -99,12 +99,14 @@ namespace ClassRoomAPI.Services
                 {
                     string uri = htmlNodes[i].ChildNodes[1].Attributes["href"].Value;
                     string PosName = htmlNodes[i].ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[1].InnerText;
-                    Data.Add(new BuildingTypeNamesData
-                    {
-                        DetailUri = uri,
-                        PositionName = PosName
+                    if (PosName=="一教"|| PosName == "二教" || PosName == "三教" || PosName == "四教" || PosName == "五教" || PosName == "六教" ) {
+                        Data.Add(new BuildingTypeNamesData
+                        {
+                            DetailUri = uri,
+                            PositionName = PosName
+                        }
+                        );
                     }
-                    );
                 }
                 var StringfiedData = JSONHelper.Stringify(Data);
                 await CacheHelper.WriteCache(CacheBuildingTypeJSON, StringfiedData);
