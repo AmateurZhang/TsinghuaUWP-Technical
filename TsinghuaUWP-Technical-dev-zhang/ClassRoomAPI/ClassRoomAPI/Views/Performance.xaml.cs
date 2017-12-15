@@ -38,7 +38,11 @@ namespace ClassRoomAPI.Views
         
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ////创建和自定义 FileOpenPicker  
+            //加载背景
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Hall.png", UriKind.Absolute));
+            Performance_Page.Background = imageBrush;
+            //创建和自定义 FileOpenPicker  
             //var picker = new Windows.Storage.Pickers.FileOpenPicker();
             //picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail; //可通过使用图片缩略图创建丰富的视觉显示，以显示文件选取器中的文件  
             //picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;

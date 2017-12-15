@@ -91,7 +91,8 @@
     </Page.Resources>
     
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+    <Grid x:Name="ClassRoom_Page" 
+          Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Pivot HeaderTemplate="{StaticResource PivotHeaderBuildingType}" 
                ItemTemplate="{StaticResource PivotBuildingType}" 
                Name="MainPivot"             

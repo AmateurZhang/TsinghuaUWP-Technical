@@ -67,16 +67,25 @@
                 <ListView Name="ListViewShowInfoData"                    
                       ItemTemplate="{StaticResource PerformanceDataTemplate}" 
                       ItemsSource="{x:Bind ListPerformanceInfo}"
-                      />
+                      >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="0.25"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
             </PivotItem>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid >
+    <Grid x:Name="Performance_Page">
         <Pivot Name="MainPivot"   
                HeaderTemplate="{StaticResource PivotHeaderShowType}" 
                ItemTemplate="{StaticResource PivotShowInfo}" SelectionChanged="MainPivot_SelectionChanged"     
                />
-        <Image x:Name="imageHidden"/>
+        <!--<Image Source="Assets/6Building.png" VerticalAlignment="Top"/>-->
+        
     </Grid>
 </Page>
