@@ -79,7 +79,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE7F4",
-                    Label = "课程信息",
+                    Label = "IPTV",
                     Selected = Visibility.Visible,
                     //DestPage = typeof(WebLearnTimeTable)
                 },

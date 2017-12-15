@@ -94,11 +94,6 @@ namespace ClassRoomAPI.Views
                     MainPivot.ItemsSource = _DataRemote.ListShowInfo;
                     var notifyPopup = new NotifyPopup("演出信息已更新至最新状态！");
                     notifyPopup.Show();
-                    var isEmptyPopup = new NotifyPopup("暂时没有该类演出！");
-                    foreach (ShowInfo items in _DataRemote.ListShowInfo) {
-                        if (items.ListPerformanceInfo.Count == 0) isEmptyPopup.Show();
-                    }
-
                 }
                 catch
                 {
