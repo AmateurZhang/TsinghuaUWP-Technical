@@ -32,6 +32,14 @@ namespace ClassRoomAPI
         private static List<NavMenuItem> navMenuPrimaryItem = new List<NavMenuItem>(
             new[]
             {
+                 new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE7F6",
+                    Label = "发现音乐",
+                    Selected = Visibility.Visible,
+                    DestPage = typeof(Recommendation)
+                },
                 new NavMenuItem()
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
