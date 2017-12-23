@@ -56,8 +56,9 @@ namespace ClassRoomAPI.Models
                     return true;
             }
 
-            string[] courses = {
-                "实验室科研探究"
+            string[] courses = {  //test
+                "实验室科研探究",
+                "生物信息学导论"
             };
             foreach (var _course in courses)
             {

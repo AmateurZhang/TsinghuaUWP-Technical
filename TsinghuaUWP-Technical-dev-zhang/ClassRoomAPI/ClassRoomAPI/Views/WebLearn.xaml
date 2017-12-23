@@ -17,7 +17,6 @@
                                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
                 <TextBlock Text="{x:Bind ddl}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
-                  
                                    MaxLines="1"/>
                 <TextBlock Text="{x:Bind course}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 

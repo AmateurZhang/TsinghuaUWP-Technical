@@ -7,34 +7,51 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="Recommand_Page" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <StackPanel>
-                <TextBlock SelectionChanged="TextBlock_SelectionChanged" Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" FontSize="24">
-                    <Run Text="推荐教室"/>
+            <StackPanel Height="40">
+                <TextBlock SelectionChanged="TextBlock_SelectionChanged" 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24"
+                          >
+                    &#xE8C0;    推荐教室 
+                </TextBlock>                    
+            </StackPanel>
+            <Rectangle Fill="Gray" Height="5" />
+            <StackPanel Orientation="Horizontal" Height="400">
+                <StackPanel Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Name="Recommendation_Classroom1" Source="ms-appx:Assets/sixth.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock SelectionChanged="TextBlock_SelectionChanged" 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24" HorizontalAlignment="Center"
+                          >
+                    &#xF0E2;    六教 101
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="20">
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="400" VerticalAlignment="Center">
+                    <Image Name="Recommendation_Classroom2" Source="ms-appx:Assets/third.jpg" VerticalAlignment="Top"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="20">
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="400" VerticalAlignment="Center">
+                    <Image Name="Recommendation_Classroom3" Source="ms-appx:Assets/sixth.png" VerticalAlignment="Top"/>
+                </StackPanel>
+            </StackPanel>
+            <Rectangle Fill="Gray" Height="5" />
+            <StackPanel Height="40">
+                <TextBlock 
+                    SelectionChanged="TextBlock_SelectionChanged" 
+                    FontFamily="Segoe MDL2 Assets"
+                    Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                    FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Run Text="&#xE8C0; 推荐演出"/>
                 </TextBlock>
             </StackPanel>
             <Rectangle Fill="Gray" Height="5" />
-            <StackPanel Orientation="Horizontal" Height="500">
-                <StackPanel Orientation="Vertical" Width="360">
-                    
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Width="360">
-                    <Rectangle Width="100" Height="100" Fill="BlueViolet" />
-                    <Rectangle Width="100" Height="100" Fill="BlueViolet" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Width="360">
-                    <Rectangle Width="100" Height="100" Fill="BlueViolet" />
-                    <Rectangle Width="100" Height="100" Fill="BlueViolet" />
-                </StackPanel>
-            </StackPanel>
-            <Rectangle Fill="Gray" Height="5" />
-            <StackPanel>
-                <TextBlock SelectionChanged="TextBlock_SelectionChanged" Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" FontSize="24">
-                    <Run Text="推荐演出"/>
-                </TextBlock>
-                <Rectangle Fill="Gray" Height="5" />
-            </StackPanel>
 
 
         </StackPanel>
