@@ -128,8 +128,8 @@
     </Compile>
     <Compile Include="Controls\NavMenuItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\ClassRoom_Recommand.xaml.cs">
-      <DependentUpon>ClassRoom_Recommand.xaml</DependentUpon>
+    <Compile Include="Views\ClassRoomRecommand.xaml.cs">
+      <DependentUpon>ClassRoomRecommand.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -234,7 +234,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ClassRoom_Recommand.xaml">
+    <Page Include="Views\ClassRoomRecommand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
