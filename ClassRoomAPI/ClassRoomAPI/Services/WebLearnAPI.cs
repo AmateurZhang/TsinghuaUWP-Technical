@@ -44,7 +44,7 @@ namespace ClassRoomAPI.Services
 
         public static async 
         Task
-         LogintoWebLearnMode(WebLearnLoginMode Mode = WebLearnLoginMode.Remote)
+        LogintoWebLearnMode(WebLearnLoginMode Mode = WebLearnLoginMode.Remote)
         {
             if (Mode == WebLearnLoginMode.Local)
             {
@@ -130,6 +130,7 @@ namespace ClassRoomAPI.Services
         //Login
         private static string LoginUri = "https://learn.tsinghua.edu.cn/MultiLanguage/lesson/teacher/loginteacher.jsp";
         private static string CourseListUrl_Login = "http://learn.tsinghua.edu.cn/MultiLanguage/lesson/student/MyCourse.jsp?language=cn";
+
         public static async Task<int> LogintoWebLearnAsync(string username = "", string password = "")
         {
             

@@ -15,6 +15,10 @@ namespace ClassRoomAPI.Models
         Demo
     }
 
+    public class BuindingNames {
+        public static int BuildingName;
+    };
+
     public class ExceptionCodeClassRoomInfo
     {
 
@@ -24,15 +28,15 @@ namespace ClassRoomAPI.Models
     }
 
     //DataStruct
-    public class BuildingTypeNamesData
+    
+    public class BuildingTypeNamesData //记录所有教学楼名字的数据结构
     {
         public string PositionName;
         public string DetailUri;
     }
-    public class ClassRoomStatueData
+    public class ClassRoomStatueData  //记录教学楼中每个教室的数据结构
     {
-        public string BuildingName;
-        public string Date;
+        
         public string ClassRoomName;
 
         //6节课1-6
@@ -81,6 +85,10 @@ namespace ClassRoomAPI.Models
         public List<BuildingTypeNamesData> ListClassRoomInfo;
         public List<BuildingInfoData> ListClassRoomStatue;
     }
+    public class Re_ClassRooms
+    {
 
-    
+        public List<ClassRoomStatueData> ListRecommandClassRooms;
+    }
+
 }

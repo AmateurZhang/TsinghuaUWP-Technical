@@ -21,6 +21,7 @@ namespace ClassRoomAPI.Services
             private static string CacheAllClassRoomInfoDataJSON = "JSONAllClassRoomInfoData";
 
             //Public Classes
+            //获取所有的教学楼名字
             public static async Task<List<BuildingTypeNamesData>> GetBuildingTypeMode(ParseDataMode Mode= ParseDataMode.Remote)//Remote, Local, Demo
             {
                 if(Mode==ParseDataMode.Local)
@@ -44,6 +45,7 @@ namespace ClassRoomAPI.Services
                 }
                 
             }
+            //获取每个教学楼里面教室的占用信息
             public static async Task<ClassBuildingInfo> GetListAllBuildingInfoMode(ParseDataMode Mode = ParseDataMode.Remote)//Remote, Local, Demo
             {
                 if (Mode == ParseDataMode.Local)
@@ -84,6 +86,7 @@ namespace ClassRoomAPI.Services
             }
 
             //Private Classes
+            //获取教学楼名字
             private static async Task<List<BuildingTypeNamesData>> GetBuildingTypeAsync()
             {
                 var Data = new List<BuildingTypeNamesData>();
@@ -96,17 +99,20 @@ namespace ClassRoomAPI.Services
                 {
                     string uri = htmlNodes[i].ChildNodes[1].Attributes["href"].Value;
                     string PosName = htmlNodes[i].ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[1].InnerText;
-                    Data.Add(new BuildingTypeNamesData
-                    {
-                        DetailUri = uri,
-                        PositionName = PosName
+                    if (PosName=="一教"|| PosName == "二教" || PosName == "三教" || PosName == "四教" || PosName == "五教" || PosName == "六教" ) {
+                        Data.Add(new BuildingTypeNamesData
+                        {
+                            DetailUri = uri,
+                            PositionName = PosName
+                        }
+                        );
                     }
-                    );
                 }
                 var StringfiedData = JSONHelper.Stringify(Data);
                 await CacheHelper.WriteCache(CacheBuildingTypeJSON, StringfiedData);
                 return Data;
             }
+            //获取单个教学楼里面所有教室信息的LIST，对应BuildingInfoData
             private static async Task<List<ClassRoomStatueData>> GetListBuildingInfoAsync(BuildingTypeNamesData SourceData)
             {
                 string html = "http://jxgl.cic.tsinghua.edu.cn/" + SourceData.DetailUri;
@@ -155,8 +161,7 @@ namespace ClassRoomAPI.Services
 
                     Data.Add(new ClassRoomStatueData
                     {
-                        BuildingName = _BuildingName,
-                        Date = _Date,
+                        
                         ListClassStatus = _ListClassState,
                         ClassRoomName = _ClassRoomName,
                         ListBoolClassStatus=_ListBoolClassState
@@ -167,21 +172,27 @@ namespace ClassRoomAPI.Services
                 await CacheHelper.WriteCache($"ClassBuildingData_{SourceData.PositionName}", StringfiedData);
                 return Data;
             }
+            //获取所有教学楼所有教室信息
             private static async Task<ClassBuildingInfo> GetListAllBuildingInfoAsync()
             {
+                //
                 var _ClassBuildingInfo = new ClassBuildingInfo();
                 _ClassBuildingInfo.ListClassRoomStatue = new List<BuildingInfoData>();
+                //获取教室名字信息
                 var _ClassNamesAsync = await GetBuildingTypeAsync();
                 _ClassBuildingInfo.ListClassRoomInfo = _ClassNamesAsync;
-
+                //循环获取所有教学楼的教室信息
                 foreach (BuildingTypeNamesData item in _ClassNamesAsync)
                 {
-                    var _ListBuildingInfoData = await GetListBuildingInfoAsync(item);
                     _ClassBuildingInfo.Date = DateTime.Now.Date;
                     var _ListBuildingInfo = new BuildingInfoData();
+                    
+                    //存储教学楼名字信息
                     _ListBuildingInfo.BuildingName = item.PositionName;
+                    //获取一栋教学楼的所有教室信息，加入list中
+                    var _ListBuildingInfoData = await GetListBuildingInfoAsync(item);
                     _ListBuildingInfo.ListBuildingInfoData = _ListBuildingInfoData;
-
+                    
                     _ClassBuildingInfo.ListClassRoomStatue.Add(_ListBuildingInfo);
 
                 }

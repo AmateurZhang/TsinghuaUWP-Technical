@@ -1,10 +1,10 @@
 ﻿<Page
-    x:Class="ClassRoomAPI.Views.ClassRoomInfo"
+    x:Class="ClassRoomAPI.Views.ClassRoom_Recommand"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ClassRoomAPI.Views"
     xmlns:models="using:ClassRoomAPI.Models"
-    xmlns:viewmodels="using:ClassRoomAPI.ViewModels"
+    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -12,23 +12,19 @@
     >
 
     <Page.Resources>
-        <!--枢轴名称-->
-        <DataTemplate x:Key="PivotHeaderBuildingType" x:DataType="models:BuildingInfoData">
-            <TextBlock Text="{x:Bind BuildingName}"></TextBlock>
-        </DataTemplate>
+       
         <!--List每一行的数据排布格式-->
         <DataTemplate x:Key="DataTemplate" x:DataType="models:ClassRoomStatueData">
-            <Grid Margin="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition   Width="120" />
-                    <ColumnDefinition   Width="*" />
-                    <ColumnDefinition   Width="180" />
-                </Grid.ColumnDefinitions>
+            <Grid Width="300" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition   Height="Auto" />
+                    <RowDefinition   Height="24" />
+                </Grid.RowDefinitions>
                 <TextBlock Text="{x:Bind ClassRoomName}"  
-                           Style="{ThemeResource SubtitleTextBlockStyle}"
+                          Style="{ThemeResource TitleTextBlockStyle}"
                              />
 
-                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" Grid.Row="2"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="3">
                     <TextBlock Text="{x:Bind ConvertBooltoSymbol[0]}"  
                            FontSize="18"
                            Foreground="Black"
@@ -78,22 +74,21 @@
         <!--每个教学楼教室信息的list-->
         <DataTemplate x:Key="PivotBuildingType" x:DataType="models:BuildingInfoData">
             <PivotItem >
-                <GridView Name="ListViewClassRoomData"                    
+                <ListView Name="ListViewClassRoomData"                    
                       ItemTemplate="{StaticResource DataTemplate}" 
                       ItemsSource="{x:Bind ListBuildingInfoData}"
                       />
             </PivotItem>
         </DataTemplate>
     </Page.Resources>
-    
-    
-    <Grid x:Name="ClassRoom_Page" 
-          Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-        <Pivot HeaderTemplate="{StaticResource PivotHeaderBuildingType}" 
-               ItemTemplate="{StaticResource PivotBuildingType}" 
-               Name="MainPivot"             
-               >
-            
-        </Pivot>
+
+
+    <Grid x:Name="ClassRoom_Page">
+        
+        <GridView Name="ListViewClassRoomData"                    
+                      ItemTemplate="{StaticResource DataTemplate}" 
+                      ItemsSource="{x:Bind ClassRooms}"
+                      />
+        
     </Grid>
 </Page>

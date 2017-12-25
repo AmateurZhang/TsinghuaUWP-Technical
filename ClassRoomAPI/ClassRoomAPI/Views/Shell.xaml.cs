@@ -35,7 +35,23 @@ namespace ClassRoomAPI
                 new NavMenuItem()
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
-                    Icon = "\xE80F",
+                    Icon = "\xE10F",
+                    Label = "推荐",
+                    Selected = Visibility.Visible,
+                    DestPage = typeof(Recommend)
+                },
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE825",
+                    Label = "演出信息",
+                    Selected = Visibility.Visible,
+                    DestPage = typeof(Performance)
+                },
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xEC06",
                     Label = "教室信息",
                     Selected = Visibility.Visible,
                     DestPage = typeof(ClassRoomInfo)
@@ -54,10 +70,29 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE771",
-                    Label = "时间枢轴",
+                    Label = "课程信息",
                     Selected = Visibility.Visible,
                     DestPage = typeof(WebLearnTimeTable)
                 },
+
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE7F4",
+                    Label = "IPTV",
+                    Selected = Visibility.Visible,
+                    //DestPage = typeof(WebLearnTimeTable)
+                },
+
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE715",
+                    Label = "邮件",
+                    Selected = Visibility.Visible,
+                    //DestPage = typeof(WebLearnTimeTable)
+                },
+
                 
 
             });

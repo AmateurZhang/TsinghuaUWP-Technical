@@ -11,4 +11,5 @@ namespace ClassRoomAPI.Models
         public DateTime Date;
         public List<Windows.ApplicationModel.Appointments.Appointment> ListAppointment;
     }
+    
 }

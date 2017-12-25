@@ -29309,11 +29309,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
+      "projectUniqueName": "C:\\Users\\thuzhang\\Downloads\\TsinghuaUWP-Technical-2.1.1 (1)\\TsinghuaUWP-Technical-2.1.1\\TsinghuaUWP-Technical-dev-zhang\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
       "projectName": "ClassRoomAPI",
-      "projectPath": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
+      "projectPath": "C:\\Users\\thuzhang\\Downloads\\TsinghuaUWP-Technical-2.1.1 (1)\\TsinghuaUWP-Technical-2.1.1\\TsinghuaUWP-Technical-dev-zhang\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
       "packagesPath": "C:\\Users\\thuzhang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\obj\\",
+      "outputPath": "C:\\Users\\thuzhang\\Downloads\\TsinghuaUWP-Technical-2.1.1 (1)\\TsinghuaUWP-Technical-2.1.1\\TsinghuaUWP-Technical-dev-zhang\\ClassRoomAPI\\ClassRoomAPI\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

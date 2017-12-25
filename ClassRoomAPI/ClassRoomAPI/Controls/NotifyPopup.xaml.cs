@@ -45,6 +45,8 @@ namespace ClassRoomAPI.Controls
 
         public NotifyPopup(string content) : this(content, TimeSpan.FromSeconds(2))
         {
+            this.FontFamily = new FontFamily("黑体");
+            this.FontSize = 24;
         }
 
         public void Show()
@@ -57,6 +59,11 @@ namespace ClassRoomAPI.Controls
             this.m_Popup.IsOpen = false;
         }
 
+        public void SetHorizonAlignment(int Alignment)
+        {
+            this.Margin = new Thickness(0, -Alignment , 0, 0);
+
+        }
         private void MeasurePopupSize()
         {
             this.Width = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().VisibleBounds.Width;
