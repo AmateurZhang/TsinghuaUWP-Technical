@@ -34,13 +34,11 @@ namespace ClassRoomAPI
             {
                 new NavMenuItem()
                 {
-                    
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE10F",
                     Label = "推荐",
                     Selected = Visibility.Visible,
-                    DestPage = typeof(Recommend),
-                    
+                    DestPage = typeof(Recommend)
                 },
                 new NavMenuItem()
                 {

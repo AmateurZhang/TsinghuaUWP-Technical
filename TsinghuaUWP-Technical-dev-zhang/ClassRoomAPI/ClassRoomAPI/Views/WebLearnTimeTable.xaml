@@ -12,26 +12,26 @@
 
     <Page.Resources>
         <DataTemplate x:Key="DataTemplate" x:DataType="model:Appointment">
-            <Grid>
-                <StackPanel Margin="0,8" Orientation="Horizontal">
-                    <TextBlock Text="{x:Bind Subject}" Width="240" FontFamily="黑体" FontSize="24"
+            
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="{x:Bind Subject}" 
                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <TextBlock Text="{x:Bind Location}" Width="150" FontFamily="黑体" FontSize="24" Margin="20,0,0,0"
+                    <TextBlock Text="{x:Bind Location}" 
                                    Style="{ThemeResource BodyTextBlockStyle}"
                                    MaxLines="1"/>
-                    <TextBlock Text="{x:Bind StartTime}" Width="180" FontFamily="黑体" FontSize="24"
+                    <TextBlock Text="{x:Bind StartTime}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    Opacity=".9" 
                                    MaxLines="1"/>
-                    <TextBlock x:Name="Body" FontFamily="黑体" FontSize="24"
+                    <TextBlock x:Name="Body" 
                                    Text="{x:Bind Duration}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    Opacity=".6" 
                                    TextWrapping="Wrap" 
-                                   Margin="0,2,0,0"/>
+                                   />
                 </StackPanel>
 
-            </Grid>
+           
         </DataTemplate >
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

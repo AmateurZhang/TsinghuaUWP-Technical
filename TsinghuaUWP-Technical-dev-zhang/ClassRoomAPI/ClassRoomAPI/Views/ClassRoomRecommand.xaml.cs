@@ -143,22 +143,5 @@ namespace ClassRoomAPI.Views
             }
             return NumOfClass;
         }
-
-        //private void OnBackRequested(object sender, BackRequestedEventArgs e)
-        //{
-
-        //    if (!e.Handled && RootFrame.CanGoBack)
-
-        //    {
-
-        //        e.Handled = true;
-
-        //        RootFrame.GoBack();
-
-        //    }
-        //    SyncMenu();
-
-        //}
     }
-
 }

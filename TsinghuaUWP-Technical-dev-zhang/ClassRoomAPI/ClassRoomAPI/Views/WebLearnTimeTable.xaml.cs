@@ -47,10 +47,27 @@ namespace ClassRoomAPI.Views
                 {
                     var _Data = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
                     MainListView.ItemsSource = _Data.ListAppointment;
-                    string match = "考试";
-                    //foreach(Windows.ApplicationModel.Appointments.Appointment items in _Data.ListAppointment) {
-                    //     if(items.Subject)
-                    //}
+                    if(_Data.ListAppointment!=null)
+                    {
+                        int SelectedItem = 0;
+                        foreach (var item in _Data.ListAppointment)
+                        {
+                            if ((item.StartTime - DateTime.Now).Minutes >= 0)
+                            {
+                                SelectedItem += 1;
+                            }
+                        }
+                        if (SelectedItem > 0)
+                        {
+                            SelectedItem -= 1;
+                        }
+                        else
+                        {
+                            SelectedItem = 0;
+                        }
+                        MainListView.SelectedIndex = SelectedItem;
+                    }
+                    
                     var notifyPopup = new NotifyPopup("正在使用本地数据。");
                     notifyPopup.Show();
 
@@ -64,6 +81,26 @@ namespace ClassRoomAPI.Views
                     {
                         var _DataRemote = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
                         MainListView.ItemsSource = _DataRemote.ListAppointment;
+                        if (_DataRemote.ListAppointment != null)
+                        {
+                            int SelectedItem = 0;
+                            foreach (var item in _DataRemote.ListAppointment)
+                            {
+                                if ((item.StartTime - DateTime.Now).Minutes >= 0)
+                                {
+                                    SelectedItem += 1;
+                                }
+                            }
+                            if (SelectedItem > 0)
+                            {
+                                SelectedItem -= 1;
+                            }
+                            else
+                            {
+                                SelectedItem = 0;
+                            }
+                            MainListView.SelectedIndex = SelectedItem;
+                        }
                         var notifyPopup = new NotifyPopup("数据已刷新！");
                         notifyPopup.Show();
                     }

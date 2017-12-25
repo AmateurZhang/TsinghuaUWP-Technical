@@ -34,7 +34,7 @@
                                    Margin="0,12,0,0"/>
             </StackPanel>
         </DataTemplate>
-        
+        <!--
         <DataTemplate x:Key="HomeworkListView" x:DataType="model:ListCourseInfoData">
             <PivotItem>
                 <controls:MasterDetailsView Name="MainDetailsView"
@@ -49,6 +49,7 @@
                 </controls:MasterDetailsView>
             </PivotItem>
         </DataTemplate>
+        -->
         <DataTemplate x:Key="PivotHeaderNames" x:DataType="model:ListCourseInfoData">
             <TextBlock Text="{x:Bind CourseInfo.name}"></TextBlock>
         </DataTemplate>

@@ -34,7 +34,6 @@ namespace ClassRoomAPI.Views
         {
             var width = Window.Current.Bounds.Width/3;
             BuildingOne.Width = width;
-            
             BuildingTwo.Width = width;
             BuildingThree.Width = width;
             BuildingFour.Width = width;
@@ -52,70 +51,9 @@ namespace ClassRoomAPI.Views
             Frame rootFrame = Window.Current.Content as Frame;
             Shell ShellPage = rootFrame.Content as Shell;
             var page = ShellPage.RootFrame;
-            if (page.CurrentSourcePageType == typeof(Recommend)) {
-                page.Navigate(typeof(ClassRoomRecommand));
-            }
 
-        }
-
-        private void BuildingTwo_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 2;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-            if (page.CurrentSourcePageType == typeof(Recommend))
-            {
+            if (page.CurrentSourcePageType==typeof(Recommend))
                 page.Navigate(typeof(ClassRoomRecommand));
-            }
-        }
-
-        private void BuildingThree_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 3;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-            if (page.CurrentSourcePageType == typeof(Recommend))
-            {
-                page.Navigate(typeof(ClassRoomRecommand));
-            }
-        }
-
-        private void BuildingFour_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 4;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-            if (page.CurrentSourcePageType == typeof(Recommend))
-            {
-                page.Navigate(typeof(ClassRoomRecommand));
-            }
-        }
-
-        private void BuildingFive_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 5;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-            if (page.CurrentSourcePageType == typeof(Recommend))
-            {
-                page.Navigate(typeof(ClassRoomRecommand));
-            }
-        }
-
-        private void BuildingSix_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 6;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-            if (page.CurrentSourcePageType == typeof(Recommend))
-            {
-                page.Navigate(typeof(ClassRoomRecommand));
-            }
         }
     }
 }

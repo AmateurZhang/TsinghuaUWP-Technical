@@ -18,19 +18,17 @@
         </DataTemplate>
         <!--List每一行的数据排布格式-->
         <DataTemplate x:Key="DataTemplate" x:DataType="models:ClassRoomStatueData">
-            <Grid>
+            <Grid Margin="5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition   Width="150" />
+                    <ColumnDefinition   Width="120" />
                     <ColumnDefinition   Width="*" />
-                    <ColumnDefinition   Width="2*" />
+                    <ColumnDefinition   Width="180" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{x:Bind ClassRoomName}"  
-                           FontSize="18"
-                           Foreground="Black"
-                             TextWrapping="Wrap"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"
                              />
 
-                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
                     <TextBlock Text="{x:Bind ConvertBooltoSymbol[0]}"  
                            FontSize="18"
                            Foreground="Black"
@@ -80,7 +78,7 @@
         <!--每个教学楼教室信息的list-->
         <DataTemplate x:Key="PivotBuildingType" x:DataType="models:BuildingInfoData">
             <PivotItem >
-                <ListView Name="ListViewClassRoomData"                    
+                <GridView Name="ListViewClassRoomData"                    
                       ItemTemplate="{StaticResource DataTemplate}" 
                       ItemsSource="{x:Bind ListBuildingInfoData}"
                       />

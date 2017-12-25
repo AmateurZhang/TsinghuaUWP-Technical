@@ -12,7 +12,7 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="mainGrid"
                                 Storyboard.TargetProperty="Opacity"
                                 BeginTime="0:0:0">
-                <SplineDoubleKeyFrame  KeyTime="00:00:00.00" Value="1"/>
+                <SplineDoubleKeyFrame  KeyTime="00:00:00.00" Value="0.5"/>
                 <SplineDoubleKeyFrame  KeyTime="00:00:00.400" Value="0.0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -23,8 +23,8 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" Background="#aa000000" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"  Padding="50,15" >
-            <TextBlock x:Name="tbNotify" TextWrapping="Wrap" Foreground="#daffffff"/>
+        <Border Grid.Row="0" Background="#FF7434A9" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,60,0,0"  Padding="8" >
+            <TextBlock x:Name="tbNotify" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
         </Border>
     </Grid>
 </UserControl>
