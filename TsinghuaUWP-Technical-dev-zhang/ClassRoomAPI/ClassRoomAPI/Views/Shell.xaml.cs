@@ -36,9 +36,9 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE10F",
-                    Label = "校园新闻",
+                    Label = "推荐",
                     Selected = Visibility.Visible,
-                    DestPage = typeof(News)
+                    DestPage = typeof(Recommend)
                 },
                 new NavMenuItem()
                 {
@@ -92,6 +92,8 @@ namespace ClassRoomAPI
                     Selected = Visibility.Visible,
                     //DestPage = typeof(WebLearnTimeTable)
                 },
+
+                
 
             });
 

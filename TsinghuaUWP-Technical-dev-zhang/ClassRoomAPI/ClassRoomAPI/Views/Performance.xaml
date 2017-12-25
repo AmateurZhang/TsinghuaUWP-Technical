@@ -85,7 +85,5 @@
                HeaderTemplate="{StaticResource PivotHeaderShowType}" 
                ItemTemplate="{StaticResource PivotShowInfo}" SelectionChanged="MainPivot_SelectionChanged"     
                />
-        <!--<Image Source="Assets/6Building.png" VerticalAlignment="Top"/>-->
-        
     </Grid>
 </Page>

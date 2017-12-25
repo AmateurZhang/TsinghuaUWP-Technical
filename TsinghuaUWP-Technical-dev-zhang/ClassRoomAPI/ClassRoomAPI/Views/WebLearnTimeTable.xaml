@@ -17,8 +17,7 @@
                     <TextBlock Text="{x:Bind Subject}" Width="240" FontFamily="黑体" FontSize="24"
                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <TextBlock Text="{x:Bind Location}" Width="150" FontFamily="黑体" FontSize="24" Margin="20,0,0,0"
-                                   Style="{ThemeResource BodyTextBlockStyle}" 
-                  
+                                   Style="{ThemeResource BodyTextBlockStyle}"
                                    MaxLines="1"/>
                     <TextBlock Text="{x:Bind StartTime}" Width="180" FontFamily="黑体" FontSize="24"
                                    Style="{ThemeResource BodyTextBlockStyle}" 

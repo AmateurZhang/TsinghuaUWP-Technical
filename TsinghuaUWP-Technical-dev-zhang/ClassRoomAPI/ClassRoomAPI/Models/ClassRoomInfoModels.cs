@@ -15,6 +15,10 @@ namespace ClassRoomAPI.Models
         Demo
     }
 
+    public class BuindingNames {
+        public static int BuildingName;
+    };
+
     public class ExceptionCodeClassRoomInfo
     {
 
@@ -81,6 +85,10 @@ namespace ClassRoomAPI.Models
         public List<BuildingTypeNamesData> ListClassRoomInfo;
         public List<BuildingInfoData> ListClassRoomStatue;
     }
+    public class Re_ClassRooms
+    {
 
-    
+        public List<ClassRoomStatueData> ListRecommandClassRooms;
+    }
+
 }

@@ -1,10 +1,10 @@
 ﻿<Page
-    x:Class="ClassRoomAPI.Views.ClassRoomInfo"
+    x:Class="ClassRoomAPI.Views.ClassRoom_Recommand"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ClassRoomAPI.Views"
     xmlns:models="using:ClassRoomAPI.Models"
-    xmlns:viewmodels="using:ClassRoomAPI.ViewModels"
+    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -12,10 +12,7 @@
     >
 
     <Page.Resources>
-        <!--枢轴名称-->
-        <DataTemplate x:Key="PivotHeaderBuildingType" x:DataType="models:BuildingInfoData">
-            <TextBlock Text="{x:Bind BuildingName}"></TextBlock>
-        </DataTemplate>
+       
         <!--List每一行的数据排布格式-->
         <DataTemplate x:Key="DataTemplate" x:DataType="models:ClassRoomStatueData">
             <Grid>
@@ -87,15 +84,14 @@
             </PivotItem>
         </DataTemplate>
     </Page.Resources>
-    
-    
-    <Grid x:Name="ClassRoom_Page" 
-          Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-        <Pivot HeaderTemplate="{StaticResource PivotHeaderBuildingType}" 
-               ItemTemplate="{StaticResource PivotBuildingType}" 
-               Name="MainPivot"             
-               >
-            
-        </Pivot>
+
+
+    <Grid x:Name="ClassRoom_Page">
+        
+        <ListView Name="ListViewClassRoomData"                    
+                      ItemTemplate="{StaticResource DataTemplate}" 
+                      ItemsSource="{x:Bind ClassRooms}"
+                      />
+        
     </Grid>
 </Page>

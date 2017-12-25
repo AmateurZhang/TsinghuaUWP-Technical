@@ -47,7 +47,10 @@ namespace ClassRoomAPI.Views
                 {
                     var _Data = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
                     MainListView.ItemsSource = _Data.ListAppointment;
-
+                    string match = "考试";
+                    //foreach(Windows.ApplicationModel.Appointments.Appointment items in _Data.ListAppointment) {
+                    //     if(items.Subject)
+                    //}
                     var notifyPopup = new NotifyPopup("正在使用本地数据。");
                     notifyPopup.Show();
 
