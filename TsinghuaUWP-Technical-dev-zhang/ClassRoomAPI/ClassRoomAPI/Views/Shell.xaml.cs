@@ -38,7 +38,7 @@ namespace ClassRoomAPI
                     Icon = "\xE10F",
                     Label = "校园新闻",
                     Selected = Visibility.Visible,
-                    DestPage = typeof(News)
+                    DestPage = typeof(RecommendPerformance)
                 },
                 new NavMenuItem()
                 {
