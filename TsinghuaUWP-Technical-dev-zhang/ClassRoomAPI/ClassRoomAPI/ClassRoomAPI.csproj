@@ -137,6 +137,9 @@
     <Compile Include="Views\Performance.xaml.cs">
       <DependentUpon>Performance.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RecommendPerformance.xaml.cs">
+      <DependentUpon>RecommendPerformance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Performance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecommendPerformance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

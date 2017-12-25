@@ -50,7 +50,7 @@ namespace ClassRoomAPI.Views
             }
             catch(MessageException err)
             {
-                var notifyPopup = new NotifyPopup("登陆失败！");
+                var notifyPopup = new NotifyPopup("登录失败！");
                 notifyPopup.Show();
                 var _Mess=err.Message;
                 Info.Text = _Mess;
@@ -69,7 +69,7 @@ namespace ClassRoomAPI.Views
 
                 LoginStackPanel.Visibility = Visibility.Collapsed;
                 UserInfo.Visibility = Visibility.Visible;
-                var notifyPopup = new NotifyPopup("登陆成功！");
+                var notifyPopup = new NotifyPopup("登录成功！");
                 notifyPopup.Show();
             }
         }
@@ -125,5 +125,6 @@ namespace ClassRoomAPI.Views
             
 
         }
+
     }
 }
