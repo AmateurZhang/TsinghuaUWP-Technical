@@ -35,63 +35,59 @@ namespace ClassRoomAPI.Views
 
         }
 
-        private List<ShowInfo> GetRecommend(List<ShowInfo> ListShowInfo)
+        private List<PerformanceData> GetRecommend(List<ShowInfo> ListShowInfo)
         {
             // 所有的演出类型汇集成一张表
-            List<ShowInfo> NewListShowInfo = new List<ShowInfo>();
-            ShowInfo NewShowInfo = new ShowInfo
-            {
-                PerformanceType = "所有演出",
-                ListPerformanceInfo = new List<PerformanceData>()
-            };
+            var NewListPerformanceInfo = new List<PerformanceData>();
             foreach (ShowInfo TempShowInfo in ListShowInfo)
             {
                 if (TempShowInfo.ListPerformanceInfo.Count == 0)
                 {
                     continue;
                 }
-                foreach(PerformanceData TempPerformanceData in TempShowInfo.ListPerformanceInfo)
+                foreach (PerformanceData TempPerformanceData in TempShowInfo.ListPerformanceInfo)
                 {
-                    if (TempPerformanceData.PerformanceState == "售票中")
-                    {
-                        // 所有推荐都为售票中，因此将State一列替换为PerformanceType
-                        TempPerformanceData.PerformanceState = TempShowInfo.PerformanceType;
-                        NewShowInfo.ListPerformanceInfo.Add(TempPerformanceData);
-                    }
+
+                    //if (TempPerformanceData.PerformanceState == "售票中")
+                    //{
+                        var NewPerformaneData = new PerformanceData();
+                        // 为了测试效果，先把所有内容都收集起来
+                        var PerformanceName = TempPerformanceData.PerformanceName; // 考虑提取《》或""或“”之间的内容
+                        var PerformanceState = String.Format("时间：{0}\n类型：{1}\n地点：{2}\n", 
+                            TempPerformanceData.PerformanceTime, TempShowInfo.PerformanceType, TempPerformanceData.PerformanceAddress);
+
+                        NewPerformaneData.PerformanceName = PerformanceName;
+                        NewPerformaneData.PerformanceState = PerformanceState;
+                        NewPerformaneData.PerformanceTime = TempPerformanceData.PerformanceTime;
+                        // 在PerformanceAddress中存颜色
+                        switch (TempShowInfo.PerformanceType)
+                        {
+                            case "电影":
+                                NewPerformaneData.PerformanceAddress = "Purple";
+                                break;
+                            case "演出":
+                                NewPerformaneData.PerformanceAddress = "DarkOrange";
+                                break;
+                            case "讲座":
+                                NewPerformaneData.PerformanceAddress = "BlueViolet";
+                                break;
+                            case "艺术丛林":
+                                NewPerformaneData.PerformanceAddress = "DarkGreen";
+                                break;
+                        }
+
+
+                        NewListPerformanceInfo.Add(NewPerformaneData);
+                    //}
                 }
             }
             // 升序，小日期在前
-            NewShowInfo.ListPerformanceInfo.Sort((x, y) => { return x.PerformanceTime.CompareTo(y.PerformanceTime); });
-            NewListShowInfo.Add(NewShowInfo);
-            return NewListShowInfo;
+            NewListPerformanceInfo.Sort((x, y) => { return x.PerformanceTime.CompareTo(y.PerformanceTime); });
+            return NewListPerformanceInfo;
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //加载背景
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Hall.png", UriKind.Absolute));
-            Performance_Page.Background = imageBrush;
-            //创建和自定义 FileOpenPicker  
-            //var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            //picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail; //可通过使用图片缩略图创建丰富的视觉显示，以显示文件选取器中的文件  
-            //picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            //picker.FileTypeFilter.Add(".jpg");
-            //picker.FileTypeFilter.Add(".jpeg");
-            //picker.FileTypeFilter.Add(".png");
-            //picker.FileTypeFilter.Add(".gif");
-
-            ////选取单个文件  
-            //Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-
-            ////文件处理  
-            //if (file != null)
-            //{
-            //    IRandomAccessStream ir = await file.OpenAsync(FileAccessMode.Read);
-            //    BitmapImage bi = new BitmapImage();
-            //    await bi.SetSourceAsync(ir);
-            //    imageHidden.Source = bi;
-            //}
             try
             {
                 var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
@@ -99,72 +95,26 @@ namespace ClassRoomAPI.Views
                 if ((_DataLocal.Date.Date - DateTime.Now.Date).Days < 0)
                     throw new Exception("The Data are out-of-date.");
                 else
-                    MainPivot.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
-
-                var notifyPopup = new NotifyPopup("数据更新于" + _DataLocal.Date);
-                notifyPopup.Show();
-
-
-                //foreach (ShowInfo items in _DataLocal.ListShowInfo)
-                //{
-
-                //    if (items.ListPerformanceInfo.Count == 0)
-                //    {
-                //        reloaded..Add(new PerformanceType { Type = items.PerformanceType, isEmpty = true });
-                //    }
-                //}
-
-
+                {
+                    //MainPivot.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
+                    DetailList.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
+                    FixedList.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
+                }
             }
             catch
             {
                 try
                 {
                     var _DataRemote = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Remote);
-                    MainPivot.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
-                    var notifyPopup = new NotifyPopup("演出信息已更新至最新状态！");
-                    notifyPopup.Show();
+                    //MainPivot.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
+                    DetailList.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
+                    FixedList.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
                 }
                 catch
                 {
-                    var notifyPopup = new NotifyPopup("网络异常，刷新失败。");
-                    notifyPopup.Show();
                 }
 
             }
         }
-
-
-        private void MainPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //PerformanceData.SelectedItem = MainPivot.SelectedIndex;
-            //if (MainPivot.SelectedIndex == 0 && )
-            //{
-            //    var isEmptyPopup = new NotifyPopup("暂时没有电影相关信息！\n请扫码关注公众号获取最新信息");
-            //    isEmptyPopup.SetHorizonAlignment(400);
-            //    isEmptyPopup.Show();
-            //}
-            //if (MainPivot.SelectedIndex == 1 && MainPivot.Items.Count == 0)
-            //{
-            //    var isEmptyPopup = new NotifyPopup("暂时没有演出相关信息！\n请扫码关注公众号获取最新信息");
-            //    isEmptyPopup.SetHorizonAlignment(400);
-            //    isEmptyPopup.Show();
-            //}
-            //if (MainPivot.SelectedIndex == 2 && MainPivot.Items.Count == 0)
-            //{
-            //    var isEmptyPopup = new NotifyPopup("暂时没有讲座相关信息！\n请扫码关注公众号获取最新信息");
-            //    isEmptyPopup.SetHorizonAlignment(400);
-            //    isEmptyPopup.Show();
-            //}
-            //if (MainPivot.SelectedIndex == 3 && MainPivot.Items.Count == 0)
-            //{
-            //    var isEmptyPopup = new NotifyPopup("暂时没有电影艺术丛林信息！\n请扫码关注公众号获取最新信息");
-            //    isEmptyPopup.SetHorizonAlignment(400);
-            //    isEmptyPopup.Show();
-            //}
-        }
     }
-
-
-
 }

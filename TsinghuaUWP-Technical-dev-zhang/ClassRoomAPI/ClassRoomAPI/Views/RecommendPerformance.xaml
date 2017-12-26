@@ -10,82 +10,133 @@
     Loaded="Page_Loaded">
 
     <Page.Resources>
-
-        <DataTemplate x:Key="PivotHeaderShowType" x:DataType="models:ShowInfo">
-            <TextBlock Text="{x:Bind PerformanceType}"></TextBlock>
-        </DataTemplate>
-
-        <DataTemplate x:Key="PerformanceDataTemplate" x:DataType="models:PerformanceData">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition   Width="1*" />
-                    <ColumnDefinition   Width="400" />
-                    <ColumnDefinition   Width="1*" />
-                    <ColumnDefinition   Width="1*" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Text="{x:Bind PerformanceTime}"  
-                           FontFamily="黑体"
-                           FontSize="18"
-                           Foreground="Black"
-                           TextWrapping="Wrap"
-                           ScrollViewer.HorizontalScrollMode="Enabled"
-                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                             />
-
-
+        <DataTemplate x:Key="FixedContent" x:DataType="models:PerformanceData">
+            <Grid Width="200" Height="200" Background="{x:Bind PerformanceAddress}" Margin="10,10,10,10">
                 <TextBlock Text="{x:Bind PerformanceName}"
-                           FontFamily="黑体"
-                           FontSize="18"
-                           Foreground="Black"
+                           HorizontalAlignment="Center" VerticalAlignment="Top"
+                           FontSize="17"
+                           FontWeight="Black"
+                           Foreground="White"
                            TextWrapping="Wrap"
-                           Grid.Column="1"
-                           Margin="24,0,20,0"
-                             />
-
-                <TextBlock Text="{x:Bind PerformanceState}"
-                           FontFamily="黑体"
-                           FontSize="18"
-                           Foreground="Black"
-                           TextWrapping="Wrap"
-                           Grid.Column="2"
-                           Margin="24,0,20,0"
-                             />
-                <TextBlock Text="{x:Bind PerformanceAddress}"
-                           FontFamily="黑体"
-                           FontSize="18"
-                           Foreground="Black"
-                           TextWrapping="Wrap"
-                           Grid.Column="3"
-                           HorizontalAlignment="Right"
-                             />
+                           Margin="10,10,10,10"></TextBlock>
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="PivotShowInfo" x:DataType="models:ShowInfo">
-            <PivotItem >
-                <ListView Name="ListViewShowInfoData"                    
-                      ItemTemplate="{StaticResource PerformanceDataTemplate}" 
-                      ItemsSource="{x:Bind ListPerformanceInfo}"
-                      >
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-
-                            <Setter Property="BorderBrush" Value="Black"/>
-                            <Setter Property="BorderThickness" Value="0.25"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-            </PivotItem>
+        <DataTemplate x:Key="DetailContent" x:DataType="models:PerformanceData">
+            <Grid x:Name="DetailGrid" Width="200" Height="200" Background="Black"  Margin="10,10,10,10">
+                <TextBlock Text="{x:Bind PerformanceState}"
+                           HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                           FontSize="13"
+                           FontWeight="Black"
+                           Foreground="White"
+                           TextWrapping="Wrap"></TextBlock>
+            </Grid>
         </DataTemplate>
+
+        <Style TargetType="ListViewItem" x:Key="FixedStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <ContentPresenter Opacity="1"  ></ContentPresenter>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="ListViewItem"  x:Key="ItemContainerStyle" >
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+
+                                    <!--<VisualStateGroup.Transitions>
+
+                                        --><!--Take one half second to transition to the PointerOver state.--><!--
+                                        <VisualTransition To="PointerOver" 
+                              GeneratedDuration="0:0:0.1"/>
+                                    </VisualStateGroup.Transitions>-->
+
+                                    <VisualState x:Name="Normal" />
+
+                                    <!--<VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ContentText"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             Duration="0:0:0.1" From="0.3" 
+                                                             To="0.7" />
+                                        </Storyboard>                                        
+                                    </VisualState>-->
+
+                                    <!--<VisualState x:Name="PointerOverSelected">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DetailItem"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             Duration="0:0:0.1" From="0" 
+                                                             To="1" />
+                                        </Storyboard>
+                                    </VisualState>-->
+                                    
+                                    <!--<VisualState x:Name="PressedSelected">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ContentText"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             Duration="0:0:0.1" From="0" 
+                                                             To="1" />
+                                        </Storyboard>
+                                    </VisualState>-->
+
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ContentText"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             Duration="0:0:0.1" From="0.3" 
+                                                             To="0.7" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            
+                            <Grid>
+                                <ContentPresenter x:Name="ContentText" Opacity="0" ></ContentPresenter>
+                            </Grid>
+                        </Grid>
+                        
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
-    <Grid x:Name="Performance_Page">
-        <Pivot Name="MainPivot"   
-               HeaderTemplate="{StaticResource PivotHeaderShowType}" 
-               ItemTemplate="{StaticResource PivotShowInfo}" SelectionChanged="MainPivot_SelectionChanged"     
-               />
-        <!--<Image Source="Assets/6Building.png" VerticalAlignment="Top"/>-->
+    <Grid>
+        <ListView Grid.Row="1" Grid.Column="1"
+                  Name="FixedList" ItemTemplate="{StaticResource FixedContent}" 
+                  SelectionMode="None"
+                  ItemContainerStyle="{StaticResource FixedStyle}"
+                  >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
 
+        <ListView Grid.Row="1" Grid.Column="1" 
+                  Name="DetailList" ItemTemplate="{StaticResource DetailContent}" 
+                  ItemContainerStyle="{StaticResource ItemContainerStyle}"
+                  SelectionMode="Multiple"
+                  IsMultiSelectCheckBoxEnabled="False"
+                  >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
     </Grid>
+
 </Page>
