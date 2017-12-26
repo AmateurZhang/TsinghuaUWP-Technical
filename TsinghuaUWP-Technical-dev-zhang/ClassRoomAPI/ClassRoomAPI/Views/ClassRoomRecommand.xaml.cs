@@ -38,52 +38,65 @@ namespace ClassRoomAPI.Views
         {
 
             var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
-            var time = DateTime.Now;
-            int[] classlist = new int[6];
-            //判断当前是哪节课
-            var now = WhichClass(time.Hour, time.Minute);
-            var cl = 0;
-            var Schedule = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
-            //看一下今天是否有课，如果有课，就在课表a中的对应位置标记1
-            foreach (Windows.ApplicationModel.Appointments.Appointment Items in Schedule.ListAppointment)
+            if (_Data != null)
             {
-                if ((Items.StartTime.Year == time.Year) && (Items.StartTime.Month == time.Month) && (Items.StartTime.Day == time.Day))
+                var time = DateTime.Now;
+                int[] classlist = new int[6];
+                //判断当前是哪节课
+                var now = WhichClass(time.Hour, time.Minute);
+                var cl = 0;
+                var Schedule = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
+                //看一下今天是否有课，如果有课，就在课表a中的对应位置标记1
+                if (Schedule != null)
                 {
-                    cl = WhichClass(Items.StartTime.Hour, Items.StartTime.Minute);
-                    if (cl == now) classlist[cl - 1] = 1;
-
-                }
-            }
-
-            ClassRooms = _Data.ListClassRoomStatue[BuindingNames.BuildingName - 1].ListBuildingInfoData;
-            var Re_ClassRooms = new List<ClassRoomStatueData>();
-            for (int k = 0; k < ClassRooms.Count; k++)
-            {
-                var items = ClassRooms[k];
-                //看一下每间教室在课表有课的时候是否空闲，如果空闲，就将它加入推荐教室里面
-
-                for (int j = 0; j < 6; j++)
-                {
-                    //没课
-                    if (classlist[j] == 0)
+                    foreach (Windows.ApplicationModel.Appointments.Appointment Items in Schedule.ListAppointment)
                     {
-                        if (!items.ListBoolClassStatus[j]) Re_ClassRooms.Add(new ClassRoomStatueData
+                        if ((Items.StartTime.Year == time.Year) && (Items.StartTime.Month == time.Month) && (Items.StartTime.Day == time.Day))
                         {
-                            ListClassStatus = items.ListClassStatus,
-                            ClassRoomName = items.ClassRoomName,
-                            ListBoolClassStatus = items.ListBoolClassStatus
+                            cl = WhichClass(Items.StartTime.Hour, Items.StartTime.Minute);
+                            if (cl == now) classlist[cl - 1] = 1;
+
+                        }
+                    }
+                }
+                else
+                {
+                    var notifyPopup = new NotifyPopup("未登录，显示全部课表");
+                    notifyPopup.Show();
+                }
+
+                ClassRooms = _Data.ListClassRoomStatue[BuindingNames.BuildingName - 1].ListBuildingInfoData;
+                var Re_ClassRooms = new List<ClassRoomStatueData>();
+                for (int k = 0; k < ClassRooms.Count; k++)
+                {
+                    var items = ClassRooms[k];
+                    //看一下每间教室在课表有课的时候是否空闲，如果空闲，就将它加入推荐教室里面
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        //没课
+                        if (classlist[j] == 0)
+                        {
+                            if (!items.ListBoolClassStatus[j]) Re_ClassRooms.Add(new ClassRoomStatueData
+                            {
+                                ListClassStatus = items.ListClassStatus,
+                                ClassRoomName = items.ClassRoomName,
+                                ListBoolClassStatus = items.ListBoolClassStatus
+                            }
+
+                        );
+                            break;
                         }
 
-                    );
-                        break;
                     }
 
                 }
-
+                ListViewClassRoomData.ItemsSource = Re_ClassRooms;
             }
-            ListViewClassRoomData.ItemsSource = Re_ClassRooms;
-            //ListViewClassRoomData.ItemsSource = _Data.ListClassRoomStatue[BuindingNames.BuildingName - 1].ListBuildingInfoData;
-
+            else {
+                var notifyPopup = new NotifyPopup("请连接校内网获取教室信息");
+                notifyPopup.Show();
+            }
         }
 
         private int WhichClass(int hour, int minite)
