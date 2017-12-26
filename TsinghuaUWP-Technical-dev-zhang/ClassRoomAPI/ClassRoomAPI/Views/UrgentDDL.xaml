@@ -3,12 +3,33 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ClassRoomAPI.Views"
+    xmlns:models="using:ClassRoomAPI.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="Page_Loaded">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="DataTemplate" x:DataType="models:Deadline">
+            <StackPanel>
+                <TextBlock Text="{x:Bind name}" 
+                                   Style="{ThemeResource SubtitleTextBlockStyle}" Height="70" Width="137"/>
+                <TextBlock Text="{x:Bind ddl}" 
+                                   Style="{ThemeResource BodyTextBlockStyle}" 
+                                   MaxLines="1" Height="69" Width="183"/>
+                <TextBlock Text="{x:Bind course}" 
+                                   Style="{ThemeResource BodyTextBlockStyle}" 
+                                   Opacity=".6" 
+                                   MaxLines="1" Height="72" Width="254"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 
+    <Grid x:Name="UrgentDDL_Page">
+
+        <GridView Name="ListViewDDLData"                    
+                      ItemTemplate="{StaticResource DataTemplate}" 
+                      ItemsSource="{x:Bind DDL}"
+                  />
     </Grid>
 </Page>

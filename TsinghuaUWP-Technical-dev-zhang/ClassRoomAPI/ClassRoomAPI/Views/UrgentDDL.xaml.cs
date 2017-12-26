@@ -30,14 +30,14 @@ namespace ClassRoomAPI.Views
         {
             this.InitializeComponent();
         }
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
 
+        }
+        private List<Deadline> DDL;
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var _Data = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Local);
-            var time = DateTime.Now;
-
-
-
             var Ur_DDL = new List<Deadline>();
             var Dead_line = _Data.ListCourseInfoDetail;
             for (int i = 0; i < Dead_line.Count; i++) {
@@ -54,7 +54,18 @@ namespace ClassRoomAPI.Views
                     }
                 }
             }
-            var check = Ur_DDL;
+            Ur_DDL.Sort(new Icp_DDL());
+            ListViewDDLData.ItemsSource = Ur_DDL;
         }
     }
+
+    public class Icp_DDL : IComparer<Deadline>
+    {
+        public int Compare(Deadline x, Deadline y)
+        {
+            return x.ddl.CompareTo(y.ddl);
+        }
+    }
+
+
 }
