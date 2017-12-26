@@ -139,7 +139,7 @@ namespace ClassRoomAPI.Models
 
                 return doc.DocumentNode.InnerText;
             }
-           
+
         }
 
     }
@@ -172,6 +172,7 @@ namespace ClassRoomAPI.Models
         public List<ListCourseInfoData> ListCourseInfoDetail;
 
     }
+
 
     public class ExceptionCodeWebLearnData
     {
