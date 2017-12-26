@@ -43,11 +43,11 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Button Name="BuildingOne" Content="一教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="Button_Click_1"/>
-            <Button Name="BuildingTwo" Grid.Column="1" Content="二教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White"/>
-            <Button Name="BuildingThree" Grid.Column="2" Content="三教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White"/>
-            <Button Name="BuildingFour" Grid.Row="1" Grid.Column="0" Content="四教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White"/>
-            <Button Name="BuildingFive" Grid.Row="1" Grid.Column="1" Content="五教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White"/>
-            <Button Name="BuildingSix" Grid.Row="1" Grid.Column="2" Content="六教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White"/>
+            <Button Name="BuildingTwo" Grid.Column="1" Content="二教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingTwo_Click"/>
+            <Button Name="BuildingThree" Grid.Column="2" Content="三教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingThree_Click" />
+            <Button Name="BuildingFour" Grid.Row="1" Grid.Column="0" Content="四教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFour_Click" />
+            <Button Name="BuildingFive" Grid.Row="1" Grid.Column="1" Content="五教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFive_Click" />
+            <Button Name="BuildingSix" Grid.Row="1" Grid.Column="2" Content="六教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingSix_Click" />
         </Grid>
     </Grid>
         
