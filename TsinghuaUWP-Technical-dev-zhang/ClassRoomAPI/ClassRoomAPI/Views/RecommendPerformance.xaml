@@ -23,7 +23,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="DetailContent" x:DataType="models:PerformanceData">
-            <Grid x:Name="DetailGrid" Width="200" Height="200" Background="Black"  Margin="10,10,10,10">
+            <Grid Width="200" Height="200" Background="Black"  Margin="10,10,10,10">
                 <TextBlock Text="{x:Bind PerformanceState}"
                            HorizontalAlignment="Center" VerticalAlignment="Bottom"
                            FontSize="13"
@@ -38,7 +38,7 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Grid>
-                            <ContentPresenter Opacity="1"  ></ContentPresenter>
+                            <ContentPresenter Opacity="1"></ContentPresenter>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -112,31 +112,34 @@
         </Style>
     </Page.Resources>
 
-    <Grid>
-        <ListView Grid.Row="1" Grid.Column="1"
-                  Name="FixedList" ItemTemplate="{StaticResource FixedContent}" 
-                  SelectionMode="None"
-                  ItemContainerStyle="{StaticResource FixedStyle}"
-                  >
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
+    <ScrollViewer>
+        <Grid>
+            <ListView Grid.Row="1" Grid.Column="1"
+                      Name="FixedList" ItemTemplate="{StaticResource FixedContent}" 
+                      SelectionMode="None"
+                      ItemContainerStyle="{StaticResource FixedStyle}"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
 
-        <ListView Grid.Row="1" Grid.Column="1" 
-                  Name="DetailList" ItemTemplate="{StaticResource DetailContent}" 
-                  ItemContainerStyle="{StaticResource ItemContainerStyle}"
-                  SelectionMode="Multiple"
-                  IsMultiSelectCheckBoxEnabled="False"
-                  >
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
-    </Grid>
+            <ListView Grid.Row="1" Grid.Column="1" 
+                      Name="DetailList" ItemTemplate="{StaticResource DetailContent}" 
+                      ItemContainerStyle="{StaticResource ItemContainerStyle}"
+                      SelectionMode="Multiple"
+                      IsMultiSelectCheckBoxEnabled="False"
+                      >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </Grid>
+    </ScrollViewer>
 
 </Page>
