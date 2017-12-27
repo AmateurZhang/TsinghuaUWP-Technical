@@ -11,29 +11,123 @@
     >
 
     <Page.Resources>
+        <DataTemplate x:Key="BuildingList" x:DataType="models:BuildingTypeNamesData">
+            <Grid Width="200" Height="200" Margin="10,10,10,10">
+                <Button 
+                           Content="{x:Bind PositionName}"
+                           Width="200"
+                           Height="200"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontSize="72"
+                           Background="Purple"
+                           FontWeight="Black"
+                           Foreground="White"
+                           Margin="10,10,10,10" ></Button>
+            </Grid>
+        </DataTemplate>
         
-    </Page.Resources>
-    
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,20,20,0">
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="34" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+        <DataTemplate x:Key="FixedContent" x:DataType="models:PerformanceData">
+            <Grid Width="200" Height="200" Background="{x:Bind PerformanceAddress}" Margin="10,10,10,10">
+                <TextBlock Text="{x:Bind PerformanceName}"
+                           HorizontalAlignment="Center" VerticalAlignment="Top"
+                           FontSize="17"
+                           FontWeight="Black"
+                           Foreground="White"
+                           TextWrapping="Wrap"
+                           Margin="10,10,10,10"></TextBlock>
+            </Grid>
+        </DataTemplate>
 
-        <StackPanel>
-            <TextBlock 
+        <DataTemplate x:Key="DetailContent" x:DataType="models:PerformanceData">
+            <Grid x:Name="DetailGrid" Width="200" Height="200" Background="Black"  Margin="10,10,10,10">
+                <TextBlock Text="{x:Bind PerformanceState}"
+                           HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                           FontSize="13"
+                           FontWeight="Black"
+                           Foreground="White"
+                           TextWrapping="Wrap"></TextBlock>
+            </Grid>
+        </DataTemplate>
+
+        <Style TargetType="ListViewItem" x:Key="FixedStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <ContentPresenter Opacity="1"  ></ContentPresenter>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ListViewItem"  x:Key="ItemContainerStyle" >
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ContentText"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             Duration="0:0:0.1" From="0.3" 
+                                                             To="0.7" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid>
+                                <ContentPresenter x:Name="ContentText" Opacity="0" ></ContentPresenter>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,20,20,0" 
+           >
+        <ScrollViewer>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="34"/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock 
                            FontFamily="Segoe MDL2 Assets"
                            Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
                            FontSize="24"
                           >
                     &#xE8C0;    推荐教室
-            </TextBlock>
-            <Rectangle Height="5" />
-            <Rectangle Fill="Gray" Height="5" />
-        </StackPanel>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
+                    </TextBlock>
+                    <Rectangle Height="5" />
+                    <Rectangle Fill="Gray" Height="5" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <ListView 
+                  Name="BuildingList" ItemTemplate="{StaticResource BuildingList}" 
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"      
+                  ItemClick="BuildingList_ItemClick"
+                  SelectionChanged="BuildingList_SelectionChanged"
+                  >
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                    <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -42,13 +136,56 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Button Name="BuildingOne" Content="一教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="Button_Click_1"/>
-            <Button Name="BuildingTwo" Grid.Column="1" Content="二教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingTwo_Click"/>
-            <Button Name="BuildingThree" Grid.Column="2" Content="三教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingThree_Click" />
-            <Button Name="BuildingFour" Grid.Row="1" Grid.Column="0" Content="四教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFour_Click" />
-            <Button Name="BuildingFive" Grid.Row="1" Grid.Column="1" Content="五教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFive_Click" />
-            <Button Name="BuildingSix" Grid.Row="1" Grid.Column="2" Content="六教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingSix_Click" />
-        </Grid>
+            <Button Name="BuildingOne" Content="一教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="Button_Click_1" Margin="2,2,2,2"/>
+            <Button Name="BuildingTwo" Grid.Column="1" Content="二教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingTwo_Click" Margin="2,2,2,2"/>
+            <Button Name="BuildingThree" Grid.Column="2" Content="三教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingThree_Click" Margin="2,2,2,2"/>
+            <Button Name="BuildingFour" Grid.Row="1" Grid.Column="0" Content="四教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFour_Click" Margin="2,2,2,2"/>
+            <Button Name="BuildingFive" Grid.Row="1" Grid.Column="1" Content="五教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFive_Click" Margin="2,2,2,2"/>
+            <Button Name="BuildingSix" Grid.Row="1" Grid.Column="2" Content="六教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingSix_Click" Margin="2,2,2,2"/>-->
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24"
+                          >
+                    &#xE8C0;    推荐演出
+                    </TextBlock>
+                    <Rectangle Height="5" />
+                    <Rectangle Fill="Gray" Height="5" />
+                </StackPanel>
+
+                <Grid Grid.Row="3">
+                    <ListView 
+                  Name="FixedList" ItemTemplate="{StaticResource FixedContent}" 
+                  SelectionMode="None"
+                  ItemContainerStyle="{StaticResource FixedStyle}"
+                  >
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+
+                    <ListView 
+                  Name="DetailList" ItemTemplate="{StaticResource DetailContent}" 
+                  ItemContainerStyle="{StaticResource ItemContainerStyle}"
+                  SelectionMode="Multiple"
+                  IsMultiSelectCheckBoxEnabled="False"
+                  >
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Grid>
+                
+            </Grid>
+            
+        </ScrollViewer>
     </Grid>
         
         
