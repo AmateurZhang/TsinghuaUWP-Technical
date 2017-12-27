@@ -11,16 +11,20 @@
 
     <Page.Resources>
         <DataTemplate x:Key="DataTemplate" x:DataType="models:Deadline">
-            <StackPanel>
-                <TextBlock Text="{x:Bind name}" 
-                                   Style="{ThemeResource SubtitleTextBlockStyle}" Height="70" Width="137"/>
-                <TextBlock Text="{x:Bind ddl}" 
+            <StackPanel Orientation="Vertical" Height="45"  >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="BlueViolet">
+                    <Rectangle  Width="5">                        
+                    </Rectangle>
+                    <TextBlock Text="{x:Bind name}" 
+                                   Style="{ThemeResource SubtitleTextBlockStyle}" Height="40" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                    <TextBlock Text="{x:Bind ddl}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
-                                   MaxLines="1" Height="69" Width="183"/>
-                <TextBlock Text="{x:Bind course}" 
+                                   MaxLines="1" Height="40" Width="200" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" />
+                    <TextBlock Text="{x:Bind course}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    Opacity=".6" 
-                                   MaxLines="1" Height="72" Width="254"/>
+                                   MaxLines="1" Height="40" Width="200" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" />
+                </StackPanel>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
