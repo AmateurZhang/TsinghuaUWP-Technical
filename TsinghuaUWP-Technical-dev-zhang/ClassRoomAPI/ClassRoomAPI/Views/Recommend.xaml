@@ -13,7 +13,7 @@
     <Page.Resources>
         <DataTemplate x:Key="BuildingList" x:DataType="models:BuildingTypeNamesData">
             <Grid Width="200" Height="200" Margin="10,10,10,10">
-                <Button 
+                <Button    Name="BuildingName"
                            Content="{x:Bind PositionName}"
                            Width="200"
                            Height="200"
@@ -22,7 +22,7 @@
                            Background="Purple"
                            FontWeight="Black"
                            Foreground="White"
-                           Margin="10,10,10,10" ></Button>
+                           Margin="10,10,10,10" Click="Button_Click" ></Button>
             </Grid>
         </DataTemplate>
         
@@ -114,36 +114,20 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
-                    <ListView 
+                    <GridView 
                   Name="BuildingList" ItemTemplate="{StaticResource BuildingList}" 
                   SelectionMode="None"
-                  IsItemClickEnabled="True"      
-                  ItemClick="BuildingList_ItemClick"
-                  SelectionChanged="BuildingList_SelectionChanged"
+                  IsItemClickEnabled="True"
+                        
                   >
-                        <ListView.ItemsPanel>
+                        <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid Orientation="Horizontal" />
                             </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                    </ListView>
-                    <!--<Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Button Name="BuildingOne" Content="一教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="Button_Click_1" Margin="2,2,2,2"/>
-            <Button Name="BuildingTwo" Grid.Column="1" Content="二教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingTwo_Click" Margin="2,2,2,2"/>
-            <Button Name="BuildingThree" Grid.Column="2" Content="三教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingThree_Click" Margin="2,2,2,2"/>
-            <Button Name="BuildingFour" Grid.Row="1" Grid.Column="0" Content="四教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFour_Click" Margin="2,2,2,2"/>
-            <Button Name="BuildingFive" Grid.Row="1" Grid.Column="1" Content="五教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFive_Click" Margin="2,2,2,2"/>
-            <Button Name="BuildingSix" Grid.Row="1" Grid.Column="2" Content="六教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingSix_Click" Margin="2,2,2,2"/>-->
+                        </GridView.ItemsPanel>
+                    </GridView>
                 </StackPanel>
-
+                 
                 <StackPanel Grid.Row="2">
                     <TextBlock 
                            FontFamily="Segoe MDL2 Assets"

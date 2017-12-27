@@ -116,83 +116,55 @@ namespace ClassRoomAPI.Views
 
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+       
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BuindingNames.BuildingName = 1;
+            Button item = sender as Button;
+            string BuildingName = item.Content.ToString();
+            if (BuildingName == "一教") {
+                BuindingNames.BuildingName = 1;
+            }
+            if (BuildingName == "二教")
+            {
+                BuindingNames.BuildingName = 2;
+            }
+            if (BuildingName == "三教")
+            {
+                BuindingNames.BuildingName = 3;
+            }
+            if (BuildingName == "四教")
+            {
+                BuindingNames.BuildingName = 4;
+            }
+            if (BuildingName == "五教")
+            {
+                BuindingNames.BuildingName = 5;
+            }
+            if (BuildingName == "六教")
+            {
+                BuindingNames.BuildingName = 6;
+            }
             Frame rootFrame = Window.Current.Content as Frame;
             Shell ShellPage = rootFrame.Content as Shell;
             var page = ShellPage.RootFrame;
 
             if (page.CurrentSourcePageType == typeof(Recommend))
                 page.Navigate(typeof(ClassRoomRecommand));
+            
         }
 
-        private void BuildingTwo_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 2;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
+        //private void BuildingList_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    
+        //    var k = e.ClickedItem;
+        //    
+        //}
 
-            if (page.CurrentSourcePageType == typeof(Recommend))
-                page.Navigate(typeof(ClassRoomRecommand));
-        }
-
-        private void BuildingThree_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 3;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-
-            if (page.CurrentSourcePageType == typeof(Recommend))
-                page.Navigate(typeof(ClassRoomRecommand));
-        }
-
-        private void BuildingFour_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 4;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-
-            if (page.CurrentSourcePageType == typeof(Recommend))
-                page.Navigate(typeof(ClassRoomRecommand));
-        }
-
-        private void BuildingFive_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 5;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-
-            if (page.CurrentSourcePageType == typeof(Recommend))
-                page.Navigate(typeof(ClassRoomRecommand));
-        }
-
-        private void BuildingSix_Click(object sender, RoutedEventArgs e)
-        {
-            BuindingNames.BuildingName = 6;
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
-
-            if (page.CurrentSourcePageType == typeof(Recommend))
-                page.Navigate(typeof(ClassRoomRecommand));
-        }
-
-        private void BuildingList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ListView item = sender as ListView;
-            var k = e.ClickedItem;
-            var j = 1;
-        }
-
-        private void BuildingList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListView item = sender as ListView;
-            var k = 1;
-        }
+        //private void BuildingList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    ListView item = sender as ListView;
+        //    var k = 1;
+        //}
     }
 }
