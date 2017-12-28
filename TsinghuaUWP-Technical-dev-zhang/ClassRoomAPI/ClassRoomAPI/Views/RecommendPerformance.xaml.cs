@@ -90,7 +90,7 @@ namespace ClassRoomAPI.Views
         {
             try
             {
-                var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
+                var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Demo);
 
                 if ((_DataLocal.Date.Date - DateTime.Now.Date).Days < 0)
                     throw new Exception("The Data are out-of-date.");
@@ -105,7 +105,7 @@ namespace ClassRoomAPI.Views
             {
                 try
                 {
-                    var _DataRemote = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Remote);
+                    var _DataRemote = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Demo);
                     //MainPivot.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
                     DetailList.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
                     FixedList.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
