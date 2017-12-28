@@ -174,7 +174,10 @@
     <Content Include="Assets\BadgeLogo.scale-150.png" />
     <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\BadgeLogo.scale-400.png" />
-    <Content Include="Assets\ClassRoomBuilding.png" />
+    <Content Include="Assets\BuildingFour.png" />
+    <Content Include="Assets\BuildingSix.png" />
+    <Content Include="Assets\BuildingTwo.png" />
+    <Content Include="Assets\BuildingThree.png" />
     <Content Include="Assets\Hall.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
