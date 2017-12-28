@@ -64,7 +64,7 @@ namespace ClassRoomAPI.Views
             //}
             try
             {
-                var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
+                var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Demo);
                 
                 if ((_DataLocal.Date.Date - DateTime.Now.Date).Days < 0)
                     throw new Exception("The Data are out-of-date.");
@@ -90,7 +90,7 @@ namespace ClassRoomAPI.Views
             {
                 try
                 {
-                    var _DataRemote = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Remote);
+                    var _DataRemote = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Demo);
                     MainPivot.ItemsSource = _DataRemote.ListShowInfo;
                     var notifyPopup = new NotifyPopup("演出信息已更新至最新状态！");
                     notifyPopup.Show();

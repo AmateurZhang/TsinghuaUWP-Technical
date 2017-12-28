@@ -58,8 +58,9 @@ namespace ClassRoomAPI.ViewModels
             }
             else
             {
-                //demo
-                return null;
+                var JSONString = Test.PerformaceTest.jsonAllPerformance;
+                var Result = JSONHelper.Parse<ShowInfoData>(JSONString);
+                return Result;
             }
         }
 

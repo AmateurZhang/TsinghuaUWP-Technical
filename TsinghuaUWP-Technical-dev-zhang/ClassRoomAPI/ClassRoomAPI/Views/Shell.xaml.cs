@@ -29,6 +29,7 @@ namespace ClassRoomAPI
     /// </summary>
     public sealed partial class Shell : Page
     {
+        // static NotifyPopup NotifyPopup = new NotifyPopup();
         private static List<NavMenuItem> navMenuPrimaryItem = new List<NavMenuItem>(
             new[]
             {
@@ -36,7 +37,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE10F",
-                    Label = "校园新闻",
+                    Label = "内容推荐",
                     Selected = Visibility.Visible,
                     DestPage = typeof(RecommendPerformance)
                 },
@@ -92,7 +93,6 @@ namespace ClassRoomAPI
                     Selected = Visibility.Visible,
                     //DestPage = typeof(WebLearnTimeTable)
                 },
-
             });
 
         private static List<NavMenuItem> navMenuSecondaryItem = new List<NavMenuItem>(

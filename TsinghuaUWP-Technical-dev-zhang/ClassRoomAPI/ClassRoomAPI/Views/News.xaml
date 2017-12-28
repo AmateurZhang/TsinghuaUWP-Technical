@@ -10,6 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="Loading...."></TextBlock>
         <WebView Name="NewsRoot" Source="http://news.tsinghua.edu.cn/publish/thunews/index.html" Canvas.ZIndex="100" NewWindowRequested="NewsRoot_NewWindowRequested"></WebView>
+        <!--<WebView Name="NewsRoot" Source="file://Test/清华大学新闻网.html" Canvas.ZIndex="100" NewWindowRequested="NewsRoot_NewWindowRequested"></WebView>-->
         <Button 
                     Name="BackButton" 
                      FontFamily="Segoe MDL2 Assets"

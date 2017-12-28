@@ -45,7 +45,7 @@ namespace ClassRoomAPI.Views
             {
                 try
                 {
-                    var _Data = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
+                    var _Data = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Demo);
                     MainListView.ItemsSource = _Data.ListAppointment;
 
                     var notifyPopup = new NotifyPopup("正在使用本地数据。");
@@ -59,7 +59,7 @@ namespace ClassRoomAPI.Views
                 {
                     try
                     {
-                        var _DataRemote = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                        var _DataRemote = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Demo);
                         MainListView.ItemsSource = _DataRemote.ListAppointment;
                         var notifyPopup = new NotifyPopup("数据已刷新！");
                         notifyPopup.Show();

@@ -39,11 +39,12 @@ namespace ClassRoomAPI.Views
             ClassRoom_Page.Background = imageBrush;
             try
             {
-                var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
+                var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Demo);
                 if ((_Data.Date.Date - DateTime.Now.Date).Days < 0)
                     throw new Exception("The Data are out-of-date.");
                 else
                     MainPivot.ItemsSource = _Data.ListClassRoomStatue;
+                
                 var notifyPopup = new NotifyPopup("正在使用本地数据。");
                 notifyPopup.Show();
             }
@@ -51,7 +52,7 @@ namespace ClassRoomAPI.Views
             {
                 try
                 {
-                    var _DataRemote = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Remote);
+                    var _DataRemote = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Demo);
                     MainPivot.ItemsSource = _DataRemote.ListClassRoomStatue;
                     var notifyPopup = new NotifyPopup("教室信息已更新！");
                     notifyPopup.Show();

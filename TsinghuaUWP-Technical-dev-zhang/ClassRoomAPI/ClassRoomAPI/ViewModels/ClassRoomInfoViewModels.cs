@@ -1,7 +1,6 @@
 ﻿using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.Services;
-using ClassRoomAPI.Test;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -104,7 +103,7 @@ namespace ClassRoomAPI.ViewModels
             else
             {
                 //demo
-                var JSONString = JSONStringClassRoomInfo.jsonAllClassRoomInfoData;
+                var JSONString = Test.ClassRoomInfoTest.jsonAllClassRoomInfoData;
                 var Result = JSONHelper.Parse<ClassBuildingInfo>(JSONString);
                 return Result;
             }

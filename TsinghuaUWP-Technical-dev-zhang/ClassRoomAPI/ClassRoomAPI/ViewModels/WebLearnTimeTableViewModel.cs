@@ -1,4 +1,5 @@
-﻿using ClassRoomAPI.Models;
+﻿using ClassRoomAPI.Helpers;
+using ClassRoomAPI.Models;
 using ClassRoomAPI.Services;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,9 @@ namespace ClassRoomAPI.ViewModels
             else
             {
                 //demo
-                return null;
+                var JSONString = Test.WebLearnTimetableTest.JSONAllDDL;
+                var Result = JSONHelper.Parse<WebLearnTimeTable>(JSONString);
+                return Result;
             }
         }
     }

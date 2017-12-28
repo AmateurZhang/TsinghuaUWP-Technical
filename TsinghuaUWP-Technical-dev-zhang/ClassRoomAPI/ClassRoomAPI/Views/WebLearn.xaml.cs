@@ -46,7 +46,7 @@ namespace ClassRoomAPI.Views
             {
                 try
                 {
-                    var _Data = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Local);
+                    var _Data = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Demo);
                     MainPivot.ItemsSource = _Data.ListCourseInfoDetail;
                     if ((DateTime.Now - _Data.Date).Minutes > 5)
                     {
@@ -63,7 +63,7 @@ namespace ClassRoomAPI.Views
                 {
                     try
                     {
-                        var _DataRemote = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
+                        var _DataRemote = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Demo);
                         MainPivot.ItemsSource = _DataRemote.ListCourseInfoDetail;
                         var notifyPopup = new NotifyPopup("数据已经刷新。");
                         notifyPopup.Show();

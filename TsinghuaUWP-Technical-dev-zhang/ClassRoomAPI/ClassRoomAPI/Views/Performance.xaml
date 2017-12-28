@@ -18,9 +18,9 @@
         <DataTemplate x:Key="PerformanceDataTemplate" x:DataType="models:PerformanceData">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition   Width="1*" />
+                    <ColumnDefinition   Width="100" />
                     <ColumnDefinition   Width="400" />
-                    <ColumnDefinition   Width="1*" />
+                    <ColumnDefinition   Width="100" />
                     <ColumnDefinition   Width="1*" />
                 </Grid.ColumnDefinitions>
 
@@ -29,6 +29,7 @@
                            FontSize="18"
                            Foreground="Black"
                            TextWrapping="Wrap"
+                           Grid.Column="0"
                            ScrollViewer.HorizontalScrollMode="Enabled"
                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
                              />
@@ -49,7 +50,6 @@
                            Foreground="Black"
                            TextWrapping="Wrap"
                            Grid.Column="2"
-                           Margin="24,0,20,0"
                              />
                 <TextBlock Text="{x:Bind PerformanceAddress}"
                            FontFamily="黑体"
