@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="ClassRoomAPI.Views.RecClassroom"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClassRoomAPI.Views"
+    xmlns:models="using:ClassRoomAPI.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    >
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+            <GridView >
+                <Button Name="BuildingOne" Content="一教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="Button_Click_1"/>
+                <Button Name="BuildingTwo" Content="二教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingTwo_Click"/>
+                <Button Name="BuildingThree" Content="三教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingThree_Click" />
+                <Button Name="BuildingFour" Content="四教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFour_Click" />
+                <Button Name="BuildingFive" Content="五教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFive_Click" />
+                <Button Name="BuildingSix"  Content="六教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingSix_Click" />
+            </GridView>
+           
+    
+    </Grid>
+
+</Page>

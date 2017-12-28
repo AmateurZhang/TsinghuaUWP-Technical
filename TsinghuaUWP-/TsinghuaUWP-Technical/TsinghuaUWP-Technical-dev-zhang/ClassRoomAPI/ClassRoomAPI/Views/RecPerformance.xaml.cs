@@ -22,45 +22,13 @@ namespace ClassRoomAPI.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class Recommend : Page
+    public sealed partial class RecPerformance : Page
     {
-        public Recommend()
+        public RecPerformance()
         {
             this.InitializeComponent();
-
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            //教室信息的推荐
-            var width = Window.Current.Bounds.Width / 3;
-            //BuildingOne.Width = width;
-            //BuildingTwo.Width = width;
-            //BuildingThree.Width = width;
-            //BuildingFour.Width = width;
-            //BuildingFive.Width = width;
-            //BuildingSix.Width = width;
-            var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
-            BuildingList.ItemsSource = GetBuildingName(_Data);
-            //演出信息的推荐页面
-            var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
-            DetailList.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
-            FixedList.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
-
-        }
-
-        private List<BuildingTypeNamesData> GetBuildingName(ClassBuildingInfo Data)
-        {
-            var AllBuildingName = new List<BuildingTypeNamesData>();
-            foreach (BuildingTypeNamesData items in Data.ListClassRoomInfo)
-            {
-                AllBuildingName.Add(new BuildingTypeNamesData
-                {
-                    PositionName = items.PositionName
-                });
-            }
-            return AllBuildingName;
-        }
 
         private List<PerformanceData> GetRecommend(List<ShowInfo> ListShowInfo)
         {
@@ -108,63 +76,40 @@ namespace ClassRoomAPI.Views
                     //}
                 }
             }
-
             // 升序，小日期在前
             NewListPerformanceInfo.Sort((x, y) => { return x.PerformanceTime.CompareTo(y.PerformanceTime); });
             return NewListPerformanceInfo;
         }
 
-
-
-       
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Button item = sender as Button;
-            string BuildingName = item.Content.ToString();
-            if (BuildingName == "一教") {
-                BuindingNames.BuildingName = 1;
-            }
-            if (BuildingName == "二教")
+            try
             {
-                BuindingNames.BuildingName = 2;
-            }
-            if (BuildingName == "三教")
-            {
-                BuindingNames.BuildingName = 3;
-            }
-            if (BuildingName == "四教")
-            {
-                BuindingNames.BuildingName = 4;
-            }
-            if (BuildingName == "五教")
-            {
-                BuindingNames.BuildingName = 5;
-            }
-            if (BuildingName == "六教")
-            {
-                BuindingNames.BuildingName = 6;
-            }
-            Frame rootFrame = Window.Current.Content as Frame;
-            Shell ShellPage = rootFrame.Content as Shell;
-            var page = ShellPage.RootFrame;
+                var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
 
-            if (page.CurrentSourcePageType == typeof(Recommend))
-                page.Navigate(typeof(ClassRoomRecommand));
-            
+                if ((_DataLocal.Date.Date - DateTime.Now.Date).Days < 0)
+                    throw new Exception("The Data are out-of-date.");
+                else
+                {
+
+                    DetailList.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
+                    FixedList.ItemsSource = GetRecommend(_DataLocal.ListShowInfo);
+                }
+            }
+            catch
+            {
+                try
+                {
+                    var _DataRemote = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Remote);
+
+                    DetailList.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
+                    FixedList.ItemsSource = GetRecommend(_DataRemote.ListShowInfo);
+                }
+                catch
+                {
+                }
+
+            }
         }
-
-        //private void BuildingList_ItemClick(object sender, ItemClickEventArgs e)
-        //{
-        //    
-        //    var k = e.ClickedItem;
-        //    
-        //}
-
-        //private void BuildingList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    ListView item = sender as ListView;
-        //    var k = 1;
-        //}
     }
 }

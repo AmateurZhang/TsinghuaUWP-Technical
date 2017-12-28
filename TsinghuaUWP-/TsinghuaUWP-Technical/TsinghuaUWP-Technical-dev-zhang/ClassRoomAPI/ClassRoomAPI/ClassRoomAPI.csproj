@@ -140,11 +140,20 @@
     <Compile Include="Views\Performance.xaml.cs">
       <DependentUpon>Performance.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RecClassroom.xaml.cs">
+      <DependentUpon>RecClassroom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Recommend.xaml.cs">
       <DependentUpon>Recommend.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RecPerformance.xaml.cs">
+      <DependentUpon>RecPerformance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UrgentDDL.xaml.cs">
+      <DependentUpon>UrgentDDL.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WebLearn.xaml.cs">
       <DependentUpon>WebLearn.xaml</DependentUpon>
@@ -250,11 +259,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RecClassroom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Recommend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RecPerformance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UrgentDDL.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
