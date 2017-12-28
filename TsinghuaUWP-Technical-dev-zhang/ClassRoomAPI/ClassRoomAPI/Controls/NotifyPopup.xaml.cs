@@ -27,7 +27,7 @@ namespace ClassRoomAPI.Controls
         private string m_TextBlockContent;
         private TimeSpan m_ShowTime;
 
-        private NotifyPopup()
+        public NotifyPopup()
         {
             this.InitializeComponent();
             m_Popup = new Popup();
