@@ -71,7 +71,7 @@ namespace ClassRoomAPI.Views
                         for (int j = 0; j < Dead_line[i].Deadlines.Count; j++)
                         {
                             //if ((Dead_line[i].Deadlines[j].hasBeenFinished == false)
-                            if (
+                            if ((Dead_line[i].Deadlines[j].hasBeenFinished == true)&&
                                (Dead_line[i].Deadlines[j].isPast() == false)
                                 && (Dead_line[i].Deadlines[j].shouldBeIgnored() == false)
                                 )

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.ViewModels;
+using Windows.UI.Xaml.Media.Imaging;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -34,9 +35,14 @@ namespace ClassRoomAPI.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ClassFrame1.Navigate(typeof(UrgentDDL));
-            ClassFrame2.Navigate(typeof(RecClassroom));
-            ClassFrame3.Navigate(typeof(RecPerformance));
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingTwo.png", UriKind.Absolute));
+            RecommendPage.Background = imageBrush;
+            UrgentDDLFrame.Navigate(typeof(UrgentDDL));
+            CoursesFrame.Navigate(typeof(CourseNext));
+            ClassRoomFrame.Navigate(typeof(RecClassroom));
+            PerformanceFrame.Navigate(typeof(RecPerformance));
+            
         }
 
 

@@ -1,4 +1,5 @@
-﻿using ClassRoomAPI.Models;
+﻿using ClassRoomAPI.Helpers;
+using ClassRoomAPI.Models;
 using ClassRoomAPI.Services;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace ClassRoomAPI.ViewModels
     public class WebLearnTimeTableViewModel
     {
         private static DateTime TimeTimeTableLastLogin = DateTime.MinValue;
-        private static int TIMETABLE_LOGIN_TIMEOUT_MINUTES = 1;
+        private static double TIMETABLE_LOGIN_TIMEOUT_MINUTES = 1;
+        //private static string UserName = LocalSettingHelper.GetLocalSettings()["username"].ToString();
 
         public static async Task<WebLearnTimeTable> GetTimeTableViewModel(ParseDataMode Mode = ParseDataMode.Remote)
         {
@@ -32,7 +34,8 @@ namespace ClassRoomAPI.ViewModels
             }
             else if (Mode == ParseDataMode.Remote)
             {
-                if ((DateTime.Now - TimeTimeTableLastLogin).TotalMinutes < TIMETABLE_LOGIN_TIMEOUT_MINUTES)
+                if ((DateTime.Now - TimeTimeTableLastLogin).TotalMinutes < TIMETABLE_LOGIN_TIMEOUT_MINUTES && 
+                    LocalSettingHelper.GetLocalSettings()["username"].ToString()== LocalSettingHelper.GetLocalSettings()["usernameoldttb"].ToString())
                 {
                     return await WebLearnTimeTableAPI.GetTimeTableMode(ParseDataMode.Local);
                 }
@@ -42,6 +45,7 @@ namespace ClassRoomAPI.ViewModels
                     Debug.WriteLine("[GetTimeTableViewModel] return remote data.");
                     var _ReturnData = await WebLearnTimeTableAPI.GetTimeTableMode(ParseDataMode.Remote);
                     TimeTimeTableLastLogin = DateTime.Now;
+                    LocalSettingHelper.SetLocalSettings<string>("usernameoldttb", LocalSettingHelper.GetLocalSettings()["username"].ToString());
                     return _ReturnData;
                 }
                 catch

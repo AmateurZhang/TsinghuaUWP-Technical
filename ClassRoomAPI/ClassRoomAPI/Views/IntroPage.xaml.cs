@@ -20,9 +20,9 @@ namespace ClassRoomAPI.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class BlankPage : Page
+    public sealed partial class IntroPage : Page
     {
-        public BlankPage()
+        public IntroPage()
         {
             this.InitializeComponent();
         }

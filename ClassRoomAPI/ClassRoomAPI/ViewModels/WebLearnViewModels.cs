@@ -1,4 +1,5 @@
-﻿using ClassRoomAPI.Models;
+﻿using ClassRoomAPI.Helpers;
+using ClassRoomAPI.Models;
 using ClassRoomAPI.Services;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,9 @@ namespace ClassRoomAPI.ViewModels
             }
             else if (Mode == ParseDataMode.Remote)
             {
-                if ((DateTime.Now - TimeAllWebLearnInfoLogin).TotalMinutes < ALL_WEBLEARN_LOGIN_TIMEOUT_MINUTES)
+                if ((DateTime.Now - TimeAllWebLearnInfoLogin).TotalMinutes < ALL_WEBLEARN_LOGIN_TIMEOUT_MINUTES &&
+                     LocalSettingHelper.GetLocalSettings()["username"].ToString() == LocalSettingHelper.GetLocalSettings()["usernameoldwl"].ToString()
+                        )
                 {
                     return await WebLearnAPIService.GetAllWebLearnInfoMode(ParseDataMode.Local);
                 }
@@ -50,6 +53,7 @@ namespace ClassRoomAPI.ViewModels
                     Debug.WriteLine("[GetAllWebLearnViewModel] return remote data.");
                     var _ReturnData = await WebLearnAPIService.GetAllWebLearnInfoMode(ParseDataMode.Remote);
                     TimeAllWebLearnInfoLogin = DateTime.Now;
+                    LocalSettingHelper.SetLocalSettings<string>("usernameoldwl", LocalSettingHelper.GetLocalSettings()["username"].ToString());
                     return _ReturnData;
                 }
                 catch
