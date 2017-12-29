@@ -65,5 +65,38 @@ namespace ClassRoomAPI.Views
             }
 
         }
+
+        private void MainPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var Index = MainPivot.SelectedIndex + 1;
+            string BuildingName;
+            switch (Index)
+            {
+                case 1:
+                    BuildingName = "BuildingOne.png";
+                    break;
+                case 2:
+                    BuildingName = "BuildingTwo.png";
+                    break;
+                case 3:
+                    BuildingName = "BuildingThree.png";
+                    break;
+                case 4:
+                    BuildingName = "BuildingFour.png";
+                    break;
+                case 5:
+                    BuildingName = "BuildingFive.png";
+                    break;
+                case 6:
+                    BuildingName = "BuildingSix.png";
+                    break;
+                default:
+                    BuildingName = "BuildingOne.png";
+                    break;
+            }
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/" + BuildingName, UriKind.Absolute));
+            ClassRoom_Page.Background = imageBrush;
+        }
     }
 }
