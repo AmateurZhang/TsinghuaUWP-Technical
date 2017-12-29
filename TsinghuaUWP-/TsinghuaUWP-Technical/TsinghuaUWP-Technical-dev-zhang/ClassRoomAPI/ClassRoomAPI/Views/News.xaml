@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="ClassRoomAPI.Views.News"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClassRoomAPI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Text="Loading...."></TextBlock>
+        <WebView Name="NewsRoot" Source="http://news.tsinghua.edu.cn/publish/thunews/index.html" Canvas.ZIndex="100" NewWindowRequested="NewsRoot_NewWindowRequested"></WebView>
+        <Button 
+                    Name="BackButton" 
+                     FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    Content ="&#xE0C4;"
+                    Click="BackButton_Click" 
+                    VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                   Opacity="0.6"
+                    Foreground="white"
+                        Background="Purple" Canvas.ZIndex="120"
+                      />
+    </Grid>
+</Page>

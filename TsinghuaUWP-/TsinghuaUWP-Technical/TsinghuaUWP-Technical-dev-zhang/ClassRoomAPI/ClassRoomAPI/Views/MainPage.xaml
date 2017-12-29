@@ -1,0 +1,147 @@
+﻿<Page
+    x:Class="ClassRoomAPI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:ClassRoomAPI.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    >
+
+    <Page.Resources>
+        <DataTemplate x:Key="DataTemplate" x:DataType="models:ClassRoomStatueData">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition   Width="120" />
+                    <ColumnDefinition   Width="*" />
+                    <ColumnDefinition   Width="2*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Bind ClassRoomName}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                             />
+                <TextBlock Text="{x:Bind BuildingName}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Grid.Column="1"
+                           Margin="24,0,20,0"
+                             />
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                    <TextBlock Text="{x:Bind ListClassStatus[0]}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Margin="2,0,0,0"
+                             />
+                    <TextBlock Text="{x:Bind ListClassStatus[1]}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Margin="2,0,0,0"
+                             />
+                    <TextBlock Text="{x:Bind ListClassStatus[2]}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Margin="2,0,0,0"
+                             />
+                    <TextBlock Text="{x:Bind ListClassStatus[3]}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Margin="2,0,0,0"
+                             />
+                    <TextBlock Text="{x:Bind ListClassStatus[4]}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Margin="2,0,0,0"
+                             />
+                    <TextBlock Text="{x:Bind ListClassStatus[5]}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Margin="2,0,0,0"
+                             />
+                </StackPanel>
+                
+                
+            </Grid>
+        </DataTemplate >
+
+        <DataTemplate x:Key="HallDataTemplate" x:DataType="models:BuildingTypeNamesData">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition   Width="*" />
+                    <ColumnDefinition   Width="*" />
+                </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{x:Bind DetailUri}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                               ScrollViewer.HorizontalScrollMode="Enabled"
+                               ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                             />
+
+                
+                <TextBlock Text="{x:Bind PositionName}"  
+                           FontSize="18"
+                           Foreground="Black"
+                             TextWrapping="Wrap"
+                           Grid.Column="1"
+                           Margin="24,0,20,0"
+                             />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Pivot Title="Information Hub">
+            <PivotItem Header="Classroom Information">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <Button Name="HHH" Content="Click To Get Building Names" Height="50" Width="300" Click="HHH_Click" FontSize="18" Grid.Row="0" ></Button>
+                    </StackPanel>
+
+
+                    <ListView Name="NavMenuPrimaryListView" 
+                      Grid.Row="1"                    
+                      ItemTemplate="{StaticResource DataTemplate}" 
+                      >
+
+                    </ListView>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Hall Information">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <Button Name="GetHallList" Content="Click To Get Hall Lists" Height="50" Width="300" Click="GetHallList_Click" FontSize="18" Grid.Row="0" ></Button>
+                    </StackPanel>
+
+
+                    <ListView Name="HallListView" 
+                      Grid.Row="1"                    
+                      ItemTemplate="{StaticResource HallDataTemplate}" 
+                      >
+
+                    </ListView>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+        
+        
+    </Grid>
+</Page>

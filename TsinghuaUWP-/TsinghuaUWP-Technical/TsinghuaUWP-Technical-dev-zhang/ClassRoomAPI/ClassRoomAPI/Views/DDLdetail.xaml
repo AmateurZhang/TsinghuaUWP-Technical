@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="ClassRoomAPI.Views.DDLdetail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClassRoomAPI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+   
+    >
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="10">
+        
+
+        <Grid.RowDefinitions>
+            <RowDefinition   Height="Auto" />
+            <RowDefinition   Height="Auto" />
+            <RowDefinition   Height="Auto" />
+            <RowDefinition   Height="Auto" />
+            <RowDefinition   Height="Auto" />
+            <RowDefinition   Height="Auto" />
+            <RowDefinition   Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Name="NameTB"
+                            Style="{ThemeResource SubtitleTextBlockStyle}"  
+                    Grid.Row="0"
+                    />
+        <TextBlock Name="DDLTB"
+                            Style="{ThemeResource BodyTextBlockStyle}" 
+                    Grid.Row="1"
+                            />
+        <TextBlock Name="HasbeenFinishedTB"
+                            Style="{ThemeResource BaseTextBlockStyle}" 
+                    Grid.Row="2"
+                            />
+        <TextBlock Name="CourseTB"
+                            Style="{ThemeResource BodyTextBlockStyle}" 
+                            Opacity=".6" 
+                    Grid.Row="3"
+                        />
+
+        <Rectangle Fill="Gray" Height="5" Grid.Row="4"/>
+        
+        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}"  Grid.Row="5">
+            作业内容
+        </TextBlock >
+        <WebView Name="HWview" Grid.Row="6"></WebView>
+    </Grid>
+            
+
+ 
+</Page>

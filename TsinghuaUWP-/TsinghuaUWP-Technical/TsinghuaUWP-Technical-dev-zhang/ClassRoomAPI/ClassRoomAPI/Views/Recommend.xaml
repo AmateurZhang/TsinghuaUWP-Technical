@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="ClassRoomAPI.Views.Recommend"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClassRoomAPI.Views"
+    xmlns:models="using:ClassRoomAPI.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    >
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" >
+                <StackPanel Margin="5">
+                    <TextBlock 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24"
+                          >
+                    &#xE8C0;    DDL导航
+                    </TextBlock>
+                    <Rectangle Height="5" />
+                    <Rectangle Fill="Gray" Height="5" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <Frame Name="UrgentDDLFrame"></Frame>
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24"
+                          >
+                    &#xE8C0;    课表
+                    </TextBlock>
+                    <Rectangle Height="5" />
+                    <Rectangle Fill="Gray" Height="5" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <Frame Name="CoursesFrame"></Frame>
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24"
+                          >
+                    &#xE8C0;    推荐教室
+                    </TextBlock>
+                    <Rectangle Height="5" />
+                    <Rectangle Fill="Gray" Height="5" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <Frame Name="ClassRoomFrame"></Frame>
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24"
+                          >
+                    &#xE8C0;    推荐演出
+                    </TextBlock>
+                    <Rectangle Height="5" />
+                    <Rectangle Fill="Gray" Height="5" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <Frame Name="PerformanceFrame"></Frame>
+                </StackPanel>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+    </Grid>
+
+
+</Page>
