@@ -140,6 +140,20 @@ namespace ClassRoomAPI.Models
             }
            
         }
+        public string HasbeenFnishedChinese
+        {
+            get
+            {
+                if(hasBeenFinished)
+                {
+                    return "已完成";
+                }
+                else
+                {
+                    return "未完成";
+                }
+            }
+        }
 
     }
 

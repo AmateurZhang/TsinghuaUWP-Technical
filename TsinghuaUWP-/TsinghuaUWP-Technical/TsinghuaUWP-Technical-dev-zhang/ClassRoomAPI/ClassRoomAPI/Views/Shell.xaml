@@ -102,7 +102,7 @@
 
                 <VisualState x:Name="WideLayout">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="700"/>
+                        <AdaptiveTrigger MinWindowWidth="650"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                        

@@ -30,23 +30,27 @@ namespace ClassRoomAPI.Views
             this.InitializeComponent();
         }
         private List<Deadline> DDL;
+        private List<Deadline> Ur_DDL= new List<Deadline>();
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var _Data = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Local);
 
+            
             if (_Data != null)
             {
-                var Ur_DDL = new List<Deadline>();
+               
                 //var Dead_line = new List<>;
                 var Dead_line = _Data.ListCourseInfoDetail;
+                //没写完的作业
                 for (int i = 0; i < Dead_line.Count; i++)
                 {
                     if (Dead_line[i].Deadlines.Count != 0)
                     {
                         for (int j = 0; j < Dead_line[i].Deadlines.Count; j++)
                         {
-                            if ((Dead_line[i].Deadlines[j].hasBeenFinished == false)
-                                && (Dead_line[i].Deadlines[j].isPast() == false)
+                            //if ((Dead_line[i].Deadlines[j].hasBeenFinished == false)
+                            if((Dead_line[i].Deadlines[j].hasBeenFinished == false)&&
+                               (Dead_line[i].Deadlines[j].isPast() == false)
                                 && (Dead_line[i].Deadlines[j].shouldBeIgnored() == false)
                                 )
                             {
@@ -57,12 +61,47 @@ namespace ClassRoomAPI.Views
                     }
                 }
                 Ur_DDL.Sort(new Icp_DDL());
+
+                //写完的作业
+                var Ur_DDL_Finished = new List<Deadline>();
+                for (int i = 0; i < Dead_line.Count; i++)
+                {
+                    if (Dead_line[i].Deadlines.Count != 0)
+                    {
+                        for (int j = 0; j < Dead_line[i].Deadlines.Count; j++)
+                        {
+                            //if ((Dead_line[i].Deadlines[j].hasBeenFinished == false)
+                            if (
+                               (Dead_line[i].Deadlines[j].isPast() == false)
+                                && (Dead_line[i].Deadlines[j].shouldBeIgnored() == false)
+                                )
+                            {
+                                var temp = Dead_line[i].Deadlines[j];
+                                Ur_DDL_Finished.Add(temp);
+                            }
+                        }
+                    }
+                }
+
+                Ur_DDL_Finished.Sort(new Icp_DDL());
+
+                Ur_DDL.AddRange(Ur_DDL_Finished);
                 ListViewDDLData.ItemsSource = Ur_DDL;
             }
             else {
                 var notifyPopup = new NotifyPopup("请先登录！");
                 notifyPopup.Show();
             }
+        }
+
+        private void ListViewDDLData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int Selectedindex = ListViewDDLData.SelectedIndex;
+            var Selecteditem = Ur_DDL[Selectedindex];
+            Frame rootFrame = Window.Current.Content as Frame;
+            Shell ShellPage = rootFrame.Content as Shell;
+            var page = ShellPage.RootFrame;
+            page.Navigate(typeof(DDLdetail),Selecteditem);
         }
     }
     public class Icp_DDL : IComparer<Deadline>

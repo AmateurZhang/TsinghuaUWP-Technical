@@ -12,14 +12,14 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         
-            <GridView >
-                <Button Name="BuildingOne" Content="一教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="Button_Click_1"/>
-                <Button Name="BuildingTwo" Content="二教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingTwo_Click"/>
-                <Button Name="BuildingThree" Content="三教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingThree_Click" />
-                <Button Name="BuildingFour" Content="四教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFour_Click" />
-                <Button Name="BuildingFive" Content="五教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingFive_Click" />
-                <Button Name="BuildingSix"  Content="六教" Width="245" Height="80" FontSize="34" Background="Purple" Foreground="White" Click="BuildingSix_Click" />
-            </GridView>
+        <GridView Margin="5">
+            <Button Name="BuildingOne" Content="一教" Width="210" Height="80" Background="Purple" Foreground="White" FontSize="34" Click="Button_Click_1"/>
+            <Button Name="BuildingTwo" Content="二教" Width="210" Height="80" Background="Purple" Foreground="White"  FontSize="34" Click="BuildingTwo_Click"/>
+            <Button Name="BuildingThree" Content="三教" Width="210" Height="80" Background="Purple" Foreground="White" FontSize="34"  Click="BuildingThree_Click" />
+            <Button Name="BuildingFour" Content="四教" Width="210" Height="80" Background="Purple" Foreground="White" FontSize="34"  Click="BuildingFour_Click" />
+            <Button Name="BuildingFive" Content="五教" Width="210" Height="80" Background="Purple" Foreground="White" FontSize="34" Click="BuildingFive_Click" />
+            <Button Name="BuildingSix"  Content="六教" Width="210" Height="80" Background="Purple" Foreground="White" FontSize="34"  Click="BuildingSix_Click" />
+        </GridView>
            
     
     </Grid>

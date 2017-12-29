@@ -78,5 +78,10 @@ namespace ClassRoomAPI.Views
             }
             
         }
+
+        private void ListViewClassRoomData_SelectionChanged(object sender, SelectionChangedEventArgs ListViewClassRoomData)
+        {
+           
+        }
     }
 }

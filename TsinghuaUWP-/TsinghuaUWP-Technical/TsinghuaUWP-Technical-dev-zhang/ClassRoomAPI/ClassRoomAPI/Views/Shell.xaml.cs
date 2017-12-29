@@ -75,26 +75,6 @@ namespace ClassRoomAPI
                     DestPage = typeof(WebLearnTimeTable)
                 },
 
-                new NavMenuItem()
-                {
-                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
-                    Icon = "\xE7F4",
-                    Label = "IPTV",
-                    Selected = Visibility.Visible,
-                    //DestPage = typeof(WebLearnTimeTable)
-                },
-
-                new NavMenuItem()
-                {
-                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
-                    Icon = "\xE715",
-                    Label = "邮件",
-                    Selected = Visibility.Visible,
-                    //DestPage = typeof(WebLearnTimeTable)
-                },
-
-                
-
             });
 
         private static List<NavMenuItem> navMenuSecondaryItem = new List<NavMenuItem>(

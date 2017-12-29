@@ -131,6 +131,12 @@
     <Compile Include="Views\ClassRoomRecommand.xaml.cs">
       <DependentUpon>ClassRoomRecommand.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CourseNext.xaml.cs">
+      <DependentUpon>CourseNext.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DDLdetail.xaml.cs">
+      <DependentUpon>DDLdetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -174,10 +180,7 @@
     <Content Include="Assets\BadgeLogo.scale-150.png" />
     <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\BadgeLogo.scale-400.png" />
-    <Content Include="Assets\BuildingFour.png" />
-    <Content Include="Assets\BuildingSix.png" />
-    <Content Include="Assets\BuildingTwo.png" />
-    <Content Include="Assets\BuildingThree.png" />
+    <Content Include="Assets\ClassRoomBuilding.png" />
     <Content Include="Assets\Hall.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
@@ -247,6 +250,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ClassRoomRecommand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CourseNext.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DDLdetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
