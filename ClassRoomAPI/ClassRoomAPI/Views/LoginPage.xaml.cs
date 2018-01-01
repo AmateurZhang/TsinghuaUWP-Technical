@@ -77,7 +77,16 @@ namespace ClassRoomAPI.Views
             }
             ProgressStaue.Visibility = Visibility.Visible;
             ProgressStaue.IsIndeterminate = true;
-          
+
+            try
+            {
+                await Windows.Storage.ApplicationData.Current.ClearAsync(ApplicationDataLocality.LocalCache);
+            }
+            catch
+            {
+
+            }
+
             try
             {
                 await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
@@ -126,6 +135,8 @@ namespace ClassRoomAPI.Views
                 UserInfo.Visibility = Visibility.Visible;
                 UserInfoTB.Text = GetUserNumber();
             }
+            ProgressStaue.Visibility = Visibility.Visible;
+            ProgressStaue.IsIndeterminate = true;
             try
             {
                 await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
@@ -153,6 +164,8 @@ namespace ClassRoomAPI.Views
                 }
 
             }
+            ProgressStaue.IsIndeterminate = false;
+            ProgressStaue.Visibility = Visibility.Collapsed;
         }
 
         private string GetUserNumber()
@@ -161,35 +174,14 @@ namespace ClassRoomAPI.Views
             return localSettings.Values["username"].ToString();
         }
 
-        private async void ChangeIDBT_Click(object sender, RoutedEventArgs e)
+        private void ChangeIDBT_Click(object sender, RoutedEventArgs e)
         {
             StorageFolder localCacheFolder = ApplicationData.Current.LocalCacheFolder;
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            try
-            {
-                localSettings.Values["username"] = null;
-            }
-            catch
-            {
-
-            }
-            
-            try
-            {
-              //Cache 处理
-               
-            
-            }
-            catch
-            {
-
-            }
-        
 
             LoginStackPanel.Visibility = Visibility.Visible;
             UserInfo.Visibility = Visibility.Collapsed;
-            
-
+           
         }
     }
 }
