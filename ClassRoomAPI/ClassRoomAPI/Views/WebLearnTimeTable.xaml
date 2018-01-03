@@ -34,7 +34,7 @@
            
         </DataTemplate >
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="WebLearnTimeTablePage">
         <ListView Name="MainListView" ItemTemplate="{StaticResource DataTemplate}">
             
         </ListView>

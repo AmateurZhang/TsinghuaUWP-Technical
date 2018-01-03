@@ -29,7 +29,7 @@ namespace ClassRoomAPI.Views
         {
             this.InitializeComponent();
         }
-        private List<Deadline> DDL;
+        
         private List<Deadline> Ur_DDL= new List<Deadline>();
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -70,8 +70,7 @@ namespace ClassRoomAPI.Views
                     {
                         for (int j = 0; j < Dead_line[i].Deadlines.Count; j++)
                         {
-                            //if ((Dead_line[i].Deadlines[j].hasBeenFinished == false)
-                            if (
+                            if ((Dead_line[i].Deadlines[j].hasBeenFinished == true)&&
                                (Dead_line[i].Deadlines[j].isPast() == false)
                                 && (Dead_line[i].Deadlines[j].shouldBeIgnored() == false)
                                 )

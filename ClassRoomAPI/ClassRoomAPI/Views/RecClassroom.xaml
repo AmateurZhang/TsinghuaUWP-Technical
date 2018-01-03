@@ -10,7 +10,7 @@
     Loaded="Page_Loaded"
     >
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid >
         
         <GridView Margin="5">
             <Button Name="BuildingOne" Content="一教" Width="210" Height="80" Background="Purple" Foreground="White" FontSize="34" Click="Button_Click_1"/>

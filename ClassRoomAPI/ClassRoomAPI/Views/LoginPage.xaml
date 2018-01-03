@@ -9,10 +9,10 @@
     Loaded="Page_Loaded"
     >
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Name="Login_Page">
+              
         <StackPanel Name="LoginStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock FontSize="36" >Login Here!</TextBlock>
+            <TextBlock FontSize="36" >请登录</TextBlock>
             <TextBox Text="User Name (number)" Name="TextBoxUsername"></TextBox>
             <PasswordBox Password="" Name="PWBoxPassword"></PasswordBox>
             <Button Content="Click Here!" HorizontalAlignment="Center" Click="Button_Click"></Button>
@@ -21,6 +21,7 @@
 
         <StackPanel Name="UserInfo" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Name="UserInfoTB" FontSize="36" Text="{Binding GetUserNumber}"></TextBlock>
+            <ProgressBar Width="200" Name="ProgressStaue" Visibility="Collapsed"></ProgressBar>
             <Button Content="Change ID..." Name="ChangeIDBT" Click="ChangeIDBT_Click"></Button>
         </StackPanel>
     </Grid>

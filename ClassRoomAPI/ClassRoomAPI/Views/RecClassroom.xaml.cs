@@ -31,13 +31,6 @@ namespace ClassRoomAPI.Views
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //var width = Window.Current.Bounds.Width / 3;
-            //BuildingOne.Width = width;
-            //BuildingTwo.Width = width;
-            //BuildingThree.Width = width;
-           // BuildingFour.Width = width;
-            //BuildingFive.Width = width;
-            //BuildingSix.Width = width;
             var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
 
         }

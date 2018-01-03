@@ -44,52 +44,30 @@ namespace ClassRoomAPI.Views
                 int[] classlist = new int[6];
                 //判断当前是哪节课
                 var now = WhichClass(time.Hour, time.Minute);
-                var cl = 0;
-                var Schedule = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
-                //看一下今天是否有课，如果有课，就在课表a中的对应位置标记1
-                if (Schedule != null)
-                {
-                    foreach (Windows.ApplicationModel.Appointments.Appointment Items in Schedule.ListAppointment)
-                    {
-                        if ((Items.StartTime.Year == time.Year) && (Items.StartTime.Month == time.Month) && (Items.StartTime.Day == time.Day))
-                        {
-                            cl = WhichClass(Items.StartTime.Hour, Items.StartTime.Minute);
-                            if (cl == now) classlist[cl - 1] = 1;
-
-                        }
-                    }
-                }
-                else
-                {
-                    var notifyPopup = new NotifyPopup("未登录，显示全部课表");
-                    notifyPopup.Show();
-                }
-
                 ClassRooms = _Data.ListClassRoomStatue[BuindingNames.BuildingName - 1].ListBuildingInfoData;
                 var Re_ClassRooms = new List<ClassRoomStatueData>();
                 for (int k = 0; k < ClassRooms.Count; k++)
                 {
                     var items = ClassRooms[k];
-                    //看一下每间教室在课表有课的时候是否空闲，如果空闲，就将它加入推荐教室里面
-
-                    for (int j = 0; j < 6; j++)
+                    if (now < 10)
                     {
-                        //没课
-                        if (classlist[j] == 0)
+                        if (!items.ListBoolClassStatus[now-1]) Re_ClassRooms.Add(new ClassRoomStatueData
                         {
-                            if (!items.ListBoolClassStatus[j]) Re_ClassRooms.Add(new ClassRoomStatueData
-                            {
-                                ListClassStatus = items.ListClassStatus,
-                                ClassRoomName = items.ClassRoomName,
-                                ListBoolClassStatus = items.ListBoolClassStatus
-                            }
-
-                        );
-                            break;
+                            ListClassStatus = items.ListClassStatus,
+                            ClassRoomName = items.ClassRoomName,
+                            ListBoolClassStatus = items.ListBoolClassStatus
                         }
-
+                            );
                     }
-
+                    else {
+                        Re_ClassRooms.Add(new ClassRoomStatueData
+                        {
+                            ListClassStatus = items.ListClassStatus,
+                            ClassRoomName = items.ClassRoomName,
+                            ListBoolClassStatus = items.ListBoolClassStatus
+                        }
+                            );
+                    }
                 }
                 ListViewClassRoomData.ItemsSource = Re_ClassRooms;
             }
@@ -98,7 +76,7 @@ namespace ClassRoomAPI.Views
                 notifyPopup.Show();
             }
         }
-
+        //判断是哪节课
         private int WhichClass(int hour, int minite)
         {
 

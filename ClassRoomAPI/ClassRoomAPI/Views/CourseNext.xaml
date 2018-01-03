@@ -33,7 +33,7 @@
 
         </DataTemplate >
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid >
         <ListView Name="MainListView" ItemTemplate="{StaticResource DataTemplate}">
 
         </ListView>

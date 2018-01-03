@@ -77,9 +77,19 @@ namespace ClassRoomAPI
 
             });
 
+
         private static List<NavMenuItem> navMenuSecondaryItem = new List<NavMenuItem>(
             new[]
             {
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE11D",
+                    Label = "关于我们",
+                    Selected = Visibility.Collapsed,
+                    DestPage = typeof(IntroPage)
+                },
+
                 new NavMenuItem()
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
@@ -88,6 +98,8 @@ namespace ClassRoomAPI
                     Selected = Visibility.Collapsed,
                     DestPage = typeof(LoginPage)
                 }
+
+
             });
 
         public Shell()
