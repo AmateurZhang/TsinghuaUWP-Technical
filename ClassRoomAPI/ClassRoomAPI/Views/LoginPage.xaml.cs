@@ -46,9 +46,21 @@ namespace ClassRoomAPI.Views
             int flag = 0;
 
             try
-            {   
-               flag=await WebLearnViewModels.LoginInToWebLearnUsingPassword(_Username, _Password);
-
+            {
+                try
+                {
+                    flag = await WebLearnViewModels.LoginInToWebLearnUsingPassword(_Username, _Password);
+                }
+               catch(Exception error)
+                {
+                    if (error.GetType() == typeof(MessageException))
+                        throw error;
+                    else
+                    {
+                        var notifyPopup = new NotifyPopup("网络故障！");
+                        notifyPopup.Show();
+                    }
+                }
                
             }
             catch(MessageException err)

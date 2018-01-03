@@ -29,7 +29,7 @@ namespace ClassRoomAPI.Views
         public Recommend()
         {
             this.InitializeComponent();
-
+            NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
 
@@ -62,32 +62,41 @@ namespace ClassRoomAPI.Views
             try
             {
                 await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("作业数据已经刷新！");
+                notifyPopup.Show();
             }
             catch
             {
-
+                var notifyPopup = new NotifyPopup("作业数据刷新失败！");
+                notifyPopup.Show();
             }
             try
             {
                 await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("课程数据已经刷新！");
+                notifyPopup.Show();
             }
             catch
             {
-
+                var notifyPopup = new NotifyPopup("课程数据刷新失败！");
+                notifyPopup.Show();
             }
             try
             {
                 await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("演出数据已经刷新！");
+                notifyPopup.Show();
             }
             catch
             {
-
+                var notifyPopup = new NotifyPopup("演出数据刷新失败！");
+                notifyPopup.Show();
             }
             try
             {
 
                 await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
-                var notifyPopup = new NotifyPopup("数据已经刷新！");
+                var notifyPopup = new NotifyPopup("课程数据已经刷新！");
                 notifyPopup.Show();
             }
             catch
@@ -96,12 +105,13 @@ namespace ClassRoomAPI.Views
                 try
                 {
                     await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
-                    var notifyPopup = new NotifyPopup("数据已经刷新！");
+                    var notifyPopup = new NotifyPopup("课程数据已经刷新！");
                     notifyPopup.Show();
                 }
                 catch
                 {
-
+                    var notifyPopup = new NotifyPopup("课程数据刷新失败！");
+                    notifyPopup.Show();
                 }
 
             }
