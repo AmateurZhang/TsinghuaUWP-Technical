@@ -11,9 +11,15 @@
     >
 
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="RecommendPage"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
         <ScrollViewer>
             <StackPanel Orientation="Vertical" >
+                <ProgressBar Name="ProgressStaue" Visibility="Collapsed"></ProgressBar>
                 <StackPanel Margin="5">
                     <TextBlock 
                            FontFamily="Segoe MDL2 Assets"
@@ -27,8 +33,25 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
-                    <Frame Name="ClassFrame1"></Frame>
+                    <Frame Name="UrgentDDLFrame"></Frame>
                 </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock 
+                           FontFamily="Segoe MDL2 Assets"
+                           Style="{StaticResource InkToolbarFlyoutItemContentTextStyle}" 
+                           FontSize="24"
+                          >
+                    &#xE8C0;    课表
+                    </TextBlock>
+                    <Rectangle Height="5" />
+                    <Rectangle Fill="Gray" Height="5" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <Frame Name="CoursesFrame"></Frame>
+                </StackPanel>
+
                 <StackPanel Margin="5">
                     <TextBlock 
                            FontFamily="Segoe MDL2 Assets"
@@ -42,7 +65,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
-                    <Frame Name="ClassFrame2"></Frame>
+                    <Frame Name="ClassRoomFrame"></Frame>
                 </StackPanel>
 
                 <StackPanel Margin="5">
@@ -58,13 +81,15 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
-                    <Frame Name="ClassFrame3"></Frame>
+                    <Frame Name="PerformanceFrame"></Frame>
                 </StackPanel>
-                
-            </StackPanel>
 
-        </ScrollViewer>
+            </StackPanel>
         
+        </ScrollViewer>
+        <AppBar Grid.Row="2" Name="AppBarBottom">
+            <AppBarButton Click="AppBarButton_Click" Label="刷新" Icon="Refresh" ></AppBarButton>
+        </AppBar>
     </Grid>
 
 

@@ -42,9 +42,6 @@ namespace ClassRoomAPI.Views
                 }
                 foreach (PerformanceData TempPerformanceData in TempShowInfo.ListPerformanceInfo)
                 {
-
-                    //if (TempPerformanceData.PerformanceState == "售票中")
-                    //{
                     var NewPerformaneData = new PerformanceData();
                     // 为了测试效果，先把所有内容都收集起来
                     var PerformanceName = TempPerformanceData.PerformanceName; // 考虑提取《》或""或“”之间的内容

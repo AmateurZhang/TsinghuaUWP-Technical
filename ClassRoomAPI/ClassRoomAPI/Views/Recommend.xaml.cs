@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.ViewModels;
+using Windows.UI.Xaml.Media.Imaging;
+using ClassRoomAPI.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -34,11 +36,84 @@ namespace ClassRoomAPI.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ClassFrame1.Navigate(typeof(UrgentDDL));
-            ClassFrame2.Navigate(typeof(RecClassroom));
-            ClassFrame3.Navigate(typeof(RecPerformance));
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingTwo.png", UriKind.Absolute));
+            RecommendPage.Background = imageBrush;
+
+            UrgentDDLFrame.Navigate(typeof(UrgentDDL));
+            CoursesFrame.Navigate(typeof(CourseNext));
+
+
+            ClassRoomFrame.Navigate(typeof(RecClassroom));
+            PerformanceFrame.Navigate(typeof(RecPerformance));
+
+            
+
+
+
+            
         }
 
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppBarBottom.IsOpen = false;
+            ProgressStaue.Visibility = Visibility.Visible;
+            ProgressStaue.IsIndeterminate = true;
+            try
+            {
+                await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
+            }
+            catch
+            {
 
+            }
+            try
+            {
+                await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Remote);
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Remote);
+            }
+            catch
+            {
+
+            }
+            try
+            {
+
+                await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("数据已经刷新！");
+                notifyPopup.Show();
+            }
+            catch
+            {
+                await ClassLibrary.WaitTask(3);
+                try
+                {
+                    await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                    var notifyPopup = new NotifyPopup("数据已经刷新！");
+                    notifyPopup.Show();
+                }
+                catch
+                {
+
+                }
+
+            }
+
+            ProgressStaue.IsIndeterminate = false;
+            ProgressStaue.Visibility = Visibility.Collapsed;
+
+            ClassRoomFrame.Navigate(typeof(RecClassroom));
+            PerformanceFrame.Navigate(typeof(RecPerformance));
+
+            UrgentDDLFrame.Navigate(typeof(UrgentDDL));
+            CoursesFrame.Navigate(typeof(CourseNext));
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace ClassRoomAPI.ViewModels
         private static DateTime TimeBuildingTypeNamesLastLogin = DateTime.MinValue;
         private static int BUILDING_NAMES_LOGIN_TIMEOUT_MINUTES = 1;
         private static DateTime TimeAllBuildingInfoLogin = DateTime.MinValue;
-        private static int ALL_BUILDING_INFO_LOGIN_TIMEOUT_MINUTES = 1;
+        
 
         public static async Task<ShowInfoData> GetHallInfoViewModel(ParseDataMode Mode = ParseDataMode.Remote)
         {

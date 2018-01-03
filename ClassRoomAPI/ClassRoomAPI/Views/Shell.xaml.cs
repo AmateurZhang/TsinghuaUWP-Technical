@@ -44,7 +44,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE825",
-                    Label = "演出信息",
+                    Label = "演出",
                     Selected = Visibility.Visible,
                     DestPage = typeof(Performance)
                 },
@@ -52,7 +52,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xEC06",
-                    Label = "教室信息",
+                    Label = "教室",
                     Selected = Visibility.Visible,
                     DestPage = typeof(ClassRoomInfo)
                 },
@@ -61,7 +61,7 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE772",
-                    Label = "作业信息",
+                    Label = "作业",
                     Selected = Visibility.Visible,
                     DestPage = typeof(WebLearn)
                 },
@@ -70,16 +70,26 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE771",
-                    Label = "课程信息",
+                    Label = "课程",
                     Selected = Visibility.Visible,
                     DestPage = typeof(WebLearnTimeTable)
                 },
 
             });
 
+
         private static List<NavMenuItem> navMenuSecondaryItem = new List<NavMenuItem>(
             new[]
             {
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE11D",
+                    Label = "关于我们",
+                    Selected = Visibility.Collapsed,
+                    DestPage = typeof(IntroPage)
+                },
+
                 new NavMenuItem()
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
@@ -88,6 +98,8 @@ namespace ClassRoomAPI
                     Selected = Visibility.Collapsed,
                     DestPage = typeof(LoginPage)
                 }
+
+
             });
 
         public Shell()

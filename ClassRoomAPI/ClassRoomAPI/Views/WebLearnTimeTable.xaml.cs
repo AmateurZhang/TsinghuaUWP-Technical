@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -36,6 +37,9 @@ namespace ClassRoomAPI.Views
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingFive.png", UriKind.Absolute));
+            WebLearnTimeTablePage.Background = imageBrush;
             if (WebLearnAPIService.CredentialAbsent())
             {
                 var notifyPopup = new NotifyPopup("未登录！");

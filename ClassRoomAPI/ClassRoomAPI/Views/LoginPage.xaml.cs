@@ -18,6 +18,7 @@ using Windows.Storage;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -43,10 +44,12 @@ namespace ClassRoomAPI.Views
                 username = _Username
             };
             int flag = 0;
+
             try
-            {
+            {   
                flag=await WebLearnViewModels.LoginInToWebLearnUsingPassword(_Username, _Password);
 
+               
             }
             catch(MessageException err)
             {
@@ -72,11 +75,56 @@ namespace ClassRoomAPI.Views
                 var notifyPopup = new NotifyPopup("登陆成功！");
                 notifyPopup.Show();
             }
+            ProgressStaue.Visibility = Visibility.Visible;
+            ProgressStaue.IsIndeterminate = true;
+
+            try
+            {
+                await Windows.Storage.ApplicationData.Current.ClearAsync(ApplicationDataLocality.LocalCache);
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+
+                await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+            }
+            catch
+            {
+                await ClassLibrary.WaitTask(3);
+                try
+                {
+                    await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                }
+                catch
+                {
+
+                }
+               
+            }
+           
+            ProgressStaue.IsIndeterminate = false;
+            ProgressStaue.Visibility = Visibility.Collapsed;
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if(WebLearnAPIService.CredentialAbsent())
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingTwo.png", UriKind.Absolute));
+            Login_Page.Background = imageBrush;
+            if (WebLearnAPIService.CredentialAbsent())
             {
                 LoginStackPanel.Visibility = Visibility.Visible;
                 UserInfo.Visibility = Visibility.Collapsed;
@@ -87,6 +135,37 @@ namespace ClassRoomAPI.Views
                 UserInfo.Visibility = Visibility.Visible;
                 UserInfoTB.Text = GetUserNumber();
             }
+            ProgressStaue.Visibility = Visibility.Visible;
+            ProgressStaue.IsIndeterminate = true;
+            try
+            {
+                await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+
+                await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+            }
+            catch
+            {
+                await ClassLibrary.WaitTask(3);
+                try
+                {
+                    await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                }
+                catch
+                {
+
+                }
+
+            }
+            ProgressStaue.IsIndeterminate = false;
+            ProgressStaue.Visibility = Visibility.Collapsed;
         }
 
         private string GetUserNumber()
@@ -95,35 +174,14 @@ namespace ClassRoomAPI.Views
             return localSettings.Values["username"].ToString();
         }
 
-        private async void ChangeIDBT_Click(object sender, RoutedEventArgs e)
+        private void ChangeIDBT_Click(object sender, RoutedEventArgs e)
         {
             StorageFolder localCacheFolder = ApplicationData.Current.LocalCacheFolder;
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            try
-            {
-                localSettings.Values["username"] = null;
-            }
-            catch
-            {
-
-            }
-            
-            try
-            {
-              //Cache 处理
-               
-            
-            }
-            catch
-            {
-
-            }
-        
 
             LoginStackPanel.Visibility = Visibility.Visible;
             UserInfo.Visibility = Visibility.Collapsed;
-            
-
+           
         }
     }
 }

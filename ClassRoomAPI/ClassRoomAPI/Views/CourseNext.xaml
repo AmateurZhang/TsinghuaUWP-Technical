@@ -1,42 +1,41 @@
 ﻿<Page
-    x:Class="ClassRoomAPI.Views.WebLearnTimeTable"
+    x:Class="ClassRoomAPI.Views.CourseNext"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ClassRoomAPI.Views"
-    xmlns:model="using:Windows.ApplicationModel.Appointments"
+     xmlns:model="using:Windows.ApplicationModel.Appointments"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Loaded="Page_Loaded"
-    >
+    Loaded="Page_Loaded">
 
     <Page.Resources>
         <DataTemplate x:Key="DataTemplate" x:DataType="model:Appointment">
-            
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="{x:Bind Subject}" 
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="{x:Bind Subject}" 
                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
-                    <TextBlock Text="{x:Bind Location}" 
+                <TextBlock Text="{x:Bind Location}" 
                                    Style="{ThemeResource BodyTextBlockStyle}"
                                    MaxLines="1"/>
-                    <TextBlock Text="{x:Bind StartTime}" 
+                <TextBlock Text="{x:Bind StartTime}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    Opacity=".9" 
                                    MaxLines="1"/>
-                    <TextBlock x:Name="Body" 
+                <TextBlock x:Name="Body" 
                                    Text="{x:Bind Duration}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    Opacity=".6" 
                                    TextWrapping="Wrap" 
                                    />
-                </StackPanel>
+            </StackPanel>
 
-           
+
         </DataTemplate >
     </Page.Resources>
-    <Grid Name="WebLearnTimeTablePage">
+    <Grid >
         <ListView Name="MainListView" ItemTemplate="{StaticResource DataTemplate}">
-            
+
         </ListView>
     </Grid>
 </Page>

@@ -91,7 +91,8 @@
           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Pivot HeaderTemplate="{StaticResource PivotHeaderBuildingType}" 
                ItemTemplate="{StaticResource PivotBuildingType}" 
-               Name="MainPivot"             
+               Name="MainPivot" 
+               SelectionChanged="MainPivot_SelectionChanged"
                >
             
         </Pivot>

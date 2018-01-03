@@ -81,7 +81,7 @@
         </DataTemplate>
     </Page.Resources>
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="WebLearnPage">
         <Pivot HeaderTemplate="{StaticResource PivotHeaderNames}" 
                ItemTemplate="{StaticResource PivotBuildingType}" 
                Name="MainPivot"
