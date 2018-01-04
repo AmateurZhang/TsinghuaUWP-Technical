@@ -49,7 +49,7 @@ namespace ClassRoomAPI.Views
                 for (int k = 0; k < ClassRooms.Count; k++)
                 {
                     var items = ClassRooms[k];
-                    if (now < 10)
+                    if (now < 10 && now>0)
                     {
                         if (!items.ListBoolClassStatus[now-1]) Re_ClassRooms.Add(new ClassRoomStatueData
                         {
