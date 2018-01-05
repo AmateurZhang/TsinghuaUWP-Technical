@@ -146,7 +146,7 @@ namespace ClassRoomAPI.Services
                 foreach (PerformanceType item in _ShowType)
                 {
                     //获取时间信息
-                    _ShowInfoData.Date = DateTime.Now.Date;
+                    _ShowInfoData.Date = DateTime.Now;
                     var _ListShowInfo = new ShowInfo();
                     //存储演出类型信息名字
                     _ListShowInfo.PerformanceType = item.Type;

@@ -36,6 +36,10 @@ namespace ClassRoomAPI.Views
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            LoginProgressbar.Visibility = Visibility.Visible;
+            LoginProgressbar.IsIndeterminate = true;
+            LoginButton.IsEnabled = false;
+
             var _Username = TextBoxUsername.Text;
             var _Password = PWBoxPassword.Password;
             Password password = new Password
@@ -69,9 +73,19 @@ namespace ClassRoomAPI.Views
                 notifyPopup.Show();
                 var _Mess=err.Message;
                 Info.Text = _Mess;
+                LoginProgressbar.Visibility = Visibility.Collapsed;
+                LoginProgressbar.IsIndeterminate = false;
+                LoginButton.IsEnabled = true;
+                return;
             }
 
-            if(flag==1)
+            LoginProgressbar.Visibility = Visibility.Collapsed;
+            LoginProgressbar.IsIndeterminate = false;
+            LoginButton.IsEnabled = true;
+
+
+
+            if (flag==1)
             {
              
                 LocalSettingHelper.SetLocalSettings<string>("username", password.username);
@@ -102,16 +116,42 @@ namespace ClassRoomAPI.Views
             try
             {
                 await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("作业数据已经刷新！");
+                notifyPopup.Show();
             }
             catch
             {
-
+                var notifyPopup = new NotifyPopup("作业数据刷新失败！");
+                notifyPopup.Show();
             }
-
+            try
+            {
+                await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("课程数据已经刷新！");
+                notifyPopup.Show();
+            }
+            catch
+            {
+                var notifyPopup = new NotifyPopup("课程数据刷新失败！");
+                notifyPopup.Show();
+            }
+            try
+            {
+                await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("演出数据已经刷新！");
+                notifyPopup.Show();
+            }
+            catch
+            {
+                var notifyPopup = new NotifyPopup("演出数据刷新失败！");
+                notifyPopup.Show();
+            }
             try
             {
 
                 await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                var notifyPopup = new NotifyPopup("课程数据已经刷新！");
+                notifyPopup.Show();
             }
             catch
             {
@@ -119,14 +159,17 @@ namespace ClassRoomAPI.Views
                 try
                 {
                     await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                    var notifyPopup = new NotifyPopup("课程数据已经刷新！");
+                    notifyPopup.Show();
                 }
                 catch
                 {
-
+                    var notifyPopup = new NotifyPopup("课程数据刷新失败！");
+                    notifyPopup.Show();
                 }
-               
+
             }
-           
+
             ProgressStaue.IsIndeterminate = false;
             ProgressStaue.Visibility = Visibility.Collapsed;
         }
