@@ -17,11 +17,12 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>ClassRoomAPI_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>ClassRoomAPI_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>B342475F9BA904DE63C39AD0D500E61A4E04A020</PackageCertificateThumbprint>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>C41C0DDCE15B318616EF84B3633AC7130D2EA0B1</PackageCertificateThumbprint>
+    <AppxPackageDir>C:\Users\thuzhang\Documents\MyFiles\01JuniorYear\07软件工程\FinalTestCode\</AppxPackageDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -102,6 +103,7 @@
     <Compile Include="Controls\NotifyPopup.xaml.cs">
       <DependentUpon>NotifyPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\StringToWebviewConverter.cs" />
     <Compile Include="Converters\TimeTableToAppointConverter.cs" />
     <Compile Include="Helpers\CacheHelper.cs" />
     <Compile Include="Helpers\ClassLibrary.cs" />

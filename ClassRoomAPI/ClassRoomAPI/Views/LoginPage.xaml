@@ -13,9 +13,10 @@
               
         <StackPanel Name="LoginStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock FontSize="36" >请登录</TextBlock>
-            <TextBox Text="User Name (number)" Name="TextBoxUsername"></TextBox>
+            <TextBox PlaceholderText="User Name (number)" Name="TextBoxUsername"></TextBox>
             <PasswordBox Password="" Name="PWBoxPassword"></PasswordBox>
-            <Button Content="Click Here!" HorizontalAlignment="Center" Click="Button_Click"></Button>
+            <ProgressBar Width="200" Name="LoginProgressbar" Visibility="Collapsed"></ProgressBar>
+            <Button Name="LoginButton"  Content="Click Here!" HorizontalAlignment="Center" Click="Button_Click"></Button>
             <TextBlock Name="Info" Width="250" TextWrapping="Wrap"></TextBlock>
         </StackPanel>
 

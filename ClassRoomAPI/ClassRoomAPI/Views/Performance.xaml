@@ -66,10 +66,14 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid x:Name="Performance_Page">
-        <Pivot Name="MainPivot"   
+    <Grid>
+        <StackPanel x:Name="Performance_Page">
+            <ProgressBar Name="ProgressStaue" Visibility="Collapsed"></ProgressBar>
+            <Pivot Name="MainPivot"   
                HeaderTemplate="{StaticResource PivotHeaderShowType}" 
                ItemTemplate="{StaticResource PivotShowInfo}" SelectionChanged="MainPivot_SelectionChanged"     
                />
+        </StackPanel>
     </Grid>
+    
 </Page>

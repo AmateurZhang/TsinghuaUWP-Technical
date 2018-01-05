@@ -31,15 +31,18 @@ namespace ClassRoomAPI.Views
         public WebLearn()
         {
             this.InitializeComponent();
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingSix.png", UriKind.Absolute));
+            WebLearnPage.Background = imageBrush;
         }
 
+      
 
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingSix.png", UriKind.Absolute));
-            WebLearnPage.Background = imageBrush;
+            ProgressStaue.Visibility = Visibility.Visible;
+            ProgressStaue.IsIndeterminate = true;
             if (WebLearnAPIService.CredentialAbsent())
             {
                 var notifyPopup = new NotifyPopup("未登录！");
@@ -55,12 +58,12 @@ namespace ClassRoomAPI.Views
                     {
 
                         throw new Exception("The Data are out-of-date.");
-                    }                       
+                    }
 
                     var notifyPopup = new NotifyPopup("正在使用本地数据。");
                     notifyPopup.Show();
 
-                        
+
                 }
                 catch
                 {
@@ -79,12 +82,20 @@ namespace ClassRoomAPI.Views
 
                 }
             }
-            
+            ProgressStaue.IsIndeterminate = false;
+            ProgressStaue.Visibility = Visibility.Collapsed;
         }
 
-        private void ListViewClassRoomData_SelectionChanged(object sender, SelectionChangedEventArgs ListViewClassRoomData)
+
+
+        private void ListViewClassRoomData_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
+            Deadline item = e.ClickedItem as Deadline;
+            DetailFrame.Navigate(typeof(DDLdetail), item);
+
         }
+
+
+
     }
 }

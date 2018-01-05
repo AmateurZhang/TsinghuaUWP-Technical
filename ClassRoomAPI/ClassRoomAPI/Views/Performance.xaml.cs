@@ -32,21 +32,23 @@ namespace ClassRoomAPI.Views
         public Performance()
         {
             this.InitializeComponent();
-
+            //加载背景
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Hall.png", UriKind.Absolute));
+            Performance_Page.Background = imageBrush;
         }
 
         
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //加载背景
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Hall.png", UriKind.Absolute));
-            Performance_Page.Background = imageBrush;
+            
+            ProgressStaue.Visibility = Visibility.Visible;
+            ProgressStaue.IsIndeterminate = true;
             try
             {
                 var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
-                
-                if ((_DataLocal.Date.Date - DateTime.Now.Date).Days < 0)
+                MainPivot.ItemsSource = _DataLocal.ListShowInfo;
+                if ((DateTime.Now-_DataLocal.Date).TotalMinutes > 5)
                     throw new Exception("The Data are out-of-date.");
                 else
                     MainPivot.ItemsSource = _DataLocal.ListShowInfo;
@@ -70,6 +72,8 @@ namespace ClassRoomAPI.Views
                 }
 
             }
+            ProgressStaue.IsIndeterminate = false;
+            ProgressStaue.Visibility = Visibility.Collapsed;
         }
 
 

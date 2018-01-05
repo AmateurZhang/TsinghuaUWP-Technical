@@ -29,16 +29,17 @@ namespace ClassRoomAPI.Views
         public Recommend()
         {
             this.InitializeComponent();
-            NavigationCacheMode = NavigationCacheMode.Enabled;
+          
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingTwo.png", UriKind.Absolute));
+            RecommendPage.Background = imageBrush;
         }
 
 
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingTwo.png", UriKind.Absolute));
-            RecommendPage.Background = imageBrush;
+          
 
             UrgentDDLFrame.Navigate(typeof(UrgentDDL));
             CoursesFrame.Navigate(typeof(CourseNext));

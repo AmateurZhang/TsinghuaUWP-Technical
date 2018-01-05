@@ -4,11 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ClassRoomAPI.Views"
     xmlns:model="using:ClassRoomAPI.Models"
+    xmlns:converters="using:ClassRoomAPI.Converters"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="Page_Loaded"
+   
     >
     <Page.Resources>
         <DataTemplate x:Key="DataTemplateLeft" x:DataType="model:Deadline">
@@ -31,7 +33,9 @@
                                    Text="{x:Bind detail}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    TextWrapping="Wrap" 
-                                   Margin="0,12,0,0"/>
+                                   Margin="0,12,0,0"
+                          
+                           />
             </StackPanel>
         </DataTemplate>
 
@@ -39,8 +43,8 @@
             <TextBlock Text="{x:Bind CourseInfo.name}"></TextBlock>
         </DataTemplate>
 
-        <DataTemplate x:Key="DataTemplate" x:DataType="model:Deadline">
-            <Grid>
+        <DataTemplate x:Key="DataTemplate" x:DataType="model:Deadline" >
+            <Grid Margin="5"  >
                 <StackPanel Margin="0,8">
                     <TextBlock Text="{x:Bind name}" 
                                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
@@ -48,16 +52,25 @@
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                   
                                    MaxLines="1"/>
-                     <TextBlock Text="{x:Bind course}" 
+                    <TextBlock Text="{x:Bind course}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    Opacity=".6" 
                                    MaxLines="1"/>
+               <!--    <WebView x:Name="WebViewBox" converters:StringToWebviewConverter.HtmlString="{x:Bind detail}" Height="80"
+                             DefaultBackgroundColor="Transparent"
+                             VerticalAlignment="Stretch"
+                             >
+                        
+                    </WebView>
+                -->
                     <TextBlock x:Name="Body" 
                                    Text="{x:Bind paindetail}" 
                                    Style="{ThemeResource BodyTextBlockStyle}" 
                                    TextWrapping="Wrap" 
-                                   Margin="0,12,0,0"/>
-                
+                                   Margin="0,12,0,0"
+                                MaxLines="4"
+                               
+                               />
                 </StackPanel>
 
             </Grid>
@@ -73,20 +86,47 @@
                     <ListView Name="ListViewClassRoomData"                    
                       ItemTemplate="{StaticResource DataTemplate}" 
                       ItemsSource="{x:Bind Deadlines}"
-                              Grid.Row="1"
-                              SelectionChanged="ListViewClassRoomData_SelectionChanged"
-                      />
+                              Grid.Row="1"               
+                              IsItemClickEnabled="True" 
+                              ItemClick="ListViewClassRoomData_ItemClick"
+                             
+                             >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                     
                 </Grid>
             </PivotItem>
         </DataTemplate>
     </Page.Resources>
     
     <Grid Name="WebLearnPage">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ProgressBar Name="ProgressStaue" Visibility="Collapsed"></ProgressBar>
         <Pivot HeaderTemplate="{StaticResource PivotHeaderNames}" 
                ItemTemplate="{StaticResource PivotBuildingType}" 
                Name="MainPivot"
+               Grid.Column="0"
                >
 
         </Pivot>
+        <Grid Grid.Column="1"  Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                
+            </Grid.RowDefinitions>
+            <TextBlock Text="作业内容" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center" Margin="10,0,0,0" Opacity="0.8"></TextBlock>
+            <Frame x:Name="DetailFrame" x:FieldModifier="Public" Grid.Row="1">
+                <TextBlock Text="作业内容" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+            </Frame>
+        </Grid>
+    
     </Grid>
 </Page>

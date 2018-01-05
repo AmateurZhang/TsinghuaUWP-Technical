@@ -46,7 +46,7 @@
         <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}"  Grid.Row="5">
             作业内容
         </TextBlock >
-        <WebView Name="HWview" Grid.Row="6" ></WebView>
+        <WebView Name="HWview" Grid.Row="6" DefaultBackgroundColor="Transparent"></WebView>
     </Grid>
             
 
