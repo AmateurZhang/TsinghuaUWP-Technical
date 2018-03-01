@@ -19,6 +19,7 @@ using ClassRoomAPI.Controls;
 using Windows.Storage.Streams;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
+using ClassRoomAPI.Helpers;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -46,7 +47,22 @@ namespace ClassRoomAPI.Views
             ProgressStaue.IsIndeterminate = true;
             try
             {
-                var _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
+                var _DataLocal = new ShowInfoData();
+                if (UserHelper.IsDemo())
+                {
+                    _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Demo);
+                    MainPivot.ItemsSource = _DataLocal.ListShowInfo;
+                    ProgressStaue.IsIndeterminate = false;
+                    ProgressStaue.Visibility = Visibility.Collapsed;
+                    return;
+
+                }
+                else
+                {
+                    _DataLocal = await PerformaceViewModels.GetHallInfoViewModel(ParseDataMode.Local);
+                }
+        
+
                 MainPivot.ItemsSource = _DataLocal.ListShowInfo;
                 if ((DateTime.Now-_DataLocal.Date).TotalMinutes > 5)
                     throw new Exception("The Data are out-of-date.");

@@ -40,10 +40,16 @@ namespace ClassRoomAPI.Views
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingFive.png", UriKind.Absolute));
             WebLearnTimeTablePage.Background = imageBrush;
-            if (WebLearnAPIService.CredentialAbsent())
+            if (UserHelper.CredentialAbsent())
             {
                 var notifyPopup = new NotifyPopup("未登录！");
                 notifyPopup.Show();
+            }
+            else if(UserHelper.IsDemo())
+            {
+                var _Data = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Demo);
+                MainListView.ItemsSource = _Data.ListAppointment;
+                return;
             }
             else
             {

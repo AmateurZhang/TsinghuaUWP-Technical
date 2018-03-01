@@ -31,6 +31,7 @@ namespace ClassRoomAPI.Views
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
             var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
 
         }

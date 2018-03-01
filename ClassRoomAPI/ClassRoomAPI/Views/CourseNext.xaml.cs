@@ -37,10 +37,22 @@ namespace ClassRoomAPI.Views
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var time = DateTime.Now;
-            if (WebLearnAPIService.CredentialAbsent())
+            if (UserHelper.CredentialAbsent())
             {
                 var notifyPopup = new NotifyPopup("未登录！");
                 notifyPopup.Show();
+            }
+            else if(UserHelper.IsDemo())
+            {
+                var None = new List<Windows.ApplicationModel.Appointments.Appointment>();
+                None.Add(new Windows.ApplicationModel.Appointments.Appointment
+                {
+                    Subject = "没有要上的课程了",
+                    Location = "N/A",
+                    StartTime = DateTime.Now,
+
+                });
+                MainListView.ItemsSource = None;
             }
             else
             {
@@ -56,7 +68,7 @@ namespace ClassRoomAPI.Views
                         foreach (var Items in _Data.ListAppointment)
                         {
                             //计算课程时间与当前时间的时间差
-                            var distance = (Items.StartTime - Now).Days;
+                            var distance = (Items.StartTime+Items.Duration - Now).Minutes;
                             //未上的课
                             if (distance > 0)
                             {
@@ -72,10 +84,10 @@ namespace ClassRoomAPI.Views
                         }
                         var Courses = new List<Windows.ApplicationModel.Appointments.Appointment>();
                         var count = AllCourses.Count;
-                        //从没上的课里面筛选出三门距离现在最近的课
-                        if (count >= 3)
+                        //从没上的课里面筛选出4门距离现在最近的课
+                        if (count >= 4)
                         {
-                            for (int i = count - 1; i > (count - 4); i--)
+                            for (int i = count - 1; i > (count - 5); i--)
                             {
                                 Courses.Add(new Windows.ApplicationModel.Appointments.Appointment
                                 {
@@ -100,7 +112,7 @@ namespace ClassRoomAPI.Views
                             None.Add(new Windows.ApplicationModel.Appointments.Appointment
                             {
                                 Subject = "没有要上的课程了",
-                                Location = "none",
+                                Location = "N/A",
                                 StartTime = Now,
 
                             });
@@ -114,7 +126,7 @@ namespace ClassRoomAPI.Views
                     None.Add(new Windows.ApplicationModel.Appointments.Appointment
                     {
                         Subject = "无数据",
-                        Location = "none",
+                        Location = "N/A",
                         StartTime = Now,
 
                     });

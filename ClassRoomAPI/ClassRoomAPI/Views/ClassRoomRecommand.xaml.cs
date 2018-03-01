@@ -1,4 +1,5 @@
 ﻿using ClassRoomAPI.Controls;
+using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.ViewModels;
 using System;
@@ -36,8 +37,12 @@ namespace ClassRoomAPI.Views
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            var _Data = new ClassBuildingInfo();
+            if(UserHelper.IsDemo())
+                _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Demo);
+            else
+                _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
 
-            var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
             if (_Data != null)
             {
                 var time = DateTime.Now;

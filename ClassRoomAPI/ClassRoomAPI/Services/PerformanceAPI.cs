@@ -1,5 +1,6 @@
 ﻿using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Models;
+using ClassRoomAPI.Test;
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,10 @@ namespace ClassRoomAPI.Services
                 else
                 {
                     //demo
-                    return null;
+                    var TempData = UWPTest.JSONAllShowInfoData;
+                    var ReturnData = JSONHelper.Parse<ShowInfoData>(TempData);
+                    Debug.WriteLine("[GetListAllShowInfoMode] return local data.");
+                    return ReturnData;
                 }
             }
 

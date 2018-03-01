@@ -60,7 +60,7 @@ namespace ClassRoomAPI.ViewModels
             else
             {
                 //demo
-                return null;
+                return await WebLearnTimeTableAPI.GetTimeTableMode(ParseDataMode.Demo);
             }
         }
     }

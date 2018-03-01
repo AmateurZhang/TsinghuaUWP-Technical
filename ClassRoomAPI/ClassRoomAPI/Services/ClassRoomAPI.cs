@@ -1,5 +1,6 @@
 ﻿using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Models;
+using ClassRoomAPI.Test;
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace ClassRoomAPI.Services
             //Define Cache Names
             private static string CacheBuildingTypeJSON = "JSONBuildingType";
             private static string CacheAllClassRoomInfoDataJSON = "JSONAllClassRoomInfoData";
+            
 
             //Public Classes
             //获取所有的教学楼名字
@@ -41,7 +43,10 @@ namespace ClassRoomAPI.Services
                 else
                 {
                     //demo
-                    return null;
+                    var TempData = UWPTest.JSONBuildingType;
+                    var ReturnData = JSONHelper.Parse<List<BuildingTypeNamesData>>(TempData);
+                    Debug.WriteLine("[GetBuildingTypeMode] return local data.");
+                    return ReturnData;
                 }
                 
             }
@@ -81,7 +86,10 @@ namespace ClassRoomAPI.Services
                 else
                 {
                     //demo
-                    return null;
+                    var TempData = UWPTest.JSONAllClassRoomInfoData;
+                    var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
+                    Debug.WriteLine("[GetListAllBuildingInfoMode] return local data.");
+                    return ReturnData;
                 }
             }
 

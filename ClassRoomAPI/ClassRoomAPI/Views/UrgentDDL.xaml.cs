@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using ClassRoomAPI.ViewModels;
 using ClassRoomAPI.Models;
 using ClassRoomAPI.Controls;
+using ClassRoomAPI.Helpers;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -88,8 +89,12 @@ namespace ClassRoomAPI.Views
                 ListViewDDLData.ItemsSource = Ur_DDL;
             }
             else {
-                var notifyPopup = new NotifyPopup("请先登录！");
-                notifyPopup.Show();
+                if(!UserHelper.IsDemo())
+                {
+                    var notifyPopup = new NotifyPopup("请先登录！");
+                    notifyPopup.Show();
+                }
+               
             }
         }
 

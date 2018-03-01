@@ -1,5 +1,6 @@
 ﻿using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Models;
+using ClassRoomAPI.Test;
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
@@ -21,26 +22,6 @@ namespace ClassRoomAPI.Services
         //Public Class
         //Login 
         private static ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-        static public bool CredentialAbsent()
-        {
-            var username = localSettings.Values["username"];
-            return username == null
-                || username.ToString() == "__anonymous";
-        }
-
-        static public bool SupposedToWorkAnonymously()
-        {
-            var username = localSettings.Values["username"];
-            return username != null
-                && username.ToString() == "__anonymous";
-        }
-
-        static public bool IsDemo()
-        {
-            return
-                localSettings.Values["username"] != null &&
-                localSettings.Values["username"].ToString() == "233333";
-        }
 
         public static async 
         Task
@@ -52,7 +33,7 @@ namespace ClassRoomAPI.Services
             }
             else if (Mode == WebLearnLoginMode.Remote)
             {
-                if (CredentialAbsent())
+                if (UserHelper.CredentialAbsent())
                 {
                     throw new MessageException("没有指定用户名和密码");
                 }
@@ -78,8 +59,9 @@ namespace ClassRoomAPI.Services
             }
         }
         //EmailName
-        public static async Task<string> GetEmailName()
+        public static async Task<string> GetEmailName() 
         {
+            await LogintoWebLearnMode(WebLearnLoginMode.Remote);
             var Page=await PostGetHelper.GET(URLWebLearnInfoPage);
             return ParseEmailUserName(Page);
         }
@@ -122,7 +104,9 @@ namespace ClassRoomAPI.Services
             else
             {
                 //demo
-                return null;
+                var TempData = UWPTest.JSONAllWebLearnData;
+                var ReturnData = JSONHelper.Parse<WebLearnInfo>(TempData);
+                return ReturnData;
             }
         }
 
@@ -140,6 +124,7 @@ namespace ClassRoomAPI.Services
                 string _LoginResponse;
 
                 //login to learn.tsinghua.edu.cn
+
 
                 _LoginResponse = await PostGetHelper.POST(
                     LoginUri,
@@ -224,10 +209,12 @@ namespace ClassRoomAPI.Services
                 if (!item.isNew)
                 {
                     _CourseInfoData.Deadlines = await getRemoteHomeworkList(item);
+                    _CourseInfoData.Announces = await getRemoteAncList(item);
                 }
                 else
                 {
                     _CourseInfoData.Deadlines = await getRemoteHomeworkListNew(item);
+                    _CourseInfoData.Announces = await getRemoteAncListNew(item);
                 }
                 _ListCourseInfoData.Add(_CourseInfoData);
             }
@@ -500,6 +487,170 @@ namespace ClassRoomAPI.Services
             }
 
             return resultString;
+        }
+
+
+        // Announcement
+        public static async Task<string> getAncListPage(string courseId)
+        {
+            return await PostGetHelper.GET($"http://learn.tsinghua.edu.cn/MultiLanguage/public/bbs/getnoteid_student.jsp?course_id={courseId}");
+        }
+
+        public static async Task<string> getNewAncPage(string courseId)
+        {
+            string Uri = $"http://learn.cic.tsinghua.edu.cn/b/myCourse/notice/listForStudent/{courseId}/";
+            return await PostGetHelper.GET(Uri);
+        }
+
+
+        public static async Task<List<Announce>> getRemoteAncList(Course CourseInfo)
+        {
+            return await parseAncListPage(await getAncListPage(CourseInfo.id), CourseInfo.id);
+        }
+
+        public static async Task<List<Announce>> getRemoteAncListNew(Course CourseInfo)
+        {
+            return await parseAncPageNew(await getNewAncPage(CourseInfo.id), CourseInfo.id);
+        }
+
+        public static async Task<List<Announce>> parseAncListPage(string page, string courseid)
+        {
+            try
+            {
+                HtmlDocument htmlDoc = new HtmlDocument();
+                htmlDoc.LoadHtml(page);
+
+                string _name, _due, _course, _detail, _owner;
+
+                _course = htmlDoc.DocumentNode.Descendants("td")/*MAGIC*/.First().InnerText;
+                _course = _course.Trim();
+                _course = _course.Substring(6/*MAGIC*/);
+                _course = WebUtility.HtmlDecode(_course);
+
+                HtmlNode[] nodes = htmlDoc.DocumentNode.Descendants("tr")/*MAGIC*/.ToArray();
+
+
+                List<Announce> announces = new List<Announce>();
+                for (int i = 3/*MAGIC*/; i < nodes.Length - 1/*MAGIC*/; i++)
+                {
+                    HtmlNode node = nodes[i];
+
+                    var tds = node.Descendants("td");
+
+                    var _isFinished = (tds.ElementAt(4/*MAGIC*/).InnerText.Trim() == "已读");
+
+                    _owner = tds.ElementAt(2).InnerText;
+
+                    _due = tds.ElementAt(3/*MAGIC*/).InnerText;
+
+                    var link_to_detail = node.Descendants("a")/*MAGIC*/.First();
+                    _name = link_to_detail.InnerText;
+                    _name = WebUtility.HtmlDecode(_name);
+                    //
+                    var _href = link_to_detail.Attributes["href"].Value;
+                    var _id = Regex.Match(_href, @"[^_]id=(\d+)").Groups[1].Value;
+
+                    var _cplhref = "http://learn.tsinghua.edu.cn/MultiLanguage/public/bbs/" + _href;
+                    _detail = await parseAncListContent(_cplhref);
+                    _detail = "<b>" + _name + "</b>" + "<br>" + _detail;
+                    //_detail = await parseAncListContent(_cplhref);
+                    string _coursename = "";
+                    try
+                    {
+                        var totalcss = await getRemoteCourseList();
+                        var _courseitem = totalcss.Where(p => p.id == courseid).ToList();
+                        _coursename = _courseitem[0].name;
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("[parseAncPage] id not match name");
+                    }
+
+                    announces.Add(new Announce
+                    {
+                        title = _name,
+                        regDate = _due,
+                        id = _id,
+                        detail = _detail,
+                        courseId = courseid,
+                        owner = _owner,
+                        Isfinished = _isFinished,
+                        course = _coursename
+                    });
+                }
+                return announces;
+
+            }
+            catch (Exception)
+            {
+                throw new MessageException("AssignmentList");
+            }
+
+        }
+        public static async Task<string> parseAncListContent(string uri)
+        {
+            string page = await PostGetHelper.GET(uri);
+
+            var subjectString = page;
+
+            string resultString = null;
+            try
+            {
+                Regex regexObj = new Regex(@"<td width=\""87%\"" class=\""tr_l2\"" colspan=\""3\"" style=\""table-layout:fixed; word-break: break-all; overflow:hidden;\"">(?<mycontent>[\s\S]*)\t\t</td>");
+                resultString = regexObj.Match(subjectString).Groups["mycontent"].Value;
+                if (resultString.Length == 0)
+                    resultString = "无内容或如题";
+            }
+            catch
+            {
+                // Syntax error in the regular expression
+            }
+
+            return resultString;
+        }
+        public static async Task<List<Announce>> parseAncPageNew(string page, string courseid)
+        {
+
+            List<Announce> announces = new List<Announce>();
+            var root = JSONHelper.Parse<AncRootObject>(page);
+            foreach (var item in root.paginationList.recordList)
+            {
+
+                var _isFinished = (item.status != "0");
+
+                string _due = item.courseNotice.regDate;
+                string _name = item.courseNotice.title;
+                string _courseId = item.courseNotice.courseId;
+                string _owner = item.courseNotice.owner;
+                string _detail = item.courseNotice.detail;
+                string _id = item.courseNotice.id;
+                string _coursename = "";
+                try
+                {
+                    var totalcss = await getRemoteCourseList();
+                    var _courseitem = totalcss.Where(p => p.id == courseid).ToList();
+                    _coursename = _courseitem[0].name;
+                }
+                catch
+                {
+                    Debug.WriteLine("[parseAncPage] id not match name");
+                }
+
+                announces.Add(new Announce
+                {
+                    title = _name,
+                    regDate = _due,
+                    owner = _owner,
+                    id = _id,
+                    detail = _detail,
+                    courseId = courseid,
+                    Isfinished = _isFinished,
+                    course = _coursename
+
+                });
+            }
+
+            return announces;
         }
 
     }

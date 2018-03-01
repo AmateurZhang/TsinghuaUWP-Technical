@@ -49,6 +49,21 @@ namespace ClassRoomAPI.Views
             };
             int flag = 0;
 
+            //demo
+            if(UserHelper.CheckDemo(password.username))
+            {
+                flag = 1;
+                UserHelper.SetUserInfo(password);
+
+                UserInfoTB.Text = UserHelper.GetUserNumber();
+
+                LoginStackPanel.Visibility = Visibility.Collapsed;
+                UserInfo.Visibility = Visibility.Visible;
+                var notifyPopup = new NotifyPopup("测试用户登陆成功！");
+                notifyPopup.Show();
+                return;
+            }
+
             try
             {
                 try
@@ -87,14 +102,19 @@ namespace ClassRoomAPI.Views
 
             if (flag==1)
             {
-             
-                LocalSettingHelper.SetLocalSettings<string>("username", password.username);
 
-                var vault = new Windows.Security.Credentials.PasswordVault();
-                vault.Add(new Windows.Security.Credentials.PasswordCredential(
-                    "Tsinghua_Learn_Website", password.username, password.password));
+                UserHelper.SetUserInfo(password);
 
-                UserInfoTB.Text = GetUserNumber();
+                UserInfoTB.Text = UserHelper.GetUserNumber();
+                try
+                {
+                    var _Name = await WebLearnAPIService.GetEmailName();
+                    UserHelper.SetUserEmailName(_Name);
+                }
+                catch
+                {
+                   
+                }
 
                 LoginStackPanel.Visibility = Visibility.Collapsed;
                 UserInfo.Visibility = Visibility.Visible;
@@ -179,7 +199,7 @@ namespace ClassRoomAPI.Views
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingTwo.png", UriKind.Absolute));
             Login_Page.Background = imageBrush;
-            if (WebLearnAPIService.CredentialAbsent())
+            if (UserHelper.CredentialAbsent())
             {
                 LoginStackPanel.Visibility = Visibility.Visible;
                 UserInfo.Visibility = Visibility.Collapsed;
@@ -188,7 +208,7 @@ namespace ClassRoomAPI.Views
             {
                 LoginStackPanel.Visibility = Visibility.Collapsed;
                 UserInfo.Visibility = Visibility.Visible;
-                UserInfoTB.Text = GetUserNumber();
+                UserInfoTB.Text = UserHelper.GetUserNumber();
             }
             ProgressStaue.Visibility = Visibility.Visible;
             ProgressStaue.IsIndeterminate = true;
@@ -223,11 +243,11 @@ namespace ClassRoomAPI.Views
             ProgressStaue.Visibility = Visibility.Collapsed;
         }
 
-        private string GetUserNumber()
-        {
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            return localSettings.Values["username"].ToString();
-        }
+        //private string GetUserNumber()
+        //{
+        //    ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        //    return localSettings.Values["username"].ToString();
+        //}
 
         private void ChangeIDBT_Click(object sender, RoutedEventArgs e)
         {

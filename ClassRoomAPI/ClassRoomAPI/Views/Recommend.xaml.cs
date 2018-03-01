@@ -16,6 +16,7 @@ using ClassRoomAPI.Models;
 using ClassRoomAPI.ViewModels;
 using Windows.UI.Xaml.Media.Imaging;
 using ClassRoomAPI.Controls;
+using ClassRoomAPI.Helpers;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -60,6 +61,18 @@ namespace ClassRoomAPI.Views
             AppBarBottom.IsOpen = false;
             ProgressStaue.Visibility = Visibility.Visible;
             ProgressStaue.IsIndeterminate = true;
+            if(UserHelper.IsDemo())
+            {
+                ProgressStaue.IsIndeterminate = false;
+                ProgressStaue.Visibility = Visibility.Collapsed;
+
+                ClassRoomFrame.Navigate(typeof(RecClassroom));
+                PerformanceFrame.Navigate(typeof(RecPerformance));
+
+                UrgentDDLFrame.Navigate(typeof(UrgentDDL));
+                CoursesFrame.Navigate(typeof(CourseNext));
+                return;
+            }
             try
             {
                 await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);

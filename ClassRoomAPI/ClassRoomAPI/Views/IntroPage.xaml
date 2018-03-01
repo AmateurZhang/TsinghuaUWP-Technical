@@ -8,10 +8,12 @@
     mc:Ignorable="d">
 
     <Grid >
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+     
         <StackPanel Background="BlueViolet" Grid.Row="0">
             <Image Grid.Row="0" Source="ms-appx:///Assets/Wide310x150Logo.scale-400.png" HorizontalAlignment="Center"/>
             
@@ -21,6 +23,8 @@
             <TextBlock Text="Version 2.1.0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="黑体" FontSize="12" Foreground="Purple"/>
             <TextBlock Text="求扩散，求好评" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="黑体" FontSize="16" Foreground="Purple"/>
             <TextBlock Text="Inspired by https://github.com/lizy14/Tsinghua-UWP" HorizontalAlignment="Center" FontFamily="黑体" FontSize="16" Foreground="Purple"/>
+            <TextBlock Text="Thanks to the InsTsinghua Group in Software Engineering Course" HorizontalAlignment="Center" FontFamily="黑体" FontSize="16" Foreground="Purple"/>
+            <TextBlock Text="Visit https://github.com/AmateurZhang/InsTsinghuaPlus" HorizontalAlignment="Center" FontFamily="黑体" FontSize="16" Foreground="Purple"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -68,7 +68,7 @@ namespace ClassRoomAPI.ViewModels
             else
             {
                 //demo
-                return null;
+                return await WebLearnAPIService.GetAllWebLearnInfoMode(ParseDataMode.Demo);
             }
         }
     }

@@ -59,7 +59,7 @@ namespace ClassRoomAPI.ViewModels
             else
             {
                 //demo
-                return null;
+                return await PerformanceAPI.PerformanceInfo.GetListAllShowInfoMode(ParseDataMode.Demo);
             }
         }
 

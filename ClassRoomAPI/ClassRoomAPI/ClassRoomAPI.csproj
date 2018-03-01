@@ -17,11 +17,11 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>ClassRoomAPI_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>ClassRoomAPI_StoreKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>C41C0DDCE15B318616EF84B3633AC7130D2EA0B1</PackageCertificateThumbprint>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>B342475F9BA904DE63C39AD0D500E61A4E04A020</PackageCertificateThumbprint>
     <AppxPackageDir>C:\Users\thuzhang\Documents\MyFiles\01JuniorYear\07软件工程\FinalTestCode\</AppxPackageDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -112,6 +112,7 @@
     <Compile Include="Helpers\JSONHelper.cs" />
     <Compile Include="Helpers\LocalSettingHelper.cs" />
     <Compile Include="Helpers\PostGetHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Models\ClassRoomInfoModels.cs" />
     <Compile Include="Models\PerformanceInfoModels.cs" />
     <Compile Include="Models\WebLearnModels.cs" />
@@ -126,6 +127,9 @@
     <Compile Include="ViewModels\PerformanceInfoViewModels.cs" />
     <Compile Include="ViewModels\WebLearnTimeTableViewModel.cs" />
     <Compile Include="ViewModels\WebLearnViewModels.cs" />
+    <Compile Include="Views\AncDetail.xaml.cs">
+      <DependentUpon>AncDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BlankPage.xaml.cs">
       <DependentUpon>BlankPage.xaml</DependentUpon>
     </Compile>
@@ -142,6 +146,9 @@
     </Compile>
     <Compile Include="Views\DDLdetail.xaml.cs">
       <DependentUpon>DDLdetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Emails.xaml.cs">
+      <DependentUpon>Emails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IntroPage.xaml.cs">
       <DependentUpon>IntroPage.xaml</DependentUpon>
@@ -167,6 +174,9 @@
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TsinghuaTV.xaml.cs">
+      <DependentUpon>TsinghuaTV.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UrgentDDL.xaml.cs">
       <DependentUpon>UrgentDDL.xaml</DependentUpon>
     </Compile>
@@ -183,6 +193,21 @@
     </AppxManifest>
     <None Include="ClassRoomAPI_StoreKey.pfx" />
     <None Include="ClassRoomAPI_TemporaryKey.pfx" />
+    <None Include="Test\TestData\ClassBuildingData_一教" />
+    <None Include="Test\TestData\ClassBuildingData_三教" />
+    <None Include="Test\TestData\ClassBuildingData_二教" />
+    <None Include="Test\TestData\ClassBuildingData_五教" />
+    <None Include="Test\TestData\ClassBuildingData_六教" />
+    <None Include="Test\TestData\ClassBuildingData_四教" />
+    <None Include="Test\TestData\JSONAllClassRoomInfoData" />
+    <None Include="Test\TestData\JSONAllHallInfoData_演出False" />
+    <None Include="Test\TestData\JSONAllHallInfoData_电影False" />
+    <None Include="Test\TestData\JSONAllHallInfoData_艺术丛林False" />
+    <None Include="Test\TestData\JSONAllHallInfoData_讲座False" />
+    <None Include="Test\TestData\JSONAllShowInfoData" />
+    <None Include="Test\TestData\JSONAllWebLearnData" />
+    <None Include="Test\TestData\JSONBuildingType" />
+    <None Include="Test\TestData\JSONTimeTableType" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\BadgeLogo.scale-100.png" />
@@ -197,6 +222,7 @@
     <Content Include="Assets\BuildingThree.png" />
     <Content Include="Assets\BuildingTwo.png" />
     <Content Include="Assets\ClassRoomBuilding.png" />
+    <Content Include="Assets\glassblack.jpg" />
     <Content Include="Assets\Hall.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
@@ -258,6 +284,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AncDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BlankPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -275,6 +305,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DDLdetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Emails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,6 +341,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TsinghuaTV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using ClassRoomAPI.ViewModels;
 using ClassRoomAPI.Controls;
 using Windows.UI.Xaml.Media.Imaging;
+using ClassRoomAPI.Helpers;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -37,8 +38,15 @@ namespace ClassRoomAPI.Views
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/ClassRoomBuilding.png", UriKind.Absolute));
             ClassRoom_Page.Background = imageBrush;
+            if (UserHelper.IsDemo())
+            {
+                var Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Demo);
+                MainPivot.ItemsSource = Data.ListClassRoomStatue;
+                return;
+            }
             try
             {
+               
                 var _Data = await ClassRoomInfoViewModels.GetAllBuildingInfoViewModel(ParseDataMode.Local);
                 if ((_Data.Date.Date - DateTime.Now.Date).Days < 0)
                     throw new Exception("The Data are out-of-date.");

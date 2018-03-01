@@ -1,6 +1,7 @@
 ﻿using ClassRoomAPI.Converters;
 using ClassRoomAPI.Helpers;
 using ClassRoomAPI.Models;
+using ClassRoomAPI.Test;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,7 +39,9 @@ namespace ClassRoomAPI.Services
             else
             {
                 //demo
-                return null;
+                var TempData = UWPTest.JSONTimeTableType;
+                var ReturnData = JSONHelper.Parse<WebLearnTimeTable>(TempData);
+                return ReturnData;
             }
 
         }

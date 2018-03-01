@@ -161,6 +161,7 @@ namespace ClassRoomAPI.Models
     {
         public Course CourseInfo;
         public List<Deadline> Deadlines;
+        public List<Announce> Announces;
         public int LengthOfDeadLines
         {
             get
@@ -173,6 +174,21 @@ namespace ClassRoomAPI.Models
             get
             {
                 string _Result = "共有" + LengthOfDeadLines.ToString() + "条数据";
+                return _Result;
+            }
+        }
+        public int LengthOfAnnounces
+        {
+            get
+            {
+                return Announces.Count;
+            }
+        }
+        public string StringLenOfAnnounces
+        {
+            get
+            {
+                string _Result = "共有" + LengthOfAnnounces.ToString() + "条数据";
                 return _Result;
             }
         }
@@ -194,11 +210,96 @@ namespace ClassRoomAPI.Models
         public static int EXCEPTION_RETURN_REMOTE_DATA_FAILED = 1002;
     }
 
+    // Anouncements
+    //AnnounceNotice Old
+    public class Announce
+    {
+        public string id { get; set; }
+        public string title { get; set; }
+        public string owner { get; set; }
+        public string regDate { get; set; }
+        public string courseId { get; set; }
+        public string detail { get; set; }
+        public bool Isfinished { get; set; }
+        public string course { get; set; }
+        public double daysFromNow()
+        {
+            return (DateTime.Parse(regDate + " 23:59") - DateTime.Now).TotalDays;
+        }
+        public string paindetail
+        {
+            get
+            {
+                var doc = new HtmlDocument();
+                doc.LoadHtml(detail);
+
+                return doc.DocumentNode.InnerText;
+            }
+
+        }
+        public string HasbeenFnishedChinese
+        {
+            get
+            {
+                if (Isfinished)
+                {
+                    return "已阅读";
+                }
+                else
+                {
+                    return "未阅读";
+                }
+            }
+        }
+    }
 
 
 
-    //JSON FORM DATASTRUCT DO NOT EDIT HERE!
-    public class CourseAssignmentsRootobject
+
+
+    //CourseNotice New JSON DO NOT EDIT
+    public class CourseNotice
+    {
+        public string id { get; set; }
+        public string title { get; set; }
+        public string owner { get; set; }
+        public string regDate { get; set; }
+        public object endDate { get; set; }
+        public string courseId { get; set; }
+        public int msgPriority { get; set; }
+        public string status { get; set; }
+        public string detail { get; set; }
+        public int browseTimes { get; set; }
+    }
+
+    public class RecordList
+    {
+        public string status { get; set; }
+        public CourseNotice courseNotice { get; set; }
+    }
+
+    public class PaginationList
+    {
+        public List<RecordList> recordList { get; set; }
+        public int recordCount { get; set; }
+        public int pageSize { get; set; }
+        public int currentPage { get; set; }
+        public int pageMax { get; set; }
+        public int pageStart { get; set; }
+        public string currentPageStr { get; set; }
+        public string recordCountStr { get; set; }
+    }
+
+    public class AncRootObject
+    {
+        public string message { get; set; }
+        public PaginationList paginationList { get; set; }
+    }
+
+
+
+//JSON FORM DATASTRUCT DO NOT EDIT HERE!
+public class CourseAssignmentsRootobject
     {
         public string message { get; set; }
         public Resultlist[] resultList { get; set; }
@@ -343,3 +444,4 @@ namespace ClassRoomAPI.Models
 
     //JSON FORM DATASTRUCT DO NOT EDIT HERE!
 }
+

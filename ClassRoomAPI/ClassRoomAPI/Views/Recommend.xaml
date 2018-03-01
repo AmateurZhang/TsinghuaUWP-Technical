@@ -29,7 +29,7 @@
                     &#xE8C0;    DDL导航
                     </TextBlock>
                     <Rectangle Height="5" />
-                    <Rectangle Fill="Gray" Height="5" />
+                    <Rectangle Fill="Gray" Height="2" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
@@ -45,7 +45,7 @@
                     &#xE8C0;    课表
                     </TextBlock>
                     <Rectangle Height="5" />
-                    <Rectangle Fill="Gray" Height="5" />
+                    <Rectangle Fill="Gray" Height="2" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
@@ -61,7 +61,7 @@
                     &#xE8C0;    推荐教室
                     </TextBlock>
                     <Rectangle Height="5" />
-                    <Rectangle Fill="Gray" Height="5" />
+                    <Rectangle Fill="Gray" Height="2" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
@@ -77,7 +77,7 @@
                     &#xE8C0;    推荐演出
                     </TextBlock>
                     <Rectangle Height="5" />
-                    <Rectangle Fill="Gray" Height="5" />
+                    <Rectangle Fill="Gray" Height="2" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">

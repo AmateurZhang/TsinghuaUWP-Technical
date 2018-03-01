@@ -59,7 +59,7 @@ namespace ClassRoomAPI.ViewModels
             else
             {
                 //demo
-                return null;
+                return await ClassRoomAPIService.ClassParseBuildingInfo.GetBuildingTypeMode(ParseDataMode.Demo);
             }
         }
 
@@ -104,9 +104,8 @@ namespace ClassRoomAPI.ViewModels
             else
             {
                 //demo
-                var JSONString = JSONStringClassRoomInfo.jsonAllClassRoomInfoData;
-                var Result = JSONHelper.Parse<ClassBuildingInfo>(JSONString);
-                return Result;
+                return await ClassRoomAPIService.ClassParseBuildingInfo.GetListAllBuildingInfoMode(ParseDataMode.Demo);
+             
             }
         }
     }

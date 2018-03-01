@@ -11,8 +11,6 @@
     >
 
     <Grid  Margin="10" Name="DDLGrid">
-        
-
         <Grid.RowDefinitions>
             <RowDefinition   Height="Auto" />
             <RowDefinition   Height="Auto" />

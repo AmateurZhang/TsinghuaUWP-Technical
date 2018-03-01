@@ -43,15 +43,24 @@ namespace ClassRoomAPI.Views
         {
             ProgressStaue.Visibility = Visibility.Visible;
             ProgressStaue.IsIndeterminate = true;
-            if (WebLearnAPIService.CredentialAbsent())
+            if (UserHelper.CredentialAbsent())
             {
                 var notifyPopup = new NotifyPopup("未登录！");
                 notifyPopup.Show();
+            }
+            else if(UserHelper.IsDemo())
+            {
+                var _Data = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Demo);
+                MainPivot.ItemsSource = _Data.ListCourseInfoDetail;
+                ProgressStaue.Visibility = Visibility.Collapsed;
+                ProgressStaue.IsIndeterminate = false;
+                return;
             }
             else
             {
                 try
                 {
+
                     var _Data = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Local);
                     MainPivot.ItemsSource = _Data.ListCourseInfoDetail;
                     if ((DateTime.Now - _Data.Date).Minutes > 5)
@@ -95,7 +104,10 @@ namespace ClassRoomAPI.Views
 
         }
 
-
-
+        private void ListViewClassRoomData2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Announce item = e.ClickedItem as Announce;
+            DetailFrame.Navigate(typeof(AncDetail), item);
+        }
     }
 }
