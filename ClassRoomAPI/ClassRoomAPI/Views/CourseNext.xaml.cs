@@ -70,7 +70,7 @@ namespace ClassRoomAPI.Views
                             //计算课程时间与当前时间的时间差
                             var distance = (Items.StartTime+Items.Duration - Now).Minutes;
                             //未上的课
-                            if (distance > 0)
+                            if (distance >= 0)
                             {
                                 AllCourses.Add(new Windows.ApplicationModel.Appointments.Appointment
                                 {
