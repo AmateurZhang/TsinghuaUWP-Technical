@@ -155,23 +155,31 @@
     </Page.Resources>
     
     <Grid Name="WebLearnPage">
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/BuildingSix.png"></ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ProgressBar Name="ProgressStaue" Visibility="Collapsed"></ProgressBar>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ProgressBar Name="ProgressStaue" Visibility="Collapsed" Grid.Row="0" Grid.ColumnSpan="2"></ProgressBar>
+        
         <Pivot HeaderTemplate="{StaticResource PivotHeaderNames}" 
                ItemTemplate="{StaticResource PivotBuildingType}" 
                Name="MainPivot"
                Grid.Column="0"
+               Grid.Row="1"
                >
-
         </Pivot>
-        <Grid Grid.Column="1"  Margin="10">
+
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                
             </Grid.RowDefinitions>
             <TextBlock Text="作业/公告内容" Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center" Margin="10,0,0,0" Opacity="0.8"></TextBlock>
             <Frame x:Name="DetailFrame" x:FieldModifier="Public" Grid.Row="1">

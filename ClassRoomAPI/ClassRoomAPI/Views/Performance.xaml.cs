@@ -34,9 +34,9 @@ namespace ClassRoomAPI.Views
         {
             this.InitializeComponent();
             //加载背景
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Hall.png", UriKind.Absolute));
-            Performance_Page.Background = imageBrush;
+           // ImageBrush imageBrush = new ImageBrush();
+            //imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Hall.png", UriKind.Absolute));
+           // Performance_Page.Background = imageBrush;
         }
 
         

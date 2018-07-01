@@ -40,11 +40,15 @@
     </Page.Resources>
 
     <Grid x:Name="UrgentDDL_Page">
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Name="CountNum"  Grid.Row="0" Margin="5"></TextBlock>
         <ListView Name="ListViewDDLData"                    
-                      ItemTemplate="{StaticResource DataTemplate}" 
-                      
+                  ItemTemplate="{StaticResource DataTemplate}"                       
                   SelectionChanged="ListViewDDLData_SelectionChanged"
+                  Grid.Row="1"
                   />
     </Grid>
 </Page>

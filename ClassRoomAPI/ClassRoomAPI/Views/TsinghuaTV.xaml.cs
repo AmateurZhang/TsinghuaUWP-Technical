@@ -35,5 +35,17 @@ namespace ClassRoomAPI.Views
                 TVWeb.Source = new Uri("http://ivi.bupt.edu.cn/");
             }
         }
+
+        public void Page_Refresh()
+        {
+            if (UserHelper.IsDemo())
+            {
+                TVWeb.Source = new Uri("http://ivi.bupt.edu.cn/");
+            }
+            else
+            {
+                TVWeb.Source = new Uri("https://iptv.tsinghua.edu.cn/");
+            }
+        }
     }
 }

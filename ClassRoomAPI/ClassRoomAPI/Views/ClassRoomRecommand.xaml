@@ -82,7 +82,10 @@
 
 
     <Grid x:Name="ClassRoom_Page">
-
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/Hall.png"></ImageBrush>
+        </Grid.Background>
+        <TextBlock Name="noteBlock" Visibility="Collapsed" Margin="10"></TextBlock>
         <GridView Name="ListViewClassRoomData"                    
                       ItemTemplate="{StaticResource DataTemplate}" 
                       ItemsSource="{x:Bind ClassRooms}"

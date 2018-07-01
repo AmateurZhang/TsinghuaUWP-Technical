@@ -10,7 +10,8 @@
     
     >
 
-    <Grid  Margin="10" Name="DDLGrid">
+    <Grid  Name="DDLGrid" Padding="10">
+
         <Grid.RowDefinitions>
             <RowDefinition   Height="Auto" />
             <RowDefinition   Height="Auto" />
@@ -20,6 +21,9 @@
             <RowDefinition   Height="Auto" />
             <RowDefinition   Height="*" />
         </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/BuildingSix.png" Stretch="Fill"></ImageBrush>
+        </Grid.Background>
 
         <TextBlock Name="NameTB"
                             Style="{ThemeResource SubtitleTextBlockStyle}"  

@@ -32,6 +32,21 @@ namespace ClassRoomAPI.Models
         public string PerformanceType;
         public static bool IsItemsEmpty;
         public List<PerformanceData> ListPerformanceInfo;
+        public int LengthOfAnnounces
+        {
+            get
+            {
+                return ListPerformanceInfo.Count;
+            }
+        }
+        public string StringLenPerform
+        {
+            get
+            {
+                string _Result = "共有" + LengthOfAnnounces.ToString() + "条数据";
+                return _Result;
+            }
+        }
     }
     public class ShowInfoData  //特意用于写在本底的数据结构，在信息呈现的时候不调用这个
     {

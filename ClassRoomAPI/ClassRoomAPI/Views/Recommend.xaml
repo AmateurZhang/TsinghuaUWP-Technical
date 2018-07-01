@@ -11,8 +11,11 @@
     >
 
 
-    <Grid Name="RecommendPage"
-        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="RecommendPage">
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/BuildingTwo.png"></ImageBrush>
+        </Grid.Background>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>

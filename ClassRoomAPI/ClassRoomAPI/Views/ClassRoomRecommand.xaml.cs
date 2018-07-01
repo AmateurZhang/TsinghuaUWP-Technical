@@ -75,6 +75,16 @@ namespace ClassRoomAPI.Views
                     }
                 }
                 ListViewClassRoomData.ItemsSource = Re_ClassRooms;
+                if(Re_ClassRooms.Count()==0)
+                {
+                    noteBlock.Text = "当前教学楼无空闲教室";
+                    noteBlock.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    noteBlock.Visibility = Visibility.Collapsed;
+                }
+                    
             }
             else {
                 var notifyPopup = new NotifyPopup("请连接校内网获取教室信息");

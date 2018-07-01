@@ -181,12 +181,16 @@ namespace ClassRoomAPI
         {
 
             if (!e.Handled && RootFrame.CanGoBack)
-
             {
-
-                e.Handled = true;
+               e.Handled = true;
+               
+                if (RootFrame.CurrentSourcePageType == typeof(TsinghuaTV))
+                {
+                    TsinghuaTV mainPage = RootFrame.Content as TsinghuaTV;
+                    mainPage.Page_Refresh();
+                }
                 
-               RootFrame.GoBack();
+                RootFrame.GoBack();
 
             }
             SyncMenu();
@@ -205,6 +209,7 @@ namespace ClassRoomAPI
                 {
                     np.Selected = Visibility.Visible;
                     TitleTextBlock.Text = np.Label;
+
                 }
                     
                 else
@@ -231,15 +236,27 @@ namespace ClassRoomAPI
             foreach (var np in navMenuPrimaryItem)
             {
                 np.Selected = Visibility.Collapsed;
+                if(np.DestPage== typeof(TsinghuaTV))
+                {
+                    var page = RootFrame;
+                    if(page.CurrentSourcePageType== typeof(TsinghuaTV))
+                    {
+                        TsinghuaTV mainPage = page.Content as TsinghuaTV;
+                        mainPage.Page_Refresh();
+                    }
+                }
             }
             foreach (var ns in navMenuSecondaryItem)
             {
                 ns.Selected = Visibility.Collapsed;
             }
 
+        
+
             NavMenuItem item = e.ClickedItem as NavMenuItem;
             // Rectangle显示并导航
             item.Selected = Visibility.Visible;
+
             TitleTextBlock.Text = item.Label;
             if (item.DestPage != null)
             {

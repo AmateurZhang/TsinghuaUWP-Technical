@@ -31,9 +31,9 @@ namespace ClassRoomAPI.Views
         public WebLearn()
         {
             this.InitializeComponent();
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingSix.png", UriKind.Absolute));
-            WebLearnPage.Background = imageBrush;
+           // ImageBrush imageBrush = new ImageBrush();
+            //imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/BuildingSix.png", UriKind.Absolute));
+            //WebLearnPage.Background = imageBrush;
         }
 
       

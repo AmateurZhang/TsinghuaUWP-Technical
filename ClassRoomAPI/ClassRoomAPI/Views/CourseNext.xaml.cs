@@ -47,8 +47,8 @@ namespace ClassRoomAPI.Views
                 var None = new List<Windows.ApplicationModel.Appointments.Appointment>();
                 None.Add(new Windows.ApplicationModel.Appointments.Appointment
                 {
-                    Subject = "没有要上的课程了",
-                    Location = "N/A",
+                    Subject = "最近没有要上的课程",
+                    Location = "Have fun!",
                     StartTime = DateTime.Now,
 
                 });
@@ -111,8 +111,8 @@ namespace ClassRoomAPI.Views
                             var None = new List<Windows.ApplicationModel.Appointments.Appointment>();
                             None.Add(new Windows.ApplicationModel.Appointments.Appointment
                             {
-                                Subject = "没有要上的课程了",
-                                Location = "N/A",
+                                Subject = "最近没有要上的课程",
+                                Location = "Have fun!",
                                 StartTime = Now,
 
                             });

@@ -10,11 +10,11 @@
     Loaded="Page_Loaded">
 
     <Page.Resources>
-        
+
         <DataTemplate x:Key="PivotHeaderShowType" x:DataType="models:ShowInfo">
             <TextBlock Text="{x:Bind PerformanceType}"></TextBlock>
         </DataTemplate>
-        
+
         <DataTemplate x:Key="PerformanceDataTemplate" x:DataType="models:PerformanceData">
             <Grid>
                 <Grid.RowDefinitions>
@@ -47,33 +47,50 @@
                              />
             </Grid>
         </DataTemplate>
-        
+
         <DataTemplate x:Key="PivotShowInfo" x:DataType="models:ShowInfo">
             <PivotItem >
-                <ListView Name="ListViewShowInfoData"                    
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="Count2" Text="{x:Bind StringLenPerform}" Grid.Row="0"></TextBlock>
+                    <ScrollViewer Grid.Row="1">
+                        <ListView Name="ListViewShowInfoData"                    
                       ItemTemplate="{StaticResource PerformanceDataTemplate}" 
                       ItemsSource="{x:Bind ListPerformanceInfo}"
                       >
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            
-                            <Setter Property="BorderBrush" Value="Black"/>
-                            <Setter Property="BorderThickness" Value="0.25"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+
+                                    <Setter Property="BorderBrush" Value="Black"/>
+                                    <Setter Property="BorderThickness" Value="0.25"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
             </PivotItem>
         </DataTemplate>
     </Page.Resources>
 
     <Grid>
-        <StackPanel x:Name="Performance_Page">
-            <ProgressBar Name="ProgressStaue" Visibility="Collapsed"></ProgressBar>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/Hall.png"></ImageBrush>
+        </Grid.Background>
+        <ProgressBar Name="ProgressStaue" Visibility="Collapsed" Grid.Row="0"></ProgressBar>
+        <Grid Grid.Row="1" x:Name="Performance_Page" >
+          
             <Pivot Name="MainPivot"   
                HeaderTemplate="{StaticResource PivotHeaderShowType}" 
                ItemTemplate="{StaticResource PivotShowInfo}" SelectionChanged="MainPivot_SelectionChanged"     
                />
-        </StackPanel>
+        </Grid>
     </Grid>
     
 </Page>

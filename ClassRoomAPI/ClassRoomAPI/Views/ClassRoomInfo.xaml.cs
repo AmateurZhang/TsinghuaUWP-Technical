@@ -99,7 +99,7 @@ namespace ClassRoomAPI.Views
                     BuildingName = "BuildingSix.png";
                     break;
                 default:
-                    BuildingName = "BuildingOne.png";
+                    BuildingName = "Hall.png";
                     break;
             }
             ImageBrush imageBrush = new ImageBrush();

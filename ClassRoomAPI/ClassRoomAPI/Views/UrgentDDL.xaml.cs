@@ -86,7 +86,24 @@ namespace ClassRoomAPI.Views
                 Ur_DDL_Finished.Sort(new Icp_DDL());
 
                 Ur_DDL.AddRange(Ur_DDL_Finished);
+                if(Ur_DDL.Count()==0)
+                {
+                    Ur_DDL.Add(new Deadline
+                    {
+                        name = "没有需要完成的Deadline",
+
+                        ddl = DateTime.Now.ToString(),
+
+                        hasBeenFinished = true,
+
+                        course="Life is beautiful!",
+
+                        detail= "<p>Life is beautiful!<p/>"
+                    }
+                    );
+                }
                 ListViewDDLData.ItemsSource = Ur_DDL;
+                CountNum.Text = "共有" + Ur_DDL.Count + "条数据";
             }
             else {
                 if(!UserHelper.IsDemo())

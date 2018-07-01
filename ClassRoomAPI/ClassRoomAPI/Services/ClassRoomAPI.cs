@@ -98,6 +98,7 @@ namespace ClassRoomAPI.Services
             private static async Task<List<BuildingTypeNamesData>> GetBuildingTypeAsync()
             {
                 var Data = new List<BuildingTypeNamesData>();
+                var Data2 = new List<BuildingTypeNamesData>();
                 string html = "http://jxgl.cic.tsinghua.edu.cn/jxpg/f/wxjwxs/jsxx?menu=false";
                 HtmlWeb web = new HtmlWeb();
                 var htmlDoc = web.Load(html);
@@ -107,7 +108,10 @@ namespace ClassRoomAPI.Services
                 {
                     string uri = htmlNodes[i].ChildNodes[1].Attributes["href"].Value;
                     string PosName = htmlNodes[i].ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[1].InnerText;
-                    if (PosName=="一教"|| PosName == "二教" || PosName == "三教" || PosName == "四教" || PosName == "五教" || PosName == "六教" ) {
+
+                    if (PosName=="一教"|| PosName == "二教" || PosName == "三教" || PosName == "四教" || PosName == "五教" || PosName == "六教" 
+                        )
+                    {
                         Data.Add(new BuildingTypeNamesData
                         {
                             DetailUri = uri,
@@ -115,7 +119,18 @@ namespace ClassRoomAPI.Services
                         }
                         );
                     }
+                    else
+                    {
+                        Data2.Add(new BuildingTypeNamesData
+                        {
+                            DetailUri = uri,
+                            PositionName = PosName
+                        }
+                        );
+                    }
+                 
                 }
+                Data.AddRange(Data2);
                 var StringfiedData = JSONHelper.Stringify(Data);
                 await CacheHelper.WriteCache(CacheBuildingTypeJSON, StringfiedData);
                 return Data;

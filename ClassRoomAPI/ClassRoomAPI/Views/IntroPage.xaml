@@ -10,17 +10,18 @@
     <Grid >
         
         <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
      
-        <StackPanel Background="BlueViolet" Grid.Row="0">
-            <Image Grid.Row="0" Source="ms-appx:///Assets/Wide310x150Logo.scale-400.png" HorizontalAlignment="Center"/>
-            
-        </StackPanel>
-        <StackPanel Grid.Row="1" Background="White" VerticalAlignment="Center">
+ 
+        <Image Grid.Row="0" Source="ms-appx:///Assets/2017-10-13 234538.jpg" />
+
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" Foreground="Gray" FontFamily="黑体" VerticalAlignment="Center" Margin="10">Version 2.1.X 修改了部分BUG</TextBlock>
+        <StackPanel Grid.Row="2" Background="White" >
             <TextBlock Text="InsTsinghua UWP" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="黑体" FontSize="36" Foreground="Purple"/>
-            <TextBlock Text="Version 2.1.0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="黑体" FontSize="12" Foreground="Purple"/>
+            <TextBlock Text="Version 2.1.X" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="黑体" FontSize="12" Foreground="Purple"/>
             <TextBlock Text="求扩散，求好评" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="黑体" FontSize="16" Foreground="Purple"/>
             <TextBlock Text="Inspired by https://github.com/lizy14/Tsinghua-UWP" HorizontalAlignment="Center" FontFamily="黑体" FontSize="16" Foreground="Purple"/>
             <TextBlock Text="Thanks to the InsTsinghua Group in Software Engineering Course" HorizontalAlignment="Center" FontFamily="黑体" FontSize="16" Foreground="Purple"/>
